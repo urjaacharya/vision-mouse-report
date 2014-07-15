@@ -53,7 +53,7 @@ The basic objectives of our project is the modification of Project Looma in aspe
 \newpage
 \section{Literature Review}
 The current prototype can run off a rechargeable 12V battery, has the capability to access the World Wide Web, has readily available offline content, via established partnerships, and has an extremely easy to use interface. The device is contained in a single unit with replaceable external components (i.e. keyboard, remotes), consumes less than 100 W of power, and will cost only USD 300. The system is about the size of a shoebox. 
-As seen in the Figure 2, the existing Looma system functional parts can be listed as:
+As seen in the figure, the existing Looma system functional parts can be listed as:
 \subsection{Looma and Wand Details}
 \begin{itemize}
 \item300 lumens projector
@@ -89,7 +89,7 @@ Wand control descriptions:
 
 
 \subsection{System Operation Description}
-The existing system uses Wii Remote to interact in the audio-visual device. This system uses an Wii IR camera which picks up the infrared light source, and tracks it using its MOT (Multi-Object Tracking) processor present in the camera chip as shown in the Figure 4. Wii IR Camera gives out a pre-set I2C address so the interface board needs an I2C multiplexer. To convert the I2C output to serial, and to demultiplex the signals, the system has been using an FPGA board. 
+The existing system uses Wii Remote to interact in the audio-visual device. This system uses an Wii IR camera which picks up the infrared light source, and tracks it using its MOT (Multi-Object Tracking) processor present in the camera chip as shown in the figure. Wii IR Camera gives out a pre-set I2C address so the interface board needs an I2C multiplexer. To convert the I2C output to serial, and to demultiplex the signals, the system has been using an FPGA board. 
 
 \begin{figure}[htp]
 \centering
@@ -142,7 +142,7 @@ Raspberry Pi camera module will use \emph{Picamera 1.2} by Dave Hughes, recently
 Raspberry Pi is a single-board computer with processor, memory, I/O ports and many more features, which together make it a functional computer for a wide range of applications in robotics. It is so simple than any logical person can program it, even it is for the first time when you work with a single-board computer.The ARM powered minicomputer is a platform with enormous possibilities and powerful enough to run many of the same programs as computer. Raspberry Pi serves as a wonderful platform for computer vision algorithms given its size, wonderful camera board and portability. Using the Picamera module, we took raw byte streams of the projected screen, and converted them to OpenCV (Open Computer Vision) object before doing further image processing algorithms.
 
 \subsection{System Design and Description}
-As seen in the Figure 5 and Figure 7, the camera will be taking in the images of Looma continually and the raspberry pi will be applying the laser detection and click action detection algorithm on the images. The image processing part will be done in the raspberry pi. Initially, the projected screen must be intially checked for any distortion and warpness. Depending on the distortion, linear and non-linear screen coordinates mapping matrix will be used. If no such distortion is present, simple linear transformation matrix will be able to map the coordinates to move the mouse pointer accordingly. However, for distortion filled projected screen, non-linear mapping transformation need to analysed and assessed. Once the mapping matrix has been understood, the raspberry pi takes in the images and works on the projected screen extracted as the region of interest. Now, all the image processing algorithms will be analysed within this ROI (Region of Interest).
+As seen in the figures, the camera will be taking in the images of Looma continually and the raspberry pi will be applying the laser detection and click action detection algorithm on the images. The image processing part will be done in the raspberry pi. Initially, the projected screen must be intially checked for any distortion and warpness. Depending on the distortion, linear and non-linear screen coordinates mapping matrix will be used. If no such distortion is present, simple linear transformation matrix will be able to map the coordinates to move the mouse pointer accordingly. However, for distortion filled projected screen, non-linear mapping transformation need to analysed and assessed. Once the mapping matrix has been understood, the raspberry pi takes in the images and works on the projected screen extracted as the region of interest. Now, all the image processing algorithms will be analysed within this ROI (Region of Interest).
 
 \begin{figure}[htp]
 \includegraphics[scale=0.5]{proposed_system}
@@ -152,11 +152,10 @@ As seen in the Figure 5 and Figure 7, the camera will be taking in the images of
 
 Next task is to understand the actions of the laser pointer and obtain the coordinates of it and feed it to the Looma System. The actions of the laser pointer are either simple pointing or clicking. Simple pointing will be based on the tracking of the laser pointer in the projected screen and updating the mouse pointer. Clicking of the laser pointer will be understood by the software when the laser pointer is turned on and off for a certain number of times. This on and off pattern of the laser pointer is checked in a number of frames on the same location in the image. This will be implemented as a software click and the mouse click action is done in the Looma software. 
 
-
 In the Looma System, we will have the system taking in our actions and coordinates and updating its mouse pointer to do the desired mouse actions. Raspberry Pi will be connected to the Looma system through the USB to Serial Port converter wire, with the USB being the part of Raspberry Pi and the Serial Port being the part of the Looma System.
 
 \newpage
-\section{Works Accomplished in the 7th Semester}
+\section{Works Accomplished in the Seventh Semester}
 \subsection{Detection of Laser Pointer and Mouse Movements}
 	Integrating the above the codes of laser pointer detection and mouse handler into one, we were able to move the mouse pointer as per the laser pointer coordinates. Assuming that the camera captures the image from the wall without distortion, a simple linear transformation was carried out, where the laser pointer position in the image taken was mapped to the display resolution of our computer. 
 
@@ -164,7 +163,6 @@ In the Looma System, we will have the system taking in our actions and coordinat
 	
 \begin{enumerate}
 	\item \textbf{HSV segmentation:}
-
 	In the process to detect the laser pointer we used the HSV segmentation and performed histogram analysis and obtained results as shown in Figures 11 and 12 below.
 	The basic steps followed were:
 	\begin{itemize}
@@ -211,16 +209,15 @@ We found the contours of the laser, and its histogram plot was analysed as shown
 \end{figure}
 
 \subsection{Dynamic Exposure Correction}
-	Correct exposure configuration of the camera can improve the color detection of laser spot. In Raspberry Pi, dynamic exposure correction was done as per need by modifying its camera capture property, which is its camera exposure compensation parameter. Here, the projected screen was captured, and the camera exposure value were modified until color of laser spot was the brighest color in the inpurt image. On every frame captured, the average of the value channel of the image was compared with the preset threshold for seeing laser spot. If the average of the value channel was greater than this threshold,the camera exposure level was decreased accordingly. A sample exposure correction code can be viewed on Appendix A4.
+	Correct exposure configuration of the camera can improve the color detection of laser spot. In Raspberry Pi, dynamic exposure correction was done as per need by modifying its camera capture property, which is its camera exposure compensation parameter. Here, the projected screen was captured, and the camera exposure value were modified until color of laser spot was the brighest color in the inpurt image. On every frame captured, the average of the value channel of the image was compared with the preset threshold for seeing laser spot. If the average of the value channel was greater than this threshold,the camera exposure level was decreased accordingly.
 
 \subsection{Porting of Code to Raspberry Pi}
-	All the codes run and tested in our computer using inbuilt webcam was ported to Raspberry Pi and run using picamera module for using the Raspberry Pi Camera Board Module. A sample picamera module code for converting to OpenCV object has been shown in Appendix A5.
+	All the codes run and tested in our computer using inbuilt webcam was ported to Raspberry Pi and run using picamera module for using the Raspberry Pi Camera Board Module.
 
 \subsection{Design Calculations of 555 timer}
-
 	A simple led circuit is used for the pointing purpose in the wand. To avoid leaving the wand on at all times, a circuit break can be introduced using a simple one-way switch. However, for the clicking purpose, the led circuit must be modified for the system to understand and implement the click. 
 	One of the method to signify a click is to switch off the led for a short time but this leads to misintended clicks whenever the led is out of sight of the system. Thus, in order to avoid such errors, the led is made to blink for a specific number of times at a predetermined frequency which is understood by the system as a click. In order to implement this, a flashing led circuit was designed using a 555 timer. 
-	The 555 timer is operated in astable mode and outputs rectangular pulses of certain frequency. The frequency is determined by the values of components kept in between the pins of the timer. See Fig 13 and 14.
+	The 555 timer is operated in astable mode and outputs rectangular pulses of certain frequency. The frequency is determined by the values of components kept in between the pins of the timer.
 
 
 	The values of R1, R2 and C are set to obtain the required positive time interval(T1), negative time interval(T2) and frequency(f). The calculations are made as follows:
@@ -260,7 +257,7 @@ We found the contours of the laser, and its histogram plot was analysed as shown
 \item Contours Detection to obtain the parent contour
 \item Get the four corners of the parent contour
 \item Get the centroid of the four corners
-\item Determination of Top left, Top right, Bottom left, Bottom right points
+\item Determination of Top Left(TL), Top Right(TR), Bottom Left(BL), Bottom Right(BR) points
 \item Apply the perspective transformation to a destination coordinates
 \end{enumerate}
 	
@@ -301,7 +298,7 @@ We found the contours of the laser, and its histogram plot was analysed as shown
 	\label{}
 \end{figure}
 
-	The laser circuit has been programmed such that it produces a 6Hz pulses when the push button is pressed, else it stays on. The target frequency has been set to 6Hz. The prescaler used is 64. The top value for pulse width modulation is obtained as, clock frequency/target frequency*scaler - 1. For a 20\% duty cycle, the on time of the laser is set to 20\% of the top value and off time is set to the 80\% of the top value. We have kept the push button switch in the interrupt pin, so that when the button is pushed, interrupt is obtained and the subsequent Interrupt Service Routine(ISR) can be run. This ISR does the work of producing PWM pulses of 20\% duty cycle. The diagram below is our working circuit.
+	The laser circuit has been programmed such that it produces a 6Hz pulses when the push button is pressed, else it stays on. The target frequency has been set to 6Hz. The prescaler used is 64. The top value for pulse width modulation(PWM) is obtained as, clock frequency/target frequency*scaler - 1. For a 20\% duty cycle, the on time of the laser is set to 20\% of the top value and off time is set to the 80\% of the top value. We have kept the push button switch in the interrupt pin, so that when the button is pushed, interrupt is obtained and the subsequent Interrupt Service Routine(ISR) can be run. This ISR does the work of producing PWM pulses of 20\% duty cycle. The diagram below is our working circuit.
 
 \begin{figure}[htp]
 	\centering
@@ -331,6 +328,13 @@ We found the contours of the laser, and its histogram plot was analysed as shown
 	
 	At all times, when laser is in the on state, the mouse pointer continuously moves. When laser state toggles, either from laser on to off or vice-versa, the mouse pointer is pressed. And when this mouse pointer is moving and also if the mouse pointer is in the toggled state, then the mouse starts dragging. This continues until a laser-off state or laser-on state occur, which is interpreted as a mouse release. Similarly, at every toggle state, mouse down occurs and if laser-on or laser-off state is immediately succeeded to this event, then mouse is released. This will be interpreted as click.
 	
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.3]{state.png}
+\caption{State Transition Diagram of Algorithm}
+\label{}
+\end{figure}
+	
 \subsection{Communication between computer and RPi}
 	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. However, we implemented a protocol for communication using Transmission Control Protocol(TCP) via ethernet to communicate the mouse actions and coordinates to the computer. The Looma board was made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. 
 
@@ -341,13 +345,6 @@ We found the contours of the laser, and its histogram plot was analysed as shown
 \section{Works Remaining in the Eighth Semester}
 \subsection{Effective Algorithm implementation}
 	The algorithm has been finalized and has been implemented in code but needs proper testing and evaluation in order to make it work effectively.
-
-\begin{figure}[htp]
-\centering
-\includegraphics[scale=0.3]{state.png}
-\caption{State Transition Diagram of Algorithm}
-\label{}
-\end{figure}
 
 \subsection{Using the Python-Xlib library for mouse}
 	The mouse coordinates as well as the actions interpreted need to be fed to the Python-Xlib for the appropriate mouse movements in the Looma board. After the client sends in the coordinates and the actions to the server present in the Looma board, the server parses the data and uses it to run the appropriate library functions.
