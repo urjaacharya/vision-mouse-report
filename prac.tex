@@ -5,34 +5,40 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{listings}
-\usepackage{hyperref}
+\usepackage[hidelinks=true]{hyperref}
 \usepackage{mathtools}
 \usepackage{pgfgantt}
 \usepackage{tocloft}
 \usepackage{tocbibind}
 \usepackage{indentfirst}
 \usepackage{mathtools}
-\usepackage{acronym}
-\usepackage[acronym]{glossaries}
-
-\hypersetup{
-	hidelinks = true
-}
-\makeglossaries
 
 \begin{document}
-	\listoffigures
 	\pagenumbering{roman}
+	\subsection*{COPYRIGHT}
+		\input{copyright}
+	\addcontentsline{toc}{subsection}{Copyright}
+	
+	\newpage
+	\subsection*{ACKNOWLEDGEMENT}
+		\input{acknowledgement}
+	\addcontentsline{toc}{subsection}{Acknowledgement}
+	
+	\newpage
+	\subsection*{ABSTRACT}
+	\input{abstract}
+	\addcontentsline{toc}{subsection}{Abstract}
+	\newpage
+	\listoffigures
 	\listoftables
 	\newpage
 	\tableofcontents 
 	\newpage
 	\pagenumbering{arabic}
-
 \newpage
 \section{INTRODUCTION}
 \subsection{Background}
-According to the Information and Communication Technology (ICT) Master Plan 2013-2017, see[1], the long term
+According to the Information and Communication Technology (ICT) Master Plan 2013-2017~\cite{kir}, the long term
 goal of education in Nepal is to provide citizens with appropriate knowledge,
 skills and attitude to work actively in the development of the country and to
 integrate Nepal into the global community through ensuring equitable access
@@ -115,9 +121,7 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 \caption{Hardware and Electrical parts of Looma system}
 \label{}
 \end{figure}
-
 \newpage
-
 Wand control descriptions:
 \begin{itemize}
 \item Wand shown in the figure is a 3D printed IR light source
@@ -154,7 +158,7 @@ The Smart Board is an interactive whiteboard that uses touch detection for user 
 
 \subsubsection{Digital Image Processing}
 An image may be defined as a two-dimensional function, f(x, y), where x and y are spatial (plane) coordinates, and the amplitude of f at any pair of coordinates (x, y) is called the intensity or gray level of the image at that point. When x, y, and the amplitude values of f are all finite, discrete quantities, we call the image a digital image. The field of digital image processing refers to processing digital images by means of a digital computer.
-Image processing can be defined method to convert an image into digital form and perform some operations on it, in order to get an enhanced image or to extract some useful information from it. It is a type of signal dispensation in which input is image, like video frame or photograph and output may be image or characteristics associated with that image. Usually Image Processing system includes treating images as two dimensional signals while applying already set signal processing methods to them.
+Image processing can be defined method to convert an image into digital form and perform some operations on it, in order to get an enhanced image or to extract some useful information from it. It is a type of signal dispensation in which input is image, like video frame or photograph and output may be image or characteristics associated with that image. Usually Image Processing system includes treating images as two dimensional signals while applying already set signal processing methods to them.~\cite{raf}
 
 The basic stages used in image processing are as follows:
 \begin{enumerate}
@@ -597,17 +601,16 @@ The laser’s distinct intensity values in the red region was utilized. However,
 \subsection{Limitations}
 The limitations of the system developed in this project are as follows:
 \begin{enumerate}
-\item Due to the slow processing speed of the raspberry pi used, there is lag in the overall system. 
+\item Due to the slow processing speed of the raspberry pi used, there is lag in the overall system
 \item This system may not respond well under bright light conditions.
-\item Since the raspberry pi camera is not permanently fixed to the system, a slight movement changes the calibration data of the system.
-\item The slow LOOMA system processes the clicks a little later in time.
+\item Since the raspberry pi camera is not permanently fixed to the system, a slight movement alters the calibration data of the system
 \end{enumerate}
 
 \subsection{Enhancements}
 \begin{enumerate}
-\item A proper hardware with the raspberry pi system along with the camera fixed inside LOOMA can prevent the system to be calibrated each time it is moved during use.
-\item A better processor than the raspberry pi can be used to enhance the system’s speed and efficiency, allowing it to perform real time operations.
-\item The system performs single clicks and drag as required by the LOOMA system, but with further enhancements, it can be made to perform double clicks.
+\item A proper hardware setup with the raspberry pi system fixed inside LOOMA software can prevent the system from being calibrated each time it is moved during use
+\item A better processor than the raspberry pi can be used to enhance the system’s speed and efficiency, allowing it to perform real time operations
+\item The system performs single clicks and drag as required inside LOOMA software, but with further enhancements, the algorithm can be altered to perform double clicks as well
 \end{enumerate}
 \newpage
 \section{BIBLIOGRAPHY}
@@ -619,9 +622,7 @@ The limitations of the system developed in this project are as follows:
 \item Matej MESKO, Stefan TOTH, Laser Spot Detection, University of Zilina, Faculty of Management Science and Informatics (2013) 
 \item Rafael C. Gonzalez and Richard E. Woods, Digital Image Processing, 3rd Edition
 \end{enumerate}
-
 \newpage
-
 \section{REFERENCES}
 \begin{itemize}
 	\item \url{www.python.org}
@@ -650,7 +651,6 @@ The limitations of the system developed in this project are as follows:
 \item WriteErase Cycles: 10,000 Flash100,000 EEPROM
 \item Data retention: 20 years at 85$^oC$ 100 years at 25$^oC$
 \end{itemize}
-
 \item \textbf{Peripheral Features}
 \begin{itemize}
 \item Two 8-bit Timer/Counters with Separate Prescaler, one Compare Mode
