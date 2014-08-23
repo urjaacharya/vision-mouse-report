@@ -12,19 +12,24 @@
 \usepackage{tocbibind}
 \usepackage{indentfirst}
 \usepackage{mathtools}
+\usepackage{acronym}
+\usepackage[acronym]{glossaries}
 
 \hypersetup{
 	hidelinks = true
 }
+\makeglossaries
 
 \begin{document}
 	\listoffigures
 	\pagenumbering{roman}
+	\listoftables
 	\newpage
 	\tableofcontents 
 	\newpage
 	\pagenumbering{arabic}
 
+\newpage
 \section{INTRODUCTION}
 \subsection{Background}
 According to the Information and Communication Technology (ICT) Master Plan 2013-2017, see[1], the long term
@@ -140,7 +145,7 @@ The existing system uses Wii Remote to interact in the audio-visual device. This
 \newpage
 \section{THEORITICAL BACKGROUND}
 \subsection{Basic Overview}
-\subsubsection{Human-computer interaction (HCI)} 
+\subsubsection{Human-computer Interaction (HCI)} 
 HCI is the study of how people interact with computers and to what extent computers are or are not developed for successful interaction with human beings. Developing human-computer interactions involves design on both sides of the interaction. On the technology side, the designer must have a thorough understanding of the available hardware and software components and tools. On the human side, the designer must have a good understanding of how humans learn and work with computers, including envisioning new modes of working. The designer's task is to create effective, efficient, and satisfying interactions by balancing factors such as cost, benefits, standards, and the environmental constraints in which the interaction will take place. 
 
 Classrooms today are filled with a diverse range of students. Many of them are computer literate while others are not. Some are primarily visual learners, some are auditory learners and some kinesthetic. Others may be gifted and talented.Still others may struggle with physical, mental, behavioral or emotional challenges. In such diverse environment, it may be difficult for the teacher to cope up with each and every individual. In such cases, an effective human-computer interaction tool plays a pivotal role.Various tools are now available for the efficient human-computer interaction, one of which is the Interactive Smart Board.
@@ -341,20 +346,6 @@ The mapping is based on linear mapping technique which works on the straight und
 \item Apply the  transformation of these corners to a destination coordinates
 \end{enumerate}
 	
-\begin{figure}[htp]
-	\centering
-	\includegraphics[scale=0.20]{looma1.png}
-	\caption{Distorted Projected Screen}
-	\label{}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
-	\includegraphics[scale=0.20]{result.png}
-	\caption{Perspective Transform Correction}
-	\label{}
-\end{figure}
-
 \subsection{Detection of Laser Pointer}
 	Since the projected screen can comprise of all sorts of colored imagery, color based segmentation method is not appropriate for the detection of laser. For flawless detection of laser, the exposure of the camera is programmatically reduced so that laser is the only brightest pixel seen in the image frame. 
 	\subsubsection{Dynamic Exposure Correction}
@@ -517,7 +508,7 @@ The algorithm was tested on Raspberry Pi. Raspberry Pi, the client and the Looma
 
 \newpage
 
-\section{CONCLUSION AND ENHANCEMENT}
+\section{CONCLUSION}
 \subsection{Conclusion}
 The project \emph{Laser Pointer based Human Computer Interaction using Computer Vision} aims at providing an alternative solution to the wand system used by LOOMA. The designed system allows the user to control the projected system from a considerable distance using the laser pointer, thus aiding the teaching learning process. Though the system is designed with LOOMA in mind, it is made generic and can be used for any other system too.
 
@@ -534,8 +525,8 @@ The blinking of laser wand on manual button press by 555 timer proved to be tedi
 
 The laser’s distinct intensity values in the red region was utilized. However, the detection algorithm failed in cases when other points with same color and intensity. This problem is solved by considering only the brightest pixels in the projected screen. So, a exposure correction of the camera has been carried out before the start of the detection algorithm. This ensured that only laser pointer is detected.
 \newpage
-\subsection{COST ANALYSIS}
-\subsubsection{Cost Comparison between Exisiting System and Our System}
+\section{COST ANALYSIS}
+\subsection{Cost Comparison between Exisiting System and Our System}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 	S.N  & Existing System & Cost & Designed System & Cost\\
@@ -551,7 +542,9 @@ The laser’s distinct intensity values in the red region was utilized. However,
 	 & Total & \$205.89 & Total & \$97.62\\
 \hline
 \end{tabular}
-\subsubsection{Total Cost of our Project}
+\newline
+\emph{\$1 = Rs.98.31 as of Aug 23, 2014}
+\subsection{Total Cost of our Project}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 	S.N & Items & Rate(Rs) & Quantity & Total(Rs) \\
@@ -598,11 +591,9 @@ The laser’s distinct intensity values in the red region was utilized. However,
 \hline 
 	   & Total & & 22 & 15,443.5432\\
 \hline	   
-\end{tabular}	
-\newline
-\emph{\$1 = Rs.98.31 as of Aug 23, 2014}
+\end{tabular}
 \newpage
-\section{Limitations and Enhancements}
+\section{LIMITATIONS AND ENHANCEMENTS}
 \subsection{Limitations}
 The limitations of the system developed in this project are as follows:
 \begin{enumerate}
@@ -618,10 +609,8 @@ The limitations of the system developed in this project are as follows:
 \item A better processor than the raspberry pi can be used to enhance the system’s speed and efficiency, allowing it to perform real time operations.
 \item The system performs single clicks and drag as required by the LOOMA system, but with further enhancements, it can be made to perform double clicks.
 \end{enumerate}
-
 \newpage
 \section{BIBLIOGRAPHY}
-
 \begin{enumerate}
 \item Kirstein and Muller, Interaction with a Projection Screen Using a Camera-Tracked Laser Pointer,University of Dortmund, Germany
 \item Mikawa, M., Morimoto, Y., Tanaka, K.: Guidance method using laser pointer and gestures for librarian robot, IEEE-RO-MAN, September, 2010
@@ -640,5 +629,78 @@ The limitations of the system developed in this project are as follows:
 	\item \url{www.simplecv.org}
 	\item \url{www.villagetechsolutions.org/}
 	\item \url{www.docs.opencv.org/}
+	\item \url{stackoverflow.com/}
+	\item \url{http://raspberrypi.stackexchange.com/}
+	\item \url{http://opencv.org/}
 \end{itemize}
+\newpage
+\appendix
+\section{AVR Atmega 8L Features:}
+\begin{itemize}
+\item \textbf{High-performance, Low-power Atmel AVR 8-bit Microcontroller}
+\begin{itemize}
+\item Advanced RISC Architecture
+\item 130 Powerful Instructions – Most Single-clock Cycle Execution
+\item 32 × 8 General Purpose Working Registers
+\end{itemize}
+\item \textbf{High Endurance Non-volatile Memory segments}
+\begin{itemize}
+\item 8Kbytes of In-System Self-programmable Flash program memory
+\item 512Bytes EEPROM
+\item WriteErase Cycles: 10,000 Flash100,000 EEPROM
+\item Data retention: 20 years at 85$^oC$ 100 years at 25$^oC$
+\end{itemize}
+
+\item \textbf{Peripheral Features}
+\begin{itemize}
+\item Two 8-bit Timer/Counters with Separate Prescaler, one Compare Mode
+\item One 16-bit Timer/Counter with Separate Prescaler, Compare Mode, and Capture Mode
+\item Real Time Counter with Separate Oscillator
+\item Three PWM Channels
+\end{itemize}
+
+\item \textbf{Operating Voltages}
+\begin{itemize}
+\item 2.7V - 5.5V (ATmega8L)
+\item 4.5V - 5.5V (ATmega8)
+\end{itemize}
+\item \textbf{Speed Grades}
+\begin{itemize}
+\item 0 - 8MHz (ATmega8L)
+\item 0 - 16MHz (ATmega8)
+\end{itemize}
+\item \textbf{Power Consumption at 4Mhz, 3V, 25$^oC$}
+\begin{itemize}
+\item Active: 3.6mA
+\item Idle Mode: 1.0mA
+\item Power-down Mode: 0.5μA
+\end{itemize}
+\end{itemize}
+
+\section{OPENCV}
+\textbf{OpenCV} (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. OpenCV was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products. Being a BSD-licensed product, OpenCV makes it easy for businesses to utilize and modify the code.
+
+The library has more than 2500 optimized algorithms, which includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms. These algorithms can be used to detect and recognize faces, identify objects, classify human actions in videos, track camera movements, track moving objects, extract 3D models of objects, produce 3D point clouds from stereo cameras, stitch images together to produce a high resolution image of an entire scene, find similar images from an image database, remove red eyes from images taken using flash, follow eye movements, recognize scenery and establish markers to overlay it with augmented reality, etc.
+
+In general, OpenCV application areas include:
+
+\begin{itemize}
+\item 2D and 3D feature toolkits
+\item Egomotion estimation
+\item Facial recognition system
+\item Gesture recognition
+\item Human–computer interaction (HCI)
+\item Mobile robotics
+\item Motion understanding
+\item Object identification
+\item Segmentation and Recognition
+\item Stereopsis Stereo vision: depth perception from 2 cameras
+\item Structure from motion (SFM)
+\item Motion tracking
+\item Augmented reality
+\end{itemize}
+
+OpenCV has more than 47 thousand people of user community and estimated number of downloads exceeding 7 million. The library is used extensively in companies, research groups and by governmental bodies.
+
+It has C++, C, Java and MATLAB interfaces and supports Windows, Linux, Android and Mac OS. OpenCV leans mostly towards real-time vision applications and takes advantage of MMX and SSE instructions when available. A full-featured CUDA and OpenCL interfaces are being actively developed right now. There are over 500 algorithms and about 10 times as many functions that compose or support those algorithms. OpenCV is written natively in C++ and has a templated interface that works seamlessly with STL containers.
 \end{document}
