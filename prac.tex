@@ -533,27 +533,9 @@ The blinking of laser wand on manual button press by 555 timer proved to be tedi
 \subsubsection{Detection of laser point by HSV Segmentation}
 
 The laser’s distinct intensity values in the red region was utilized. However, the detection algorithm failed in cases when other points with same color and intensity. This problem is solved by considering only the brightest pixels in the projected screen. So, a exposure correction of the camera has been carried out before the start of the detection algorithm. This ensured that only laser pointer is detected.
-
-\subsection{Limitations}
-
-The limitations of the system developed in this project are as follows:
-
-\begin{enumerate}
-\item Due to the slow processing speed of the raspberry pi used, there is lag in the overall system. 
-\item This system may not respond well under bright light conditions.
-\item Since the raspberry pi camera is not permanently fixed to the system, a slight movement changes the calibration data of the system.
-\item The slow LOOMA system processes the clicks a little later in time.
-\end{enumerate}
-
-\subsection{Enhancements}
-
-\begin{enumerate}
-\item A proper hardware with the raspberry pi system along with the camera fixed inside LOOMA can prevent the system to be calibrated each time it is moved during use.
-\item A better processor than the raspberry pi can be used to enhance the system’s speed and efficiency, allowing it to perform real time operations.
-\item The system performs single clicks and drag as required by the LOOMA system, but with further enhancements, it can be made to perform double clicks.
-\end{enumerate}
-
 \newpage
+\subsection{COST ANALYSIS}
+\subsubsection{Cost Comparison between Exisiting System and Our System}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 	S.N  & Existing System & Cost & Designed System & Cost\\
@@ -569,7 +551,7 @@ The limitations of the system developed in this project are as follows:
 	 & Total & \$205.89 & Total & \$97.62\\
 \hline
 \end{tabular}
-\newpage
+\subsubsection{Total Cost of our Project}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 	S.N & Items & Rate(Rs) & Quantity & Total(Rs) \\
@@ -600,7 +582,42 @@ The limitations of the system developed in this project are as follows:
 \hline
 	13 & Atmega8L & 180 & 1 & 180 \\
 \hline
-\end{tabular}
+	14 & Raspberry Pi & 6380.319 & 1 & 6,380.319 \\
+\hline
+	15 & Raspberry Pi Camera Module & 2,944.3845 & 1 & 2944.3845 \\
+\hline
+	16 & Laser Pointer &  0.9 & 1 & 88.479 \\
+\hline 
+    17 & Atmega8L & 183.8397 & 1 & 183.8397 \\
+\hline
+	18 & Documentation &  4000 & 1 & 4000 \\
+\hline
+	19 & Battery Pack & 200 & 1 & 200 \\
+\hline 
+    20 & Battery Holder & 50 & 1 & 50 \\
+\hline 
+	   & Total & & 22 & 15,443.5432\\
+\hline	   
+\end{tabular}	
+\newline
+\emph{\$1 = Rs.98.31 as of Aug 23, 2014}
+\newpage
+\section{Limitations and Enhancements}
+\subsection{Limitations}
+The limitations of the system developed in this project are as follows:
+\begin{enumerate}
+\item Due to the slow processing speed of the raspberry pi used, there is lag in the overall system. 
+\item This system may not respond well under bright light conditions.
+\item Since the raspberry pi camera is not permanently fixed to the system, a slight movement changes the calibration data of the system.
+\item The slow LOOMA system processes the clicks a little later in time.
+\end{enumerate}
+
+\subsection{Enhancements}
+\begin{enumerate}
+\item A proper hardware with the raspberry pi system along with the camera fixed inside LOOMA can prevent the system to be calibrated each time it is moved during use.
+\item A better processor than the raspberry pi can be used to enhance the system’s speed and efficiency, allowing it to perform real time operations.
+\item The system performs single clicks and drag as required by the LOOMA system, but with further enhancements, it can be made to perform double clicks.
+\end{enumerate}
 
 \newpage
 \section{BIBLIOGRAPHY}
