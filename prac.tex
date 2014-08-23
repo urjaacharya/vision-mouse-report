@@ -462,7 +462,7 @@ The laser wand is made to blink on manual press of a button. The TIMER and PWM o
 \label{}
 \end{figure}
 	
-\subsection{Communication between computer and RPi}
+\subsection{Communication between computer and Raspberry Pi}
 	A server and client program are constructed based on Transmission Control Protocol (TCP). The server and client maintain the communication between the computer and the raspberry pi. The server program is run on the computer which is being projected by the projector. The client program is run on the raspberry pi which detects laser spots. 
 	
 	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. However, we implemented a protocol for communication using Transmission Control Protocol(TCP) via ethernet to communicate the mouse actions and coordinates to the computer. The Looma board was made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action. 
@@ -473,6 +473,12 @@ The laser wand is made to blink on manual press of a button. The TIMER and PWM o
 \caption{Transmission Control Protocol}
 \label{}
 \end{figure}
+
+\subsection{Movement of Mouse Pointer}
+Mouse functions are provided by the PyMouse library. It runs on any Linux system running over X11 display server. It also supports Mac and Windows. PyMouse provides simple functions like move, click, press and release. PyMouse is a wrapper over Python X Library. It is used to move the mouse pointer as per the laser pointer movements. It is a fully functional X client library intended for Python programs, working as client to communicate with the X server via the X protocol. It runs on Linux using XFree86 as the server and most Unices.
+
+
+The X Window System is a network-transparent window system that was designed at MIT. X display servers run on computers with either monochrome or color bitmap display hardware. Once the connection is set up, the Xlib macros are used to get the information about the current display. Similarly, using the X objects, the mouse pointer is moved by sending coordinates to the appropriate functions. 
 
 \newpage
 
@@ -548,7 +554,55 @@ The limitations of the system developed in this project are as follows:
 \end{enumerate}
 
 \newpage
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+	S.N  & Existing System & Cost & Designed System & Cost\\
+\hline
+	1 & FPGA Board and Wiring & \$117 & Raspberry Pi & \$64.90\\
+\hline
+	2 & Nintendo Wii Remote & \$68.89 & Raspberry Pi Camera Module & \$29.95 \\
+\hline
+	3 & 3D Printed IR Wands & \$20 & Laser Pointer & \$0.9\\
+\hline
+	4 &  &  & Atmega8L & \$1.87\\
+\hline
+	 & Total & \$205.89 & Total & \$97.62\\
+\hline
+\end{tabular}
+\newpage
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+	S.N & Items & Rate(Rs) & Quantity & Total(Rs) \\
+\hline
+	1 & Hydrogen Peroxide & 30 & 1 & 30 \\
+\hline
+	2 & Soldering Rod Bit(40W) & 250 & 1 & 250 \\
+\hline
+	3 & Capacitors & 10 & 2 & 20 \\
+\hline
+	4 & Push Button Switch & 5 & 1 & 5 \\
+\hline
+	5 & 12 Mhz Crystal & 35 & 1 & 35 \\
+\hline
+	6 & IC Base & 10 & 2 & 20 \\
+\hline
+	7 & Transistor & 35 & 1 & 35 \\
+\hline
+	8 & Drill Bit & 20 & 1 & 20 \\
+\hline
+	9 & PCB & 300 & 1 & 300 \\
+\hline
+	10 & Laser & 90 & 1 & 90 \\
+\hline
+	11 & Conc. HCl(250ml) & 500 & 1 & 500 \\
+\hline
+	12 & Aceton(250ml) & 300 & 1 & 300 \\
+\hline
+	13 & Atmega8L & 180 & 1 & 180 \\
+\hline
+\end{tabular}
 
+\newpage
 \section{BIBLIOGRAPHY}
 
 \begin{enumerate}
