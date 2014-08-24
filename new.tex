@@ -14,6 +14,8 @@
 \usepackage{mathtools}
 \usepackage{acronym}
 \usepackage[acronym]{glossaries}
+\usepackage[utf8x]{inputenc}
+\usepackage{subcaption}
 
 \makeglossaries
 
@@ -49,7 +51,6 @@
 	\subsection*{List of Acronyms}
 	\input{acronym}
 	\addcontentsline{toc}{subsection}{List of Acronyms}
-	\pagenumbering{roman}
 	\pagenumbering{arabic}
 	
 \newpage
@@ -113,6 +114,32 @@ The basic objectives of our project is make prototype for an alternative type of
 	\item To use laser pointer instead of IR (Infra-red) based interaction
 	\item To remove the Wii technology, and its dependencies used in current prototype thereby, making the system efficient and cost effective
 \end{itemize}
+
+\subsection{Scope}
+\subsubsection{Interactive Projector}
+Projector systems do not have anything to project on the screen without
+any computer connected to it. So the images projected by the projectors
+come from the computer connected to it. Interactivity in such projector
+systems can be enabled by the use of various technologies. If there is a camera
+on a board used as projection area, and which locates the position of the pen
+or other visual tool when touching on the board, this would be an interactive
+whiteboard. Such whiteboards are used by schools and universities to get
+maximum involvement of students in their learning. In addition to that,
+it also reduce the need of IT infrastructures since students can learn from a
+single board present in the classrooms, unlike the use of individual computers
+for audio-visual learning. Also, another way of interactivity can be one where
+the interactivity can be done right from the projector itself. If the technology
+for interaction, for example the camera and processor to locate the position
+of pen, nger or any visual tool are used right on the projector, this makes up
+an interactive projector system. Such systems are more advantageous than
+the use of whiteboards from security perspective, maintenance perspective,
+etc. If any part of the system is damaged, a part of it can be changed
+or modified thus making maintenance and replacement a good choice in the
+case of interactive projectors. Also, the ways of interacting with the projector
+screen can be upgraded and modified with significantly less cost than in the
+case of interactive whiteboards. Interactive Projectors makes sense for the
+users who want the combination of projector and interactive whiteboard in
+an individual system. 
 
 \newpage
 \section{LITERATURE REVIEW}
@@ -400,17 +427,23 @@ This stage decides which are all edges are really edges and which are not. For t
 \subsubsection{Brightest Pixel Detection}
 After exposure compensation is done based on the average value of the image captured, the steps involved in detecting the brighest pixel area and its location can be described in the following points:
 \begin{itemize}
-\item{Grayscale conversion}
-\item{Binary Thresholding}
-\item{Find Contours}
-\item{Approximate by a bounding rectangle}
+\item {\textbf{Grayscale conversion}}
+
+
+\item {\textbf{Binary Thresholding}}
+
+It is a segmentation method. Thresholding application involves separating out regions of an image corresponding to objects which we want to analyze. This separation is based on the variation of intensity between the object pixels and the background pixels.
+
+To differentiate the pixels we are interested in from the rest (which will eventually be rejected), we perform a comparison of each pixel intensity value with respect to a threshold (determined according to the problem to solve). Here, we have set the threshold to be 200 such that regions above this value is thresholded as white and rest of the pixels are thresholded as black.
+
+
+\item {\textbf{Find Contours}}
+Contours can be explained simply as a curve joining all the continuous points (along the boundary), having same color or intensity. Before finding contours, threshold or canny edge detection should be applied. And it outputs the contours and hierarchy.
+The outermost contour is taken as laser.
+\item{\textbf{Approximate by a bounding rectangle}}
+The obtained contour is then approximated by a bounding rectangle which gives us the x, y coordinates as well as the width and height of the laser. This is then used to move the mouse pointer. 
+
 \end{itemize}
-\begin{figure}[htp]
-	\centering
-	\includegraphics[scale=0.20]{histogram.png}
-	\caption{Histogram Analysis of Brightest Pixel}
-	\label{}
-\end{figure}
 		
 \subsection{Microcontroller to generate laser pulses}
 
@@ -482,20 +515,14 @@ The laser wand is made to blink on manual press of a button. The TIMER and PWM o
 \subsection{Communication between computer and Raspberry Pi}
 	A server and client program are constructed based on TCP protocol. The server and client maintain the communication between the computer and the raspberry pi. The server program is run on the computer which is being projected by the projector. The client program is run on the raspberry pi which detects laser spots. 
 	
-	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. So we have implemented a protocol for communication using TCP protocol to communicate the mouse actions and coordinates to the computer. The Looma board is made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action.  
+	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. So we have implemented a protocol for communication using TCP protocol to communicate the mouse actions and coordinates to the computer. The Looma board is made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action.  For the basic TCP protocol diagram, see Appendix F.
 	
-\begin{figure}[htp]
-\centering
-\includegraphics[scale=1]{tcp.jpeg}
-\caption{Transmission Control Protocol}
-\label{}
-\end{figure}
 
 \subsection{Movement of Mouse Pointer}
-Mouse functions are provided by the PyMouse library. It runs on any Linux system running over X11 display server. PyMouse provides simple functions like move, click, press and release. PyMouse is a wrapper over Python X Library. It is used to move the mouse pointer as per the laser pointer movements. It is a fully functional X client library intended for Python programs, working as client to communicate with the X server via the X protocol. It runs on Linux using XFree86 as the server and most Unices.
+The coordinates obtained 
 
 
-The X Window System is a network-transparent window system that was designed at MIT. X display servers run on computers with either monochrome or color bitmap display hardware. Once the connection is set up, the Xlib macros are used to get the information about the current display. Similarly, using the X objects, the mouse pointer is moved by sending coordinates to the appropriate functions. 
+
 \newpage
 \section{PROBLEM FACED and SOLUTIONS}
 \subsection{Laser Wand}
@@ -535,12 +562,16 @@ Here, when button is pressed (pink line), the pwm signals are given out by pins 
 
 General laptop with better computing power was used at first to test the algorithm. Since the inbuilt webcam or even a USB webcam does not generally have the feature of programmatic exposure setting, a darkly lit room was used. With both server and client running in the same computer, mouse down and mouse releases were achieved with fairly high efficiency in time.
 
+The projected screen before programmatic exposure correction can be viewed in Appendix D. After the exposure exposure correction is done, only the laser pointer is the visible white dot in the thresholded image. The exposure corrected image can be viewed in Appendix E.
+
+
 \subsubsection{System Test}
 
 The algorithm was tested on Raspberry Pi. Raspberry Pi, the client and the Looma’s existing Pandaboard, running the server. The algorithm ran slow and was seen as inefficient due to slow processing power of raspberry pi's processing unit, hence the system ran slower.
 \newpage
 \section{COST ANALYSIS}
-\subsection{Cost Comparison between Exisiting System and Our System}
+\subsection{Cost Comparison between Existing System and Our System}
+\begin{table*}[ht]
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 	S.N  & Existing System & Cost & Designed System & Cost\\
@@ -556,9 +587,12 @@ The algorithm was tested on Raspberry Pi. Raspberry Pi, the client and the Looma
 	 & Total & \$205.89 & Total & \$97.62\\
 \hline
 \end{tabular}
-\newline
-\emph{\$1 = Rs.98.31 as of Aug 23, 2014}
-\subsection{Total Cost of our Project}
+\caption{Cost Comparison between Existing System and Our System}
+\label{tb:sw}
+\end{table*}
+
+\subsection{Total Cost of Our Project}
+\begin{table*}[ht]
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 	S.N & Items & Rate(Rs) & Quantity & Total(Rs) \\
@@ -606,8 +640,11 @@ The algorithm was tested on Raspberry Pi. Raspberry Pi, the client and the Looma
 	   & Total & & 22 & 15,443.5432\\
 \hline	   
 \end{tabular}
-\newpage
+\caption{Total Cost of Our Project}
+\label{tb:sw}
+\end{table*}
 
+\newpage
 \section{LIMITATIONS AND FUTURE ENHANCEMENTS}
 \subsection{Limitations}
 
@@ -689,7 +726,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \begin{itemize}
 \item Active: 3.6mA
 \item Idle Mode: 1.0mA
-\item Power-down Mode: 0.5μA
 \end{itemize}
 \end{itemize}
 
@@ -722,5 +758,42 @@ Raspberry Pi is a single-board computer with processor, memory, I/O ports and ma
 Raspberry Pi Camera Board Module supports a full HD (High Definition) video streaming at fps of 30 with its 5 megapixel native resolution, and the sensor capable of 2592-1944 pixel static images. Raspberry Pi Camera Board Module was opted instead of normal USB web camera. 
 
 The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when using Raspi Camera Module. So for example encoding \emph {h.264}, video has low impact on the CPU (Central Processor Unit) usage. Also, it has an excellent resolution of 5 Megapixels, which is higher than most USB webcams. It also has an excellent daytime image quality. If we use USB Webcam, it will have a very slow frame rate video and the CPU usage will be quite high. RPi does not have enough CPU horsepower to do higher frame rates, resolution and advanced video compression. 
+\newpage
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1.00]{RPiModelB.png}
+\caption{Raspberry Pi Board}
+\label{}
+\end{figure}
+\newpage
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1.00]{index.jpeg}
+\caption{Raspberry Pi Camera Module}
+\label{}
+\end{figure}
+\newpage
+\section{Projected Screen Before Exposure Correction}
+\begin{figure}[htp]
+\includegraphics[scale=0.30]{projector.png}
+\caption{Projected Screen Before Exposure Correction}
+\label{}
+\end{figure}
+\newpage
 
+\section{Projected Screen After Exposure Correction}
+\begin{figure}[htp]
+\includegraphics[scale=0.30]{projectorwithout.png}
+\caption{Projected Screen After Exposure Correction}
+\label{}
+\end{figure}
+\newpage
+
+\section{TCP Protocol}
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1.00]{tcp.png}
+\caption{Transmission Control Protocol}
+\label{}
+\end{figure}
 \end{document}
