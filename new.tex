@@ -17,40 +17,42 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{subcaption}
 
-\makeglossaries
-
 \hypersetup{
 	hidelinks = true
 }
 
 \begin{document}
 
-	
-	\input{titlepage}
 	\pagenumbering{roman}
-	\subsection*{COPYRIGHT}
+	\input{title2}
+	\input{titlepage}
+	\setcounter{page}{2}
+	\section*{COPYRIGHT}
 		\input{copyright}
 	\addcontentsline{toc}{subsection}{Copyright}
 	
 	\newpage
-	\subsection*{ACKNOWLEDGEMENT}
+	\section*{ACKNOWLEDGEMENT}
 		\input{acknowledgement}
 	\addcontentsline{toc}{subsection}{Acknowledgement}
 	
 	\newpage
-	\subsection*{ABSTRACT}
+	\section*{ABSTRACT}
 	\input{abstract}
 	\addcontentsline{toc}{subsection}{Abstract}
+	
 	
 	\newpage
 	\tableofcontents 
 	\newpage
 	\listoffigures
+	\newpage
 	\listoftables
 	\newpage
-	\subsection*{List of Acronyms}
-	\input{acronym}
-	\addcontentsline{toc}{subsection}{List of Acronyms}
+	\section*{List of Acronyms}
+		\input{acronym}
+	\addcontentsline{toc}{section}{List of Acronyms}
+	\clearpage
 	\pagenumbering{arabic}
 	
 \newpage
@@ -124,8 +126,9 @@ systems can be enabled by the use of various technologies. If there is a camera
 on a board used as projection area, and which locates the position of the pen
 or other visual tool when touching on the board, this would be an interactive
 whiteboard. Such whiteboards are used by schools and universities to get
-maximum involvement of students in their learning. In addition to that,
-it also reduce the need of IT infrastructures since students can learn from a
+maximum involvement of students in their learning. 
+
+In addition to that,it also reduce the need of IT infrastructures since students can learn from a
 single board present in the classrooms, unlike the use of individual computers
 for audio-visual learning. Also, another way of interactivity can be one where
 the interactivity can be done right from the projector itself. If the technology
@@ -137,7 +140,9 @@ etc. If any part of the system is damaged, a part of it can be changed
 or modified thus making maintenance and replacement a good choice in the
 case of interactive projectors. Also, the ways of interacting with the projector
 screen can be upgraded and modified with significantly less cost than in the
-case of interactive whiteboards. Interactive Projectors makes sense for the
+case of interactive whiteboards. 
+
+Interactive Projectors makes sense for the
 users who want the combination of projector and interactive whiteboard in
 an individual system. 
 
@@ -320,7 +325,7 @@ It is a pure Python cross-platform mouse control module. Mouse functions are pro
 The X Window System is a network-transparent window system that was designed at MIT. X display servers run on computers with either monochrome or color bitmap display hardware. Once the connection is set up, the Xlib macros are used to get the information about the current display. Similarly, using the X objects, the mouse pointer is moved by sending coordinates to the appropriate functions. 
 
 \end{enumerate}
-
+\newpage
 \section{SYSTEM DEVELOPMENT}
 \subsection{Projected Screen of Looma}
 
@@ -346,18 +351,11 @@ First, the projected screen is captured and the four corners of the projected sc
 
 The next task is updating mouse as per the laser point's actions. In all conditions, whenever laser point is seen in the ROI, the mouse pointer move command is given to the system using the projector. In the case of blinks of laser point, click or drag actions is given based on the number of clicks. 
 
-The communication between raspberry pi and the computer system is done via Transmission Control Protocol (TCP).
-\newpage
-\subsection{Flow diagram}
-\begin{figure}[htp]
-\centering
-\includegraphics[scale=0.73]{flow.png}
-\caption{Flow Diagram of our system}
-\label{ }
-\end{figure}
+The communication between raspberry pi and the computer system is done via TCP protocol. The flow diagram can be viewed in Appendix J.
 
-\newpage
+\clearpage
 \section{METHODOLOGY}
+
 The main purpose of the reformed wand is to establish a way of interaction between the user and the projector system. Hence, this system needs to accomplish the following tasks to overcome the limitations provided by the current Looma wand system:
 \begin{itemize}
 \item Get sequence of frames from the real-time video of the projected screen
@@ -465,7 +463,9 @@ The obtained contour is then approximated by a bounding rectangle which gives us
 \end{figure}
 
 	The laser circuit has been programmed such that it produces a 6Hz pulses when the push button is pressed, else it stays on. The target frequency has been set to 6Hz. The prescaler used is 64. The top value for pulse width modulation(PWM) is obtained as, 
-	clock frequency/target frequency*scaler - 1. 
+	\begin{equation}
+	Top\ value = (Clock\  frequency/Target\  frequency)*Scaler - 1
+	\end{equation}
 	 For a 20\% duty cycle, the on time of the laser is set to 20\% of the top value and off time is set to the 80\% of the top value. We have kept the push button switch in the interrupt pin, so that when the button is pushed, interrupt is obtained and the subsequent Interrupt Service Routine(ISR) can be run. This ISR does the work of producing PWM pulses of 20\% duty cycle. The diagram below is our working circuit.
 
 \begin{figure}[htp]
@@ -515,11 +515,11 @@ The laser wand is made to blink on manual press of a button. The TIMER and PWM o
 \subsection{Communication between computer and Raspberry Pi}
 	A server and client program are constructed based on TCP protocol. The server and client maintain the communication between the computer and the raspberry pi. The server program is run on the computer which is being projected by the projector. The client program is run on the raspberry pi which detects laser spots. 
 	
-	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. So we have implemented a protocol for communication using TCP protocol to communicate the mouse actions and coordinates to the computer. The Looma board is made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action.  For the basic TCP protocol diagram, see Appendix F.
+	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. So we have implemented a protocol for communication using TCP protocol to communicate the mouse actions and coordinates to the computer. The Looma board is made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action.  For the basic TCP protocol diagram, see Appendix G.
 	
 
 \subsection{Movement of Mouse Pointer}
-The coordinates obtained 
+The image coordinates captured by the Raspberry pi CSI camera is mapped to the system coordinates such that the location of the laser point on the image corresponds to the intended system location. The corresponding scaling matrix used for this mapping causes the movement of the laser on the projector screen at each instant to resemble the mouse movement on the system producing the mouse click and drag on the system as desired based on the number of transitions of the laser on and off condition.
 
 
 
@@ -562,7 +562,7 @@ Here, when button is pressed (pink line), the pwm signals are given out by pins 
 
 General laptop with better computing power was used at first to test the algorithm. Since the inbuilt webcam or even a USB webcam does not generally have the feature of programmatic exposure setting, a darkly lit room was used. With both server and client running in the same computer, mouse down and mouse releases were achieved with fairly high efficiency in time.
 
-The projected screen before programmatic exposure correction can be viewed in Appendix D. After the exposure exposure correction is done, only the laser pointer is the visible white dot in the thresholded image. The exposure corrected image can be viewed in Appendix E.
+The projected screen before programmatic exposure correction can be viewed in Appendix H. After the exposure exposure correction is done, only the laser pointer is the visible white dot in the thresholded image. The exposure corrected image can be viewed in Appendix I.
 
 
 \subsubsection{System Test}
@@ -591,6 +591,8 @@ The algorithm was tested on Raspberry Pi. Raspberry Pi, the client and the Looma
 \label{tb:sw}
 \end{table*}
 
+Since Looma system is intended for the rural areas, the system needs to be as economic as possible. From the above table it is shown that, the designed system is more ecomonical as compared to the existing system of Looma. 
+\clearpage
 \subsection{Total Cost of Our Project}
 \begin{table*}[ht]
 \begin{tabular}{|c|c|c|c|c|}
@@ -613,7 +615,7 @@ The algorithm was tested on Raspberry Pi. Raspberry Pi, the client and the Looma
 \hline
 	8 & Drill Bit & 20 & 1 & 20 \\
 \hline
-	9 & \ac{PCB} & 300 & 1 & 300 \\
+	9 & PCB & 300 & 1 & 300 \\
 \hline
 	10 & Laser & 90 & 1 & 90 \\
 \hline
@@ -643,8 +645,7 @@ The algorithm was tested on Raspberry Pi. Raspberry Pi, the client and the Looma
 \caption{Total Cost of Our Project}
 \label{tb:sw}
 \end{table*}
-
-\newpage
+\clearpage
 \section{LIMITATIONS AND FUTURE ENHANCEMENTS}
 \subsection{Limitations}
 
@@ -728,7 +729,15 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \item Idle Mode: 1.0mA
 \end{itemize}
 \end{itemize}
-
+\newpage
+\section{AVR Atmega8L Pin Diagram}
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1.00]{avr.jpeg}
+\caption{AVR Atmega8L Pin Diagram}
+\label{}
+\end{figure}
+\newpage
 \section{OPENCV}
 \textbf{\ac{OpenCV}} is an open source computer vision and machine learning software library. \ac{OpenCV} was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products. Being a BSD-licensed product, \ac{OpenCV} makes it easy for businesses to utilize and modify the code.
 
@@ -759,19 +768,31 @@ Raspberry Pi Camera Board Module supports a full HD (High Definition) video stre
 
 The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when using Raspi Camera Module. So for example encoding \emph {h.264}, video has low impact on the CPU (Central Processor Unit) usage. Also, it has an excellent resolution of 5 Megapixels, which is higher than most USB webcams. It also has an excellent daytime image quality. If we use USB Webcam, it will have a very slow frame rate video and the CPU usage will be quite high. RPi does not have enough CPU horsepower to do higher frame rates, resolution and advanced video compression. 
 \newpage
+\section{Raspberry Pi Board}
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=1.00]{RPiModelB.png}
 \caption{Raspberry Pi Board}
 \label{}
 \end{figure}
+
 \newpage
+\section{Raspberry Pi Camera Module}
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=1.00]{index.jpeg}
 \caption{Raspberry Pi Camera Module}
 \label{}
 \end{figure}
+\newpage
+\section{TCP Protocol}
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=1.00]{tcp.png}
+\caption{Transmission Control Protocol}
+\label{}
+\end{figure}
+
 \newpage
 \section{Projected Screen Before Exposure Correction}
 \begin{figure}[htp]
@@ -788,12 +809,11 @@ The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when us
 \label{}
 \end{figure}
 \newpage
-
-\section{TCP Protocol}
+\section{System Flow Diagram}
 \begin{figure}[htp]
 \centering
-\includegraphics[scale=1.00]{tcp.png}
-\caption{Transmission Control Protocol}
-\label{}
+\includegraphics[scale=0.7]{flow.png}
+\caption{Flow Diagram of our system}
+\label{ }
 \end{figure}
 \end{document}
