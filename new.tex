@@ -1,6 +1,7 @@
 \documentclass[12pt, a4paper]{article}
 \title{\textbf{Laser Pointer Based Human-Computer-Interaction using Computer-Vision}}
 
+\usepackage{times}
 \usepackage[labelformat=empty]{caption}
 \usepackage{graphicx}
 \usepackage{wrapfig}
@@ -17,6 +18,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{subcaption}
 
+
 \hypersetup{
 	hidelinks = true
 }
@@ -27,11 +29,15 @@
 	\input{title2}
 	\input{titlepage}
 	\setcounter{page}{2}
+	\section*{PAGE OF APPROVAL}
+		\input{external}
+	\addcontentsline{toc}{subsection}{PAGE OF APPROVAL}
+	\newpage
 	\section*{COPYRIGHT}
 		\input{copyright}
 	\addcontentsline{toc}{subsection}{Copyright}
-	
 	\newpage
+	
 	\section*{ACKNOWLEDGEMENT}
 		\input{acknowledgement}
 	\addcontentsline{toc}{subsection}{Acknowledgement}
@@ -342,13 +348,14 @@ The Looma software runs on the Looma hardware or Ubuntu. The display resolution 
 The images of Looma are grabbed in real time by Raspberry Pi camera board. The laser detection and click action detection algorithm is run on the Raspberry Pi.
 
 First, the projected screen is captured and the four corners of the projected screen is obtained which is our Region of Interest(ROI). The arrangement of the raspberry pi system and looma system is made such that, the imagery of the projected screen is undistorted and unwarped. The linear mapping is done to map the image coordinates from raspberry pi to the display resolution of the computer.
+\newpage
 
 \begin{figure}[htp]
-\includegraphics[scale=0.5]{proposed_system}
+\centering
+\includegraphics[scale=0.6]{proposed_system}
 \caption{System Block Diagram}
 \label{Block Diagram}
 \end{figure}
-
 The next task is updating mouse as per the laser point's actions. In all conditions, whenever laser point is seen in the ROI, the mouse pointer move command is given to the system using the projector. In the case of blinks of laser point, click or drag actions is given based on the number of clicks. 
 
 The communication between raspberry pi and the computer system is done via TCP protocol. The flow diagram can be viewed in Appendix J.
@@ -426,11 +433,13 @@ This stage decides which are all edges are really edges and which are not. For t
 After exposure compensation is done based on the average value of the image captured, the steps involved in detecting the brighest pixel area and its location can be described in the following points:
 \begin{itemize}
 \item {\textbf{Grayscale conversion}}
+Grayscale image carries the intensity information. It is composed of shades of gray, varying from black at weakest intensity to white at the strongest. 
 
+A RGB image is captured by Rpi at first, which contains all the three components: Red (R), Green (G), Blue (B). The processing of all these components is redundant and time inefficient. The grayscale conversion is done so that the RGB values are expressed by intensity values within a given range of 0 to 255 values. These grayscale levels are then thresholded by binary thresholding algorithm. 
 
 \item {\textbf{Binary Thresholding}}
 
-It is a segmentation method. Thresholding application involves separating out regions of an image corresponding to objects which we want to analyze. This separation is based on the variation of intensity between the object pixels and the background pixels.
+It is a segmentation method. Thresholding application involves separating out regions of an image corresponding to objects which is to be analyzed. This separation is based on the variation of intensity between the object pixels and the background pixels.
 
 To differentiate the pixels we are interested in from the rest (which will eventually be rejected), we perform a comparison of each pixel intensity value with respect to a threshold (determined according to the problem to solve). Here, we have set the threshold to be 200 such that regions above this value is thresholded as white and rest of the pixels are thresholded as black.
 
@@ -438,6 +447,7 @@ To differentiate the pixels we are interested in from the rest (which will event
 \item {\textbf{Find Contours}}
 Contours can be explained simply as a curve joining all the continuous points (along the boundary), having same color or intensity. Before finding contours, threshold or canny edge detection should be applied. And it outputs the contours and hierarchy.
 The outermost contour is taken as laser.
+
 \item{\textbf{Approximate by a bounding rectangle}}
 The obtained contour is then approximated by a bounding rectangle which gives us the x, y coordinates as well as the width and height of the laser. This is then used to move the mouse pointer. 
 
@@ -445,7 +455,7 @@ The obtained contour is then approximated by a bounding rectangle which gives us
 		
 \subsection{Microcontroller to generate laser pulses}
 
-	We used an avr microcontroller instead of 555 timer so that we would not need to work with resistor values and capacitors to change the frequencies and duty cycles intermittently. Microcontroller allows us to change the values on the fly and a simple burn would allow us to change the circuit behaviour in a jiffy. Below, is the schematic of our circuit. We have implemented a circuit, that keeps laser on once power is turned on, and when the push button is pressed, it sends out a pulse at a frequency set in the microcontroller. The schematic diagram of our circuit can be followed below, and the schematic as well.
+	An AVR microcontroller is used instead of 555 timer so that resistor and capacitors values need not be changed with the change in frequencies and duty cycles. Below, is the schematic of the system circuit. The laser is turned on when the supply is applied. When the push button is pressed, a pulse at a frequency set to 6Hz in the microcontroller. The schematic diagram of our circuit can be followed below, and the schematic as well.
 	
 
 \begin{figure}[htp]
@@ -466,7 +476,8 @@ The obtained contour is then approximated by a bounding rectangle which gives us
 	\begin{equation}
 	Top\ value = (Clock\  frequency/Target\  frequency)*Scaler - 1
 	\end{equation}
-	 For a 20\% duty cycle, the on time of the laser is set to 20\% of the top value and off time is set to the 80\% of the top value. We have kept the push button switch in the interrupt pin, so that when the button is pushed, interrupt is obtained and the subsequent Interrupt Service Routine(ISR) can be run. This ISR does the work of producing PWM pulses of 20\% duty cycle. The diagram below is our working circuit.
+	
+	The top value is 20833. For a 20\% duty cycle, the on time of the laser is set to 20\% of the top value and off time is set to the 80\% of the top value. We have kept the push button switch in the interrupt pin, so that when the button is pushed, interrupt is obtained and the subsequent Interrupt Service Routine(ISR) can be run. This ISR does the work of producing PWM pulses of 20\% duty cycle. The diagram below is our working circuit.
 
 \begin{figure}[htp]
 	\centering
@@ -490,8 +501,7 @@ Laser is a device that emits light by optical amplification based on stimulated 
 
 \subparagraph{Microcontroller}
 
-The laser wand is made to blink on manual press of a button. The TIMER and PWM of the avr microcontroller is used to achieve that (configurations shown in Appendix B). 
-
+The laser wand is made to blink on manual press of a button. The microcontroller has three timers 0, 1, 2 of which 16 bit timer 1 is used in non-inverting PWM mode. The prescaler is set to 64. The TIMER and PWM of the avr microcontroller is used to achieve that (pin diagrams shown in Appendix B).
 
 \subsection{Finalized algorithm for click and drag}
 	We constructed a State Diagram with the following states of laser.
@@ -501,9 +511,9 @@ The laser wand is made to blink on manual press of a button. The TIMER and PWM o
 \item Toggle 0to1 or 1to0 
 \end{enumerate}
 
-	\textbf {Laser-off} is a state of continual five or more off laser states, which occurs when the laser is not detected. \textbf{Laser-on} is a state of continual five or more on laser states, when the laser is detected. \textbf{Toggle-0to1} occurs when laser state toggles from off state to on state, whereas in \textbf{Toggle-1to0}, laser state toggles from on state to off state. 
+	\textbf {Laser-off} is a state of continual five or more laser-off  states, which occurs when the laser is not detected. \textbf{Laser-on} is a state of continual five or more laser-on states, when the laser is detected. \textbf{Toggle-0to1} occurs when laser state is toggled from off state to on state, whereas in \textbf{Toggle-1to0}, laser state is toggled from on state to off state. 
 	
-	At all times, when laser is in the on state, the mouse pointer continuously moves. When laser state toggles, either from laser on to off or vice-versa, the mouse pointer is pressed. And when this mouse pointer is moving and also if the mouse pointer is in the toggled state, then the mouse starts dragging. This continues until a laser-off state or laser-on state occur, which is interpreted as a mouse release. Similarly, at every toggle state, mouse down occurs and if laser-on or laser-off state is immediately succeeded to this event, then mouse is released. This will be interpreted as click.
+	At all times, when laser is in the on state, the mouse pointer is continually updated to move. When laser state is toggled, either from laser on to off or vice-versa, the mouse pointer is pressed. If the mouse pointer is moved while in pressed state, drag occurs. This continues until a laser-off state or laser-on state occur, which is interpreted as a mouse release. And, at every toggle state, mouse down occurs and if laser-on or laser-off state is immediately succeeded to this event, then mouse is released which is then interpreted as click.
 	
 \begin{figure}[htp]
 \centering
@@ -519,10 +529,50 @@ The laser wand is made to blink on manual press of a button. The TIMER and PWM o
 	
 
 \subsection{Movement of Mouse Pointer}
-The image coordinates captured by the Raspberry pi CSI camera is mapped to the system coordinates such that the location of the laser point on the image corresponds to the intended system location. The corresponding scaling matrix used for this mapping causes the movement of the laser on the projector screen at each instant to resemble the mouse movement on the system producing the mouse click and drag on the system as desired based on the number of transitions of the laser on and off condition.
+The laser coordinates, x and y, detected by the RPi camera is mapped to the system coordinates. 
 
+First of all, a point obtained in the image window with width of 640 and height of 480, is translated to the origin of the image coordinates system using the following equation:
 
+\begin{equation}
+x' = x - tx
+\end{equation}
 
+\begin{equation}
+y' = y - ty
+\end{equation}
+
+where tx and ty are the translation factors.
+
+Now, the obtained point in the origin of the image window is scaled as per the scaling factor obtained as below:
+
+A point at position (xw,yw) in the image window is mapped into position (xv,yv) in the viewport of system. To maintain the same relative placement in the viewport as in the window, we require that
+
+\begin{equation}
+ (xv -xv_{min})/(xv_{max} – xv_{min}) = (xw – xw_{min})/(xw_{max} – xw_{min})
+\end{equation}
+which gives the scaling factores in x and y directions as,
+\begin{equation}
+sx = (xv_{max} – xv_{min}) / (xw_{max} – xw_{min})
+\end{equation}
+\begin{equation}
+sy = (yv_{max} – yv_{min}) / (yw_{max} – yw_{min})
+\end{equation}
+
+where, sx and sy are the scaling factors~\cite{hen}
+The vmax and vmin are the maximum and minimum coordinates of the viewport system whereas wmax and wmin are the maximum and minimun coordinates of the image window. 
+The corresponding scaling factors are multiplied to the translated image window coordinate and then re-translated using the following equations. 
+
+\begin{equation}
+x' = x + tx
+\end{equation}
+
+\begin{equation}
+y' = y + ty
+\end{equation}
+
+where tx and ty are the translation factors.
+
+The final coordinate is used to move the mouse pointer on the projected screen. 
 \newpage
 \section{PROBLEM FACED and SOLUTIONS}
 \subsection{Laser Wand}
@@ -559,15 +609,15 @@ Here, when button is pressed (pink line), the pwm signals are given out by pins 
 
 \subsection{Software Testing}
 \subsubsection{Algorithm Test}
+General laptop with higher computing power than raspberry pi was used at first to test the laser detection algorithm. Since the inbuilt webcam or even a USB webcam does not generally have the feature of programmatic exposure setting, a darkly lit room was used. With both server and client running in the same computer, mouse down and mouse releases were achieved in real time. 
 
-General laptop with better computing power was used at first to test the algorithm. Since the inbuilt webcam or even a USB webcam does not generally have the feature of programmatic exposure setting, a darkly lit room was used. With both server and client running in the same computer, mouse down and mouse releases were achieved with fairly high efficiency in time.
-
-The projected screen before programmatic exposure correction can be viewed in Appendix H. After the exposure exposure correction is done, only the laser pointer is the visible white dot in the thresholded image. The exposure corrected image can be viewed in Appendix I.
-
+The algorithm was tested on raspberry pi and the exposure correction was done. The projected screen before programmatic exposure correction is given by window Thresh in Appendix H. The window thresh is as seen by the raspberry pi camera. After the exposure correction is done, only the laser pointer is the visible white dot in the threshold window \emph{Thresh}. The exposure corrected image in the window \emph{Thresh} can be viewed in Appendix I.
 
 \subsubsection{System Test}
 
-The algorithm was tested on Raspberry Pi. Raspberry Pi, the client and the Looma’s existing Pandaboard, running the server. The algorithm ran slow and was seen as inefficient due to slow processing power of raspberry pi's processing unit, hence the system ran slower.
+The laser detection algorithm was tested on Raspberry Pi. Raspberry Pi, being the client and the Looma’s existing Pandaboard, running as the server, the testing was carried out.
+Raspberry Pi's camera is not capable of processing real time video at 24 frames per second. At maximum, it processes the video at 4 frames per second. Hence, it hindered the laser detection algorithm. The laser on-offs were not seen as the expected by the algorithm. Thereby, the processing  is slower than in computer, and the overall detection and actions are not performed in real time. 
+
 \newpage
 \section{COST ANALYSIS}
 \subsection{Cost Comparison between Existing System and Our System}
@@ -668,9 +718,9 @@ The limitations of the system developed in this project are as follows:
 \newpage
 \section{CONCLUSION}
 \subsection{Conclusion}
-The project \emph{Laser Pointer based Human Computer Interaction using Computer Vision} aims at providing an alternative solution to the wand system used by Looma. The designed system allows the user to control the projected system from a considerable distance using the laser pointer, thus aiding the teaching learning process. Though the system is designed with Looma in mind, it is made generic and can be used for any other system too.
+The project \emph{Laser Pointer based Human Computer Interaction using Computer Vision} aims at providing an alternative solution to the wand system used by Looma. The designed system allows the user to control the projected system from a considerable distance using the laser pointer, thus aiding the teaching learning process. Though the system is designed with Looma system in mind, it is generic and can be used for other systems too.
 
-   The system emphasizes on the algorithms for the detection of laser pointer on the screen and implementation of click and drag operations. By integrating the algorithm with the proper laser pointer hardware, the required laser pointer based interaction system has been developed. During the process of development, many research works and papers carried out in the respective fields were thoroughly studied. Based on the results and conclusions of these papers, the algorithms that best suited the domain of this project was selected.
+   The system emphasizes on the algorithms for the detection of laser pointer on the screen and implementation of click  and drag operations. By integrating the algorithm with the proper laser pointer hardware, the required laser pointer based interaction system is developed. During the process of development, many research works carried out in the respective fields were thoroughly studied. Based on the results and conclusions of these papers, the algorithms that best suited the domain of this project was selected.
    
    The system has been tested in the real working environment. Even though the system cannot process real-time data and lags in time due to the low processing power of the processor, it performs the required functions efficiently. With further enhancements, the system efficiency and speed can be increased considerably. 
    
@@ -685,7 +735,7 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 	
 	\bibitem{raf} Rafael C. Gonzalez and Richard E. Woods, Digital Image Processing, 3rd Edition
 	
-	
+	\bibitem{hen} Donald Hearn and M. Pauline Baker, Computer Graphics C Version, 2nd Edition 
 \end{thebibliography}
 
 \newpage
@@ -809,11 +859,11 @@ The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when us
 \label{}
 \end{figure}
 \newpage
-\section{System Flow Diagram}
+\section{Flow Diagram of System}
 \begin{figure}[htp]
 \centering
-\includegraphics[scale=0.7]{flow.png}
-\caption{Flow Diagram of our system}
-\label{ }
+\includegraphics[scale=0.62]{flow.png}
+\caption{Flow Diagram of System}
+\label{}
 \end{figure}
-\end{document}
+\end{document}\begin{flushleft}\end{flushleft}
