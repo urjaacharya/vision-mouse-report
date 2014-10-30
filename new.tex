@@ -5,7 +5,8 @@
 \usepackage[top=3.5cm, bottom=2cm, left=3.5cm, right=2cm]{geometry}
 \usepackage{sectsty}
 \sectionfont{\fontsize{12}{14}\selectfont}
-\usepackage[labelformat=empty]{caption}
+\usepackage{float}
+%\usepackage[labelformat=empty]{caption}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{listings}
@@ -27,6 +28,7 @@
 }
 
 \begin{document}
+
 	\pagenumbering{roman}
 	\input{title2}
 	\input{titlepage}
@@ -94,11 +96,11 @@ advantage from it.
 
 Projector systems project on the screen the contents of the computer connected to it. By the use of various technologies, we can increase the interactivity of projector systems. 
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-	\centering
-		\includegraphics[width=0.48\textwidth]{abc.jpg}
-	\caption{Laser Pointer based Interactive Projector System}
-\end{wrapfigure}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{abc}
+\caption {Laser Pointer based Interactive Projector System}
+\end{figure}
 
 Our project tries to improve the interactivity and the cost of the existing Looma system such that it can be afforded by rural schools. The use of camera to capture the projected area, and detection of location of a visual pen or other visual tools, altogether form an interactive projector system. With the use of a camera, and laser pen, our project gets scoped under \textbf{Human Computer Interaction(HCI)}. \textbf{Computer Vision(CV)} is an integral part of the interaction. The vision based HCI acts as an apt mediator between the user and the computer.
 
@@ -172,11 +174,10 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 \item Hacked Wii IR Camera and Wii wands
 \end{itemize}
 
-\begin{figure}[htp]
+\begin{figure}[h!]
 \centering
-\includegraphics[scale=0.22]{looma.png}
-\caption{Hardware and Electrical parts of Looma system}
-\label{}
+\includegraphics[scale=0.22]{looma}
+\caption {Hardware and Electrical parts of Looma system}
 \end{figure}
 
 \newpage
@@ -188,9 +189,9 @@ Wand control descriptions:
 \item Current design uses Nintendo Wii IR camera, which are scavenged from Wii motes
 \end{itemize}
 
-\begin{figure}[htp]
+\begin{figure}[hb]
 \centering
-\includegraphics[scale=0.4]{wand1.png}
+\includegraphics[width=2.4in]{wand1}
 \caption{3D printed hacked Wii Remote wand}
 \label{}
 \end{figure}
@@ -407,12 +408,12 @@ Since edge detection is susceptible to noise in the image, first step is to remo
 
 \item \textbf{Finding Intensity Gradient of the Image}
 Smoothened image is then filtered with a Sobel kernel in both horizontal and vertical direction to get first derivative in horizontal direction (Gx) and vertical direction (Gy). From these two images, we can find edge gradient and direction for each pixel as follows:
-\begin{figure}[htp]
-\centering
-\includegraphics[scale=0.7]{canny.png}
-\caption{Intensity Gradient and Direction}
-\label{}
-\end{figure}
+\begin{equation}
+\text{Edge Gradient}(G) = \sqrt{Gx^2 + Gy^2}
+\end{equation}
+\begin{equation}
+\text{Angle}(\theta) = \arctan\bigg(\frac{Gy}{Gx}\bigg)
+\end{equation}o
 Gradient direction is always perpendicular to edges. It is rounded to one of four angles   representing vertical, horizontal and two diagonal directions.
 \item \textbf{Non maximum Suppression}
 After getting gradient magnitude and direction, a full scan of image is done to remove any unwanted pixels which may not constitute the edge. For this, at every pixel, pixel is checked ­if it is a local maximum in its neighborhood in the direction of gradient.
