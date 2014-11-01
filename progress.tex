@@ -1,0 +1,52 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{times}
+\usepackage[top=3.5cm, bottom=2cm, left=3.5cm, right=2cm]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{circle} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    
+    \node [block, node distance=4cm] (Set) {Set Camera Resolution};
+
+    \node [block, right of=Set, node distance=4cm] (Acquire) {Acquire Image Frame};
+    
+    \node [block, right of=Acquire, node distance=4cm] (Convert) {Convert to Grayscale};
+    
+    \node [block, below of=Convert, node distance=3cm] (Canny) {Canny Edge Detection};
+    \node [block, left of=Canny, node distance=4cm] (Get) {Get all Contours};
+    
+    
+    \node [block, left of=Get, node distance=4cm] (Extract) {Extract contour with maximum area};
+    
+    \node [block, below of=Extract, node distance=3cm] (Get1) {Get the four corners};
+    
+    \node [block, right of=Get1, node distance=4cm] (Apply) {Apply Transformation to Destination};
+
+
+    % Draw edge
+    \path [line] (Set) -- (Acquire);            
+    \path [line] (Acquire) -- (Convert); 
+    \path [line] (Convert) -- (Canny);
+    \path [line] (Canny) -- (Get);
+    \path [line] (Get) -- (Extract);
+    \path [line] (Extract) -- (Get1);
+    \path [line] (Get1) -- (Apply);
+  
+\end{tikzpicture}
+
+
+\end{document}

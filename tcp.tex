@@ -1,0 +1,58 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{times}
+\usepackage[top=3.5cm, bottom=2cm, left=3.5cm, right=2cm]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, text width=7em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{circle} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [block, node distance=4cm] (Socket) {Socket()};
+    \node [block, node distance=2cm, below of=Socket] (Bind) {Bind()};
+    \node [block, node distance=2cm, below of=Bind] (Listen) {Listen()};
+    \node [block, node distance=9cm, right of=Listen](Socket1) {Socket()};
+    
+    \node [block, node distance=2cm, below of=Listen] (Accept) {Accept()};
+    \node [block, node distance=2cm, below of=Accept] (Block) {Block until there are connections from client};
+    \node [block, node distance=9cm, right of=Block](Connect1) {Connect()};
+    \node [block, node distance=2cm, below of=Block] (Read) {Read()};
+    \node [block, node distance=9cm, right of=Read](Write1) {Write()};
+    \node [block, node distance=2cm, below of=Read] (Write) {Write()};
+    \node [block, node distance=9cm, right of=Write](Read1) {Read()};
+    \node [block, node distance=2cm, below of=Write] (Close) {Close()};
+    \node [block, node distance=9cm, right of=Close](Close1) {Close()};
+
+    % Draw edge
+  \path [line] (Connect1) -- node {Connection Established}(Block);
+  \path [line] (Write1) -- node{Data(Request)}(Read);
+  \path [line] (Write) -- node{Data(Reply)}(Read1);
+  \path[line](Socket)--(Bind);
+  \path[line](Bind)--(Listen);
+  \path[line](Listen)--(Accept);
+  \path[line](Accept)--(Block);
+  \path[line](Block)--(Read);
+  \path[line](Read)--(Write);
+  \path[line](Write)--(Close);
+  
+  \path[line](Socket1)--(Connect1);
+  \path[line](Connect1)--(Write1);
+  \path[line](Write1)--(Read1);
+  \path[line](Read1)--(Close1);
+  
+ 
+\end{tikzpicture}
+
+
+\end{document}
