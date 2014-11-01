@@ -1,0 +1,71 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{times}
+\usepackage[top=3.5cm, bottom=2cm, left=3.5cm, right=2cm]{geometry}
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\begin{document}
+\pagestyle{empty}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{circle} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [cloud] (A) {Start};
+    
+    \node [block, below of=A] (B) {Grab Image Frame};
+
+    \node [decision, below of=B] (C) {Calibrated?};
+    
+    \node [decision, below of=C] (D) {While User Not Exit?};
+    
+    \node [block, right of=D, node distance=4cm] (E) {Grab New Frame};
+    
+    \node [decision, right of=E, node distance=3cm] (F) {Laser Detect?};
+    
+    \node [circle, right of=F, node distance=3cm] (J) {A};
+    
+    \node [decision, below of=F, node distance=4cm] (G) {Mouse Down?};
+    
+     \node [block, right of=G, node distance=4cm] (I) {Send "Mouse Move" to Server};
+    
+     \node [block, below of=G, node distance=3cm] (H) {Send "Mouse Release" to Server};
+    
+    \node [cloud, below of=D, node distance=4cm] (Z) {Stop};
+
+\node [circle, below of=Z, node distance=4cm] (K) {A};
+
+\node [decision, below of=K, node distance=3cm] (L) {Action Detect?};
+
+\node [block, below of=L, node distance=4cm] (N) {Send "Mouse Down"  to Server};
+
+\node [block, right of=L, node distance=4cm] (M) {Send "Mouse Down and Release" to Server};
+
+
+    % Draw edge
+    \path [line] (K) -- (L);            
+    \path [line] (L) -- node {No}(M);
+    \path [line] (L) -- node {Blinks > 3}(N);
+    \path [line] (A) -- (B);
+    \path [line] (E) -- (F);
+    \path [line] (F) -- node {Blink}(J);
+    \path [line] (H) -| (I);
+     \path [line] (F) -- node {Continual}(G);
+      \path [line] (G) -- node {Yes}(H);
+    \path [line] (C) -- node {Yes}(D);
+    \path [line] (B) -- (C);
+    \path [line] (D) -- node {Yes}(E);
+    \path [line] (G) -- node {No}(I);
+    \path [line] (D) -- node {No}(Z);
+\end{tikzpicture}
+
+
+\end{document}
