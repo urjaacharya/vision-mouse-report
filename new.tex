@@ -1,6 +1,5 @@
 \documentclass[12pt, a4paper]{article}
 \title{\textbf{Laser Pointer Based Human-Computer-Interaction using Computer-Vision}}
-
 \usepackage{times}
 \usepackage[top=3.5cm, bottom=2cm, left=3.5cm, right=2cm]{geometry}
 \usepackage{sectsty}
@@ -21,10 +20,14 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{subcaption}
 \usepackage{chngcntr}
+\usepackage[titletoc,title]{appendix}
 \counterwithin{table}{section}
 \counterwithin{figure}{section}
 \counterwithin{equation}{section}
-
+ \renewcommand{\cftfigfont}{\text{Figure} }
+ \renewcommand{\appendixname}{APPENDIX}
+\usepackage{etoolbox}
+\apptocmd{\appendices}{\apptocmd{\thesection}{: }{}{}}{}{}
 \hypersetup{
 	hidelinks = true
 }
@@ -98,7 +101,7 @@ advantage from it.
 
 Projector systems project on the screen the contents of the computer connected to it. By the use of various technologies, we can increase the interactivity of projector systems. 
 
-\begin{figure}[h!]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{abc}
 \caption {Laser Pointer based Interactive Projector System}
@@ -743,7 +746,8 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \end{thebibliography}
 
 \newpage
-\appendix
+%\appendix
+\begin{appendices}
 \section{AVR Atmega 8L Features:}
 \begin{itemize}
 \item \textbf{High-performance, Low-power Atmel AVR 8-bit Microcontroller}
@@ -870,4 +874,6 @@ The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when us
 \caption{Flow Diagram of System}
 \label{}
 \end{figure}
+\end{appendices}
+
 \end{document}\begin{flushleft}\end{flushleft}
