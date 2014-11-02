@@ -4,7 +4,7 @@
 \usepackage{times}
 \usepackage[top=3.5cm, bottom=2cm, left=3.5cm, right=2cm]{geometry}
 \usepackage{sectsty}
-\sectionfont{\fontsize{12}{14}\selectfont}
+\sectionfont{\fontsize{14}{12}\selectfont}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{wrapfig}
@@ -20,7 +20,10 @@
 \usepackage[acronym]{glossaries}
 \usepackage[utf8x]{inputenc}
 \usepackage{subcaption}
-
+\usepackage{chngcntr}
+\counterwithin{table}{section}
+\counterwithin{figure}{section}
+\counterwithin{equation}{section}
 
 \hypersetup{
 	hidelinks = true
@@ -157,7 +160,7 @@ an individual system.
 
 \newpage
 \section{LITERATURE REVIEW}
-The current prototype can run off a rechargeable 12V battery, has the capability to access the World Wide Web, has readily available off line content, via established partnerships, and has an extremely easy to use interface. The device is contained in a single unit with replaceable external components (i.e. keyboard, remotes), consumes less than 100 W of power, and will cost only USD 300. The system is about the size of a shoe-box. 
+The current prototype can run off a rechargeable 12V battery, has the capability to access the World Wide Web(WWW), has readily available off line content, via established partnerships, and has an extremely easy to use interface. The device is contained in a single unit with replaceable external components (i.e. keyboard, remotes), consumes less than 100 W of power, and will cost only USD 300. The system is about the size of a shoe-box. 
 As seen in the figure, the existing Looma system functional parts can be listed as:
 
 \subsection{Looma and Wand Details}
@@ -208,7 +211,7 @@ The existing system uses Wii Remote to interact in the audio-visual device. This
 \newpage
 \section{BACKGROUND THEORY}
 \subsection{Basic Overview}
-\subsubsection{Human-computer interaction (HCI)} 
+\subsubsection{Human-Computer-Interaction (HCI)} 
 HCI is the study of how people interact with computers and to what extent computers are or are not developed for successful interaction with human beings. Developing human-computer interactions involves design on both sides of the interaction. On the technology side, the designer must have a thorough understanding of the available hardware and software components and tools. On the human side, the designer must have a good understanding of how humans learn and work with computers, including envisioning new modes of working. The designer's task is to create effective, efficient, and satisfying interactions by balancing factors such as cost, benefits, standards, and the environmental constraints in which the interaction will take place. 
 
 Classrooms today are filled with a diverse range of students. Many of them are computer literate while others are not. Some are primarily visual learners, some are auditory learners and some kinesthetic. Others may be gifted and talented.Still others may struggle with physical, mental, behavioral or emotional challenges. In such diverse environment, it may be difficult for the teacher to cope up with each and every individual. In such cases, an effective human-computer interaction tool plays a pivotal role.Various tools are now available for the efficient human-computer interaction, one of which is the Interactive Smart Board.
@@ -405,7 +408,7 @@ For the edge detection we used canny edge detection algorithm.It is a multi-stag
 Since edge detection is susceptible to noise in the image, first step is to remove the noise in the image with a 5x5 Gaussian filter.
 
 \item \textbf{Finding Intensity Gradient of the Image}
-Smoothened image is then filtered with a Sobel kernel in both horizontal and vertical direction to get first derivative in horizontal direction (Gx) and vertical direction (Gy). From these two images, we can find edge gradient and direction for each pixel as follows:
+Smoothened image is then filtered with a Sobel kernel in both horizontal and vertical direction to get first derivative in horizontal direction (Gx) and vertical direction (Gy). From these two images, we can find edge gradient and direction for each pixel as given by the equations 5.1 and 5.2.
 \begin{equation}
 \text{Edge Gradient}(G) = \sqrt{Gx^2 + Gy^2}
 \end{equation}
@@ -473,12 +476,12 @@ The obtained contour is then approximated by a bounding rectangle which gives us
 	\label{}
 \end{figure}
 
-	The laser circuit has been programmed such that it produces a 6Hz pulses when the push button is pressed, else it stays on. The target frequency has been set to 6Hz. The prescaler used is 64. The top value for pulse width modulation(PWM) is obtained as, 
+	The laser circuit has been programmed such that it produces a 6Hz pulses when the push button is pressed, else it stays on. The target frequency has been set to 6Hz. The prescaler used is 64. The top value for pulse width modulation(PWM) is obtained as in the following equation 5.3. 
 	\begin{equation}
 	Top\ value = (Clock\  frequency/Target\  frequency)*Scaler - 1
 	\end{equation}
 	
-	The top value is 20833. For a 20\% duty cycle, the on time of the laser is set to 20\% of the top value and off time is set to the 80\% of the top value. We have kept the push button switch in the interrupt pin, so that when the button is pushed, interrupt is obtained and the subsequent Interrupt Service Routine(ISR) can be run. This ISR does the work of producing PWM pulses of 20\% duty cycle. The diagram below is our working circuit.
+	The top value is 20833. For a 20 per cent duty cycle, the on time of the laser is set to 20 per cent of the top value and off time is set to the 80 per cent of the top value. We have kept the push button switch in the interrupt pin, so that when the button is pushed, interrupt is obtained and the subsequent Interrupt Service Routine(ISR) can be run. This ISR does the work of producing PWM pulses of 20 per cent duty cycle. The diagram below is our working circuit.
 
 \begin{figure}[htp]
 	\centering
@@ -492,7 +495,7 @@ The obtained contour is then approximated by a bounding rectangle which gives us
 
 A laser wand is the main interacting tool with the vision-based interactive projector system. The laser wand is a custom designed and self fabricated AVR Atmega 8L (pin diagram shown in Appendix A ) microcontroller based system. The input to the wand is a manual button press and outputs from the wand are either continual or varying laser blinks. 
 
-On continual button press, the blinking of laser wand is made to occur at 6Hz with duty cycle of 20\%. Duty cycle is the ratio of on-time of a signal to the total time of a signal. The total time of a signal is the sum of on-time and the off-time of the signal. The on-time is the window frame of the signal, where the signal is high and off-time is the window frame of the signal, where the signal is low. So a duty cycle of 20\% implies that laser is on 20\% of the time and off 80\% of the time when the button is pressed. 
+On continual button press, the blinking of laser wand is made to occur at 6Hz with duty cycle of 20 per cent. Duty cycle is the ratio of on-time of a signal to the total time of a signal. The total time of a signal is the sum of on-time and the off-time of the signal. The on-time is the window frame of the signal, where the signal is high and off-time is the window frame of the signal, where the signal is low. So a duty cycle of 20 per cent implies that laser is on 20 per cent of the time and off 80 per cent of the time when the button is pressed. 
 
 \subsubsection{Components of Laser Wand}
 
@@ -502,7 +505,7 @@ Laser is a device that emits light by optical amplification based on stimulated 
 
 \subparagraph{Microcontroller}
 
-The laser wand is made to blink on manual press of a button. The microcontroller has three timers 0, 1, 2 of which 16 bit timer 1 is used in non-inverting PWM mode. The prescaler is set to 64. The TIMER and PWM of the avr microcontroller is used to achieve that (pin diagrams shown in Appendix B).
+The laser wand is made to blink on manual press of a button. The microcontroller has three timers 0, 1, 2 of which 16 bit timer 1 is used in non-inverting PWM mode. The prescaler is set to 64. The Timer and PWM of the avr microcontroller is used to achieve that (pin diagrams are shown in Appendix B).
 
 \subsection{Finalized algorithm for click and drag}
 	We constructed a State Diagram with the following states of laser.
@@ -717,7 +720,7 @@ The limitations of the system developed in this project are as follows:
 \item The system performs single clicks and drag as required by the Looma system, but with further enhancements, it can be made to perform double clicks.
 \end{enumerate}
 \newpage
-\section{CONCLUSION}
+\section{CONCLUSION AND FURTHER WORK}
 \subsection{Conclusion}
 The project \emph{Laser Pointer based Human Computer Interaction using Computer Vision} aims at providing an alternative solution to the wand system used by Looma. The designed system allows the user to control the projected system from a considerable distance using the laser pointer, thus aiding the teaching learning process. Though the system is designed with Looma system in mind, it is generic and can be used for other systems too.
 
