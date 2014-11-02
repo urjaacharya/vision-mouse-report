@@ -26,6 +26,11 @@
 \counterwithin{equation}{section}
  \renewcommand{\cftfigfont}{\text{Figure} }
  \renewcommand{\appendixname}{APPENDIX}
+ \renewcommand{\contentsname}{TABLE OF CONTENTS}
+ \renewcommand{\listfigurename}{LIST OF FIGURES}
+ \renewcommand{\listtablename}{LIST OF TABLES}
+ \renewcommand\cftsecleader{\cftdotfill{\cftdotsep}}
+ %\renewcommand{\listacronymname}{LIST OF SYMBOLS AND ABBREVIATIONS}
 \usepackage{etoolbox}
 \apptocmd{\appendices}{\apptocmd{\thesection}{: }{}{}}{}{}
 \hypersetup{
@@ -40,21 +45,21 @@
 	\setcounter{page}{2}
 	\section*{PAGE OF APPROVAL}
 		\input{external}
-	\addcontentsline{toc}{subsection}{Page of Approval}
+	\addcontentsline{toc}{section}{PAGE OF APPROVAL}
 	\newpage
 	\section*{COPYRIGHT}
 		\input{copyright}
-	\addcontentsline{toc}{subsection}{Copyright}
+	\addcontentsline{toc}{section}{COPYRIGHT}
 	\newpage
 	
 	\section*{ACKNOWLEDGEMENT}
 		\input{acknowledgement}
-	\addcontentsline{toc}{subsection}{Acknowledgement}
+	\addcontentsline{toc}{section}{ACKNOWLEDGEMENT}
 	
 	\newpage
 	\section*{ABSTRACT}
 	\input{abstract}
-	\addcontentsline{toc}{subsection}{Abstract}
+	\addcontentsline{toc}{section}{ABSTRACT}
 	
 	
 	\newpage
@@ -66,7 +71,7 @@
 	\newpage
 	\section*{List of Acronyms}
 		\input{acronym}
-	\addcontentsline{toc}{section}{List of Acronyms}
+	\addcontentsline{toc}{section}{LIST OF SYMBOLS AND ABBREVIATIONS}
 	\clearpage
 	\pagenumbering{arabic}
 	\linespread{1.5}
