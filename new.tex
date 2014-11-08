@@ -18,21 +18,28 @@
 \usepackage{acronym}
 \usepackage[acronym]{glossaries}
 \usepackage[utf8x]{inputenc}
-\usepackage{subcaption}
+\usepackage{caption}
+\DeclareCaptionFont{mysize}{\fontsize{8}{9.6}\selectfont}
+\captionsetup{font=mysize}
 \usepackage{chngcntr}
 \usepackage[titletoc,title]{appendix}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
 \counterwithin{table}{section}
 \counterwithin{figure}{section}
 \counterwithin{equation}{section}
- \renewcommand{\cftfigfont}{\text{Figure} }
- \renewcommand{\appendixname}{APPENDIX}
- \renewcommand{\contentsname}{TABLE OF CONTENTS}
- \renewcommand{\listfigurename}{LIST OF FIGURES}
- \renewcommand{\listtablename}{LIST OF TABLES}
- \renewcommand\cftsecleader{\cftdotfill{\cftdotsep}}
- %\renewcommand{\listacronymname}{LIST OF SYMBOLS AND ABBREVIATIONS}
+\renewcommand{\cftfigfont}{\text{Figure} }
+\renewcommand{\cfttabfont}{\text{Table} }
+\renewcommand{\appendixname}{APPENDIX}
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
+\renewcommand{\listfigurename}{LIST OF FIGURES}
+\renewcommand{\listtablename}{LIST OF TABLES}
+\renewcommand\cftsecleader{\cftdotfill{\cftdotsep}}
 \usepackage{etoolbox}
-\apptocmd{\appendices}{\apptocmd{\thesection}{: }{}{}}{}{}
+
+\apptocmd{\appendices}{\let\LaTeXStandardTheSection\thesection
+\apptocmd{\figure}{\let\thesection\LaTeXStandardTheSection}{}{}
+\apptocmd{\thesection}{:}{}{}}{}{}
 \hypersetup{
 	hidelinks = true
 }
@@ -76,6 +83,7 @@
 	\pagenumbering{arabic}
 	\linespread{1.5}
 \newpage
+%%%%%%1111111111111111111111111111111111111111111111111111
 \section{INTRODUCTION}
 \subsection{Background}
 According to the Information and Communication Technology (ICT) Master Plan 2013-2017~\cite{kir}, the long term
@@ -105,12 +113,6 @@ and efficient, so that the people of rural communities can derive maximum
 advantage from it.
 
 Projector systems project on the screen the contents of the computer connected to it. By the use of various technologies, we can increase the interactivity of projector systems. 
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.7]{abc}
-\caption {Laser Pointer based Interactive Projector System}
-\end{figure}
 
 Our project tries to improve the interactivity and the cost of the existing Looma system such that it can be afforded by rural schools. The use of camera to capture the projected area, and detection of location of a visual pen or other visual tools, altogether form an interactive projector system. With the use of a camera, and laser pen, our project gets scoped under \textbf{Human Computer Interaction(HCI)}. \textbf{Computer Vision(CV)} is an integral part of the interaction. The vision based HCI acts as an apt mediator between the user and the computer.
 
@@ -166,6 +168,43 @@ Interactive Projectors makes sense for the
 users who want the combination of projector and interactive whiteboard in
 an individual system. 
 
+\begin{figure} 
+\centering
+\tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{circle} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 4cm, auto]
+    % Place nodes
+    
+    \node [block, node distance=4.5cm] (Set) {Projector};
+
+    \node [block, right of=Set, node distance=4.5cm] (Acquire) {Laser Point};
+    
+    \node [block, right of=Acquire, node distance=4.5cm] (Convert) {Camera};
+    
+    \node [block, below of=Convert, node distance=4.5cm] (Canny) {Interaction System};
+    \node [block, left of=Canny, node distance=5.5cm] (Get) {Computer};
+    
+   % Draw edge
+    \path [line] (Set) -- node {Image}(Acquire);            
+    \path [line] (Acquire) --node {Image} (Convert); 
+    \path [line] (Convert) -- node {Image}(Canny);
+    \path [line] (Canny) -- node {Control}(Get);
+    \path [line] (Get) -| node {Image}(Set);
+\end{tikzpicture}
+\caption{Interactive Projector System}\label{}
+\end{figure}
+%\begin{figure}[h]
+%\centering
+%%\includegraphics[scale=0.7]{abc}
+%\caption {Laser Pointer based Interactive Projector System}
+%\end{figure}
+%2222222222222222222222222222222222222222222222222222222222222222222222222222
 \newpage
 \section{LITERATURE REVIEW}
 The current prototype can run off a rechargeable 12V battery, has the capability to access the World Wide Web(WWW), has readily available off line content, via established partnerships, and has an extremely easy to use interface. The device is contained in a single unit with replaceable external components (i.e. keyboard, remotes), consumes less than 100 W of power, and will cost only USD 300. The system is about the size of a shoe-box. 
@@ -187,7 +226,7 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.22]{looma}
-\caption {Hardware and Electrical parts of Looma system}
+\caption {\texttt{Hardware and Electrical parts of Looma system}}
 \end{figure}
 
 \newpage
@@ -215,7 +254,7 @@ Wand control descriptions:
 \end{figure}
 
 The existing system uses Wii Remote to interact in the audio-visual device. This system uses an Wii IR camera which picks up the infrared light source, and tracks it using its MOT (Multi-Object Tracking) processor present in the camera chip as shown in the figure. Wii IR Camera gives out a pre-set Inter-Integrated Circuit (I2C) address so the interface board needs an I2C multiplexer. To convert the I2C output to serial, and to demultiplex the signals, the system has been using an FPGA board. 
-
+%333333333333333333333333333333333333333333333333333333333333333333333333333333
 \newpage
 \section{BACKGROUND THEORY}
 \subsection{Basic Overview}
@@ -344,6 +383,7 @@ The X Window System is a network-transparent window system that was designed at 
 
 \end{enumerate}
 \newpage
+%4444444444444444444444444444444444444444444444444444444444444444444444444444
 \section{SYSTEM DEVELOPMENT}
 \subsection{Projected Screen of Looma}
 
@@ -370,9 +410,9 @@ First, the projected screen is captured and the four corners of the projected sc
 \end{figure}
 The next task is updating mouse as per the laser point's actions. In all conditions, whenever laser point is seen in the ROI, the mouse pointer move command is given to the system using the projector. In the case of blinks of laser point, click or drag actions is given based on the number of clicks. 
 
-The communication between raspberry pi and the computer system is done via TCP protocol. The flow diagram can be viewed in Appendix J.
-
-\clearpage
+The communication between raspberry pi and the computer system is done via TCP protocol. 
+%5555555555555555555555555555555555555555555555555555555555555555
+\newpage
 \section{METHODOLOGY}
 
 The main purpose of the reformed wand is to establish a way of interaction between the user and the projector system. Hence, this system needs to accomplish the following tasks to overcome the limitations provided by the current Looma wand system:
@@ -383,23 +423,62 @@ The main purpose of the reformed wand is to establish a way of interaction betwe
 \item Based on the results of detection, generate appropriate mouse press and release actions to operate mouse
 \end{itemize}
 
-
-
 \subsection{Initial Calibration of Projected Screen}
 	 The projected screen is our region of interest. The four corners of the projected screen are first extracted, which is where we want our laser point to be detected within. 
-
-
-\begin{figure}[htp]
-	\centering
-	\includegraphics[scale=0.50]{Calibration.png}
-	\caption{Calibration Process}
-	\label{}
-\end{figure}
+%\begin{figure}[htp]
+%	\centering
+%	\includegraphics[scale=0.50]{Calibration.png}
+%	\caption{Calibration Process}
+%	\label{}
+%\end{figure}
 	 
     The projected screen is distinguished from the wall surface by applying a threshold on the grayscale image. The applied threshold binarized the captured image such that, the grayscale image is turned into a binarized image. The projected screen is thresholded into a white surface and the rest of the image is seen as black. The contour finding algorithm is applied to this image. The contour with the largest area, which is the projected screen is obtained. The rectangular approximation of this contour gives the x and y coordinates of the projected screen. 
  
     The obtained coordinates are in the image plane coordinate system, which needs to be mapped to the projected computer’s screen coordinates. First of all, the x and y coordinates of the obtained projected screen is translated to the origin of the image plane coordinate 
 The mapping is based on linear mapping technique which works on the straight undistorted projection. 
+
+\begin{figure}
+\centering	 
+\tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, text width=6em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{circle} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    
+    \node [block, node distance=4cm] (Set) {Set Camera Resolution};
+
+    \node [block, right of=Set, node distance=4cm] (Acquire) {Acquire Image Frame};
+    
+    \node [block, right of=Acquire, node distance=4cm] (Convert) {Convert to Grayscale};
+    
+    \node [block, below of=Convert, node distance=3cm] (Canny) {Canny Edge Detection};
+    \node [block, left of=Canny, node distance=4cm] (Get) {Get all Contours};
+    
+    
+    \node [block, left of=Get, node distance=4cm] (Extract) {Extract contour with maximum area};
+    
+    \node [block, below of=Extract, node distance=3cm] (Get1) {Get the four corners};
+    
+    \node [block, right of=Get1, node distance=4cm] (Apply) {Apply Transformation to Destination};
+
+
+    % Draw edge
+    \path [line] (Set) -- (Acquire);            
+    \path [line] (Acquire) -- (Convert); 
+    \path [line] (Convert) -- (Canny);
+    \path [line] (Canny) -- (Get);
+    \path [line] (Get) -- (Extract);
+    \path [line] (Extract) -- (Get1);
+    \path [line] (Get1) -- (Apply);
+  
+\end{tikzpicture}
+\caption{This text looks very small}
+\end{figure}
 
 \begin{enumerate}
 \item Detection of edges to obtain the edge map using Canny edge algorithm
@@ -422,7 +501,7 @@ Smoothened image is then filtered with a Sobel kernel in both horizontal and ver
 \end{equation}
 \begin{equation}
 \text{Angle}(\theta) = \arctan\bigg(\frac{Gy}{Gx}\bigg)
-\end{equation}o
+\end{equation}
 Gradient direction is always perpendicular to edges. It is rounded to one of four angles   representing vertical, horizontal and two diagonal directions.
 \item \textbf{Non maximum Suppression}
 After getting gradient magnitude and direction, a full scan of image is done to remove any unwanted pixels which may not constitute the edge. For this, at every pixel, pixel is checked ­if it is a local maximum in its neighborhood in the direction of gradient.
@@ -517,6 +596,34 @@ The laser wand is made to blink on manual press of a button. The microcontroller
 
 \subsection{Finalized algorithm for click and drag}
 	We constructed a State Diagram with the following states of laser.
+	\begin{figure}
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1to0};
+  \node[main node] (2) [below left of=1] {0};
+  \node[main node] (3) [below right of=2] {0to1};
+  \node[main node] (4) [below right of=1] {1};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1)
+        edge [bend right] node[left] {00000} (2)
+        edge [loop above] node {0} (1)
+        edge node [left] {1} (3)
+    (2) 
+        edge [loop left] node {00000} (2)
+        edge [bend right] node[left] {1} (3)
+        
+    (3) edge node [right] {0} (1)
+        edge [bend right] node[right] {11111} (4)
+        edge [loop below] node {1} (3)
+    (4) 
+        edge [loop right] node {11111} (4)
+        edge [bend right] node[right] {0} (1);
+\end{tikzpicture}
+\caption{State Diagram}
+\end{figure}
 \begin{enumerate}
 \item Laser-off or 0
 \item Laser-on or 1
@@ -526,19 +633,125 @@ The laser wand is made to blink on manual press of a button. The microcontroller
 	\textbf {Laser-off} is a state of continual five or more laser-off  states, which occurs when the laser is not detected. \textbf{Laser-on} is a state of continual five or more laser-on states, when the laser is detected. \textbf{Toggle-0to1} occurs when laser state is toggled from off state to on state, whereas in \textbf{Toggle-1to0}, laser state is toggled from on state to off state. 
 	
 	At all times, when laser is in the on state, the mouse pointer is continually updated to move. When laser state is toggled, either from laser on to off or vice-versa, the mouse pointer is pressed. If the mouse pointer is moved while in pressed state, drag occurs. This continues until a laser-off state or laser-on state occur, which is interpreted as a mouse release. And, at every toggle state, mouse down occurs and if laser-on or laser-off state is immediately succeeded to this event, then mouse is released which is then interpreted as click.
-	
-\begin{figure}[htp]
+\newpage
+
+\begin{figure}
 \centering
-\includegraphics[scale=0.35]{state.png}
-\caption{State Transition Diagram of Algorithm}
-\label{}
+\tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{circle} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [cloud] (A) {Start};
+    
+    \node [block, below of=A] (B) {Grab Image Frame};
+
+    \node [decision, below of=B] (C) {Calibrated?};
+    
+    \node [decision, below of=C] (D) {While User Not Exit?};
+    
+    \node [block, right of=D, node distance=4cm] (E) {Grab New Frame};
+    
+    \node [decision, right of=E, node distance=3cm] (F) {Laser Detect?};
+    
+    \node [circle, right of=F, node distance=3cm] (J) {A};
+    
+    \node [decision, below of=F, node distance=4cm] (G) {Mouse Down?};
+    
+     \node [block, right of=G, node distance=4cm] (I) {Send "Mouse Move" to Server};
+    
+     \node [block, below of=G, node distance=3cm] (H) {Send "Mouse Release" to Server};
+    
+    \node [cloud, below of=D, node distance=4cm] (Z) {Stop};
+
+\node [circle, below of=Z, node distance=4cm] (K) {A};
+
+\node [decision, below of=K, node distance=3cm] (L) {Action Detect?};
+
+\node [block, below of=L, node distance=4cm] (N) {Send "Mouse Down"  to Server};
+
+\node [block, right of=L, node distance=4cm] (M) {Send "Mouse Down and Release" to Server};
+
+
+    % Draw edge
+    \path [line] (K) -- (L);            
+    \path [line] (L) -- node {No}(M);
+    \path [line] (L) -- node {Blinks $<3$}(N);
+    \path [line] (A) -- (B);
+    \path [line] (E) -- (F);
+    \path [line] (F) -- node {Blink}(J);
+    \path [line] (H) -| (I);
+     \path [line] (F) -- node {Continual}(G);
+      \path [line] (G) -- node {Yes}(H);
+    \path [line] (C) -- node {Yes}(D);
+    \path [line] (B) -- (C);
+    \path [line] (D) -- node {Yes}(E);
+    \path [line] (G) -- node {No}(I);
+    \path [line] (D) -- node {No}(Z);
+\end{tikzpicture}
+\caption{Flowchart}
 \end{figure}
-	
+%\begin{figure}[htp]
+%\centering
+%\includegraphics[scale=0.35]{state.png}
+%\caption{State Transition Diagram of Algorithm}
+%\label{}
+%\end{figure}	
 \subsection{Communication between computer and Raspberry Pi}
 	A server and client program are constructed based on TCP protocol. The server and client maintain the communication between the computer and the raspberry pi. The server program is run on the computer which is being projected by the projector. The client program is run on the raspberry pi which detects laser spots. 
 	
 	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. So we have implemented a protocol for communication using TCP protocol to communicate the mouse actions and coordinates to the computer. The Looma board is made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action.  For the basic TCP protocol diagram, see Appendix G.
-	
+\begin{figure}
+\centering
+\tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, text width=7em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+\tikzstyle{circle} = [draw, ellipse, node distance=3cm,
+    minimum height=2em]
+    
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [block, node distance=4cm] (Socket) {Socket()};
+    \node [block, node distance=2cm, below of=Socket] (Bind) {Bind()};
+    \node [block, node distance=2cm, below of=Bind] (Listen) {Listen()};
+    \node [block, node distance=9cm, right of=Listen](Socket1) {Socket()};
+    
+    \node [block, node distance=2cm, below of=Listen] (Accept) {Accept()};
+    \node [block, node distance=2cm, below of=Accept] (Block) {Block until there are connections from client};
+    \node [block, node distance=9cm, right of=Block](Connect1) {Connect()};
+    \node [block, node distance=2cm, below of=Block] (Read) {Read()};
+    \node [block, node distance=9cm, right of=Read](Write1) {Write()};
+    \node [block, node distance=2cm, below of=Read] (Write) {Write()};
+    \node [block, node distance=9cm, right of=Write](Read1) {Read()};
+    \node [block, node distance=2cm, below of=Write] (Close) {Close()};
+    \node [block, node distance=9cm, right of=Close](Close1) {Close()};
+
+    % Draw edge
+  \path [line] (Connect1) -- node {Connection Established}(Block);
+  \path [line] (Write1) -- node{Data(Request)}(Read);
+  \path [line] (Write) -- node{Data(Reply)}(Read1);
+  \path[line](Socket)--(Bind);
+  \path[line](Bind)--(Listen);
+  \path[line](Listen)--(Accept);
+  \path[line](Accept)--(Block);
+  \path[line](Block)--(Read);
+  \path[line](Read)--(Write);
+  \path[line](Write)--(Close);
+  
+  \path[line](Socket1)--(Connect1);
+  \path[line](Connect1)--(Write1);
+  \path[line](Write1)--(Read1);
+  \path[line](Read1)--(Close1); 
+\end{tikzpicture}
+\caption{A}
+\end{figure}
 
 \subsection{Movement of Mouse Pointer}
 The laser coordinates, x and y, detected by the RPi camera is mapped to the system coordinates. 
@@ -751,7 +964,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \end{thebibliography}
 
 \newpage
-%\appendix
 \begin{appendices}
 \section{AVR Atmega 8L Features:}
 \begin{itemize}
@@ -775,7 +987,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \item Real Time Counter with Separate Oscillator
 \item Three PWM Channels
 \end{itemize}
-
 \item \textbf{Operating Voltages}
 \begin{itemize}
 \item 2.7V - 5.5V (ATmega8L)
@@ -793,8 +1004,9 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \end{itemize}
 \end{itemize}
 \newpage
+
 \section{AVR Atmega8L Pin Diagram}
-\begin{figure}[htp]
+\begin{figure}
 \centering
 \includegraphics[scale=1.00]{avr.jpeg}
 \caption{AVR Atmega8L Pin Diagram}
@@ -847,14 +1059,14 @@ The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when us
 \caption{Raspberry Pi Camera Module}
 \label{}
 \end{figure}
-\newpage
-\section{TCP Protocol}
-\begin{figure}[htp]
-\centering
-\includegraphics[scale=1.00]{tcp.png}
-\caption{Transmission Control Protocol}
-\label{}
-\end{figure}
+%\newpage
+%\section{TCP Protocol}
+%\begin{figure}[htp]
+%\centering
+%\includegraphics[scale=1.00]%{tcp.png}
+%\caption{Transmission Control %Protocol}
+%\label{}
+%\end{figure}
 
 \newpage
 \section{Projected Screen Before Exposure Correction}
@@ -871,14 +1083,14 @@ The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when us
 \caption{Projected Screen After Exposure Correction}
 \label{}
 \end{figure}
-\newpage
-\section{Flow Diagram of System}
-\begin{figure}[htp]
-\centering
-\includegraphics[scale=0.62]{flow.png}
-\caption{Flow Diagram of System}
-\label{}
-\end{figure}
+%\newpage
+%\\section{Flow Diagram of System}
+%\\begin{figure}
+%\\centering
+%\\includegraphics[scale=0.62]{flow.png}
+%\\caption{Flow Diagram of System}
+%\\label{}
+%\\end{figure}
 \end{appendices}
 
-\end{document}\begin{flushleft}\end{flushleft}
+\end{document}
