@@ -140,13 +140,13 @@ In its long term goals, our project aims to lay a foundation to improved interac
 ~\\
 The existing wand system of Looma is basically an IR based handheld device that acts as a mouse. It emits IR light, and also called a light pen. The major components of it are that it has an IR LED, a button and and on/off switch and uses 555 timer to turn the IR light source on/off. The led is blinked at a pre-determined frequency so that the blink is be analysed as a click by its camera processor. The current design uses Nintendo Wii IR camera, which is scavenged from Wii motes in order to detect the IR light on the projected screen. Some of the system's issues which can not be ignored are:
 
-\begin{itemize}
+\begin{enumerate}
 \item \textbf {Drawing in the Whiteboard:} While drawing in the LOOMA software, the tracking of the IR led is very unreliable and the drawings are not made as expected.
 \item \textbf{Use of Pre-built Multi-Object-Tracking(MOT) processor:} There is the use of inbuilt MOT processor in the camera chip, which does part of the image processing and tracking and sending coordinates. In the case of errors, its response can not be modified to remove errors which makes it inefficient
 \item \textbf{Errors not detectable:} Since the Wiimote used IR to move the mouse, the location of the IR on the screen is not visible with the naked eye thus making errors not detectable 
 \item \textbf{Unavailability in the market:} Wiimote IR camera chip being used in the system can not be readily bought in the open market which makes it difficult to mass produce the system
 \item \textbf{Coverage and Difficult to Interact:} Wii wand is not interactive enough and works effectively only within the projected screen space which makes interacting with the screen difficult and not intuitive
-\end{itemize}
+\end{enumerate}
 
 In short, hacked Wii Remotes~\cite{joh} along with the Field Programmable Gate Array (FPGA) board is adding up to the cost significantly. In addition, the system is not very stable and is inefficient to use as points aforementioned, thereby leading to the research on alternative vision-based HCIs and our project is an effort to get
 a prototype of one such alternative.
@@ -154,10 +154,10 @@ a prototype of one such alternative.
 \subsection{Objectives}
 ~\\
 The basic objectives of our project is make prototype for an alternative type of vision-based HCIs and in the modification of Project Looma in aspects listed below:
-\begin{itemize}
+\begin{enumerate}
 	\item To use laser pointer instead of IR (Infra-red) based interaction
 	\item To remove the Wii technology, and its dependencies used in current prototype thereby, making the system efficient and cost effective
-\end{itemize}
+\end{enumerate}
 
 \subsection{Scope}
 ~\\
@@ -236,7 +236,7 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 
 \subsection{Looma and Wand Details}
 ~\\
-\begin{itemize}
+\begin{enumerate}
 \item300 lumen projector
 \item Internet Connected 
 \item Wireless Wand control from front of room
@@ -246,7 +246,7 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 \item External ports: 1 Ethernet
 \item Custom power supply (12V in 5V, 12V, 19.5V out)
 \item Hacked Wii IR Camera and Wii wands
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[htp]
 \centering
@@ -258,11 +258,11 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 \newpage
 
 Wand control descriptions:
-\begin{itemize}
+\begin{enumerate}
 \item Wand shown in the figure is a 3D printed IR light source
 \item The wand design uses 555 timer to turn the IR light source on/off at a pre-determined frequency such that the blink can be interpreted as a click on the device
 \item Current design uses Nintendo Wii IR camera, which are scavenged from Wii motes
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[htp]
 \centering
@@ -378,28 +378,23 @@ SinaProg is Hex downloader application with AVRDude and Fuse Bit Calculator. Thi
 \subsection{Software implementation and simulation}
 ~\\
 \subsubsection{Programming Language and Libraries}
-\begin{enumerate}
-
-\item \textbf{Python 2.7.3:}
-
-IDLE is an integrated development environment for Python, which has been bundled with each release of the language. It is packaged as an optional part of the Python packaging
+\textbf{Python 2.7.3:} IDLE is an integrated development environment for Python, which has been bundled with each release of the language. It is packaged as an optional part of the Python packaging
 with many Linux distributions. It is completely written in Python and the Tkinter GUI
 toolkit (wrapper functions for Tcl/Tk).According to the included README, its main
 features are:
 \begin{itemize}
-\item Multi-window text editor with syntax highlighting, auto completion, smart indent
+\item  Multi-window text editor with syntax highlighting, auto completion, smart indent
 and other.
 \item Python shell with syntax highlighting.
 \item Integrated debugger with stepping, persistent breakpoints, and call stack visibility.
 \end{itemize}
-\item \textbf{Open Source Computer Vision Library (OpenCV):}
-
+\textbf{Open Source Computer Vision Library (
 OpenCV is an open-source Berkeley Software Distribution (BSD)-licensed library
 that includes several hundreds of computer vision algorithms. It focuses mainly on real-
 time image processing. OpenCV library has been used in python platform.
 OpenCV has a modular structure, which means that the package includes several shared or
 static libraries.
-\begin{itemize}
+\begin{enumerate}
 \item core - a compact module defining basic data structures, including the dense
 multidimensional array Mat and basic functions used by all other modules.
 \item imgproc - an image processing module that includes linear and non-linear image
@@ -418,10 +413,8 @@ well as simple UI capabilities.
 \item gpu - GPU-accelerated algorithms from different OpenCV modules.
 It also includes some other helper modules, such as FLANN and Google test wrappers,
 Python bindings, and others.
-\end{itemize}
-\item \textbf{Tkinter:}
-
-It is a standard builds of Python include an object-oriented interface to the Tcl/Tk widget set,
+\end{enumerate}
+\textbf{Tkinter:} It is a standard builds of Python include an object-oriented interface to the Tcl/Tk widget set,
 called \textbf{Tkinter}. This is probably the easiest to install and use. The Tkinter module (“Tk interface”) is the standard Python interface to the Tk GUI toolkit.
 Both Tk and Tkinter are available on most Unix platforms, as well as on Windows
 systems. Tcl/Tk is fully portable to the MacOS, Windows, and Unix platforms.
@@ -430,17 +423,13 @@ wrappers that implement the Tk widgets as Python classes. In addition, the inter
 tkinter provides a threadsafe mechanism which allows Python and Tcl to interact.
 Tkinter‘s chief virtues are that it is fast.
 
-\item \textbf{Picamera:}
+\textbf{Picamera:} Raspberry Pi camera module can use \emph{Picamera 1.2}. It is a pure Python interace to the camera module. The interface eradicates the need to use command line syntax for grabbing image frames and videos. It does not cause restart of the camera interfaces when changing the intrinsic camera properties
 
-Raspberry Pi camera module can use \emph{Picamera 1.2}. It is a pure Python interace to the camera module. The interface eradicates the need to use command line syntax for grabbing image frames and videos. It does not cause restart of the camera interfaces when changing the intrinsic camera properties
-. 
-\item \textbf{Library: PyMouse}
+\textbf{Library: PyMouse}
 It is a pure Python cross-platform mouse control module. Mouse functions are provided by the PyMouse library. It runs on any Linux system running over X11 display server. PyMouse provides simple functions like move, click, press and release. PyMouse is a wrapper over Python X Library. It is used to move the mouse pointer as per the laser pointer movements. It is a fully functional X client library intended for Python programs, working as client to communicate with the X server via the X protocol. It runs on Linux using XFree86 as the server and most Unices.
-
 
 The X Window System is a network-transparent window system that was designed at MIT. X display servers run on computers with either monochrome or color bitmap display hardware. Once the connection is set up, the Xlib macros are used to get the information about the current display. Similarly, using the X objects, the mouse pointer is moved by sending coordinates to the appropriate functions. 
 
-\end{enumerate}
 \newpage
 %4444444444444444444444444444444444444444444444444444444444444444444444444444
 \section{SYSTEM DEVELOPMENT}
