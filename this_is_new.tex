@@ -101,9 +101,7 @@ headsep=1.5cm,
 	\newpage
 %%%%%%1111111111111111111111111111111111111111111111111111
 \section{INTRODUCTION}
-\vspace{0.4cm}
 \subsection{Background}
-~\\
 According to the Information and Communication Technology (ICT) Master Plan 2013-2017~\cite{kir}, the long term
 goal of education in Nepal is to provide citizens with appropriate knowledge,
 skills and attitude to work actively in the development of the country and to
@@ -117,7 +115,6 @@ has considered the use of ICT as essential to achieve the goals of education. An
 ture
 \item System Enhancement procedures
 \end{enumerate}
-
 Village Tech Solutions (VTS) which was established in the year 1996 by David and Hyadi Sowerwine, with the mission to provide safe, efficient and inexpensive energy systems for the people of rural Nepal. VTS had been endeavoring to bring audio-visual system to the classrooms of Nepal to enhance their current education since the year 2008. By introducing such multimedia systems into the classroom, their aim is to make standard learning materials available to all Nepalese students irrespective of their socio-economic statuses. The information that can be gained from the introduction of such multi-media to rural villages can help not only the
 standard of education, but also the standard of living. 
 
@@ -137,30 +134,27 @@ Our project tries to improve the interactivity and the cost of the existing Loom
 In its long term goals, our project aims to lay a foundation to improved interaction with exisiting projection systems using our hardware and software. 
 
 \subsection{Problem Statement}
-~\\
 The existing wand system of Looma is basically an IR based handheld device that acts as a mouse. It emits IR light, and also called a light pen. The major components of it are that it has an IR LED, a button and and on/off switch and uses 555 timer to turn the IR light source on/off. The led is blinked at a pre-determined frequency so that the blink is be analysed as a click by its camera processor. The current design uses Nintendo Wii IR camera, which is scavenged from Wii motes in order to detect the IR light on the projected screen. Some of the system's issues which can not be ignored are:
 
-\begin{enumerate}
+\begin{itemize}
 \item \textbf {Drawing in the Whiteboard:} While drawing in the LOOMA software, the tracking of the IR led is very unreliable and the drawings are not made as expected.
 \item \textbf{Use of Pre-built Multi-Object-Tracking(MOT) processor:} There is the use of inbuilt MOT processor in the camera chip, which does part of the image processing and tracking and sending coordinates. In the case of errors, its response can not be modified to remove errors which makes it inefficient
 \item \textbf{Errors not detectable:} Since the Wiimote used IR to move the mouse, the location of the IR on the screen is not visible with the naked eye thus making errors not detectable 
 \item \textbf{Unavailability in the market:} Wiimote IR camera chip being used in the system can not be readily bought in the open market which makes it difficult to mass produce the system
 \item \textbf{Coverage and Difficult to Interact:} Wii wand is not interactive enough and works effectively only within the projected screen space which makes interacting with the screen difficult and not intuitive
-\end{enumerate}
+\end{itemize}
 
 In short, hacked Wii Remotes~\cite{joh} along with the Field Programmable Gate Array (FPGA) board is adding up to the cost significantly. In addition, the system is not very stable and is inefficient to use as points aforementioned, thereby leading to the research on alternative vision-based HCIs and our project is an effort to get
 a prototype of one such alternative.
 
 \subsection{Objectives}
-~\\
 The basic objectives of our project is make prototype for an alternative type of vision-based HCIs and in the modification of Project Looma in aspects listed below:
-\begin{enumerate}
+\begin{itemize}
 	\item To use laser pointer instead of IR (Infra-red) based interaction
 	\item To remove the Wii technology, and its dependencies used in current prototype thereby, making the system efficient and cost effective
-\end{enumerate}
-
+\end{itemize}
+\newpage
 \subsection{Scope}
-~\\
 \subsubsection{Interactive Projector}
 Projector systems do not have anything to project on the screen without
 any computer connected to it. So the images projected by the projectors
@@ -230,13 +224,11 @@ an individual system.
 %2222222222222222222222222222222222222222222222222222222222222222222222222222
 \newpage
 \section{LITERATURE REVIEW}
-~\\
 The current prototype can run off a rechargeable 12V battery, has the capability to access the World Wide Web(WWW), has readily available off line content, via established partnerships, and has an extremely easy to use interface. The device is contained in a single unit with replaceable external components (i.e. keyboard, remotes), consumes less than 100 W of power, and will cost only USD 300. The system is about the size of a shoe-box. 
 As seen in the figure, the existing Looma system functional parts can be listed as:
 
 \subsection{Looma and Wand Details}
-~\\
-\begin{enumerate}
+\begin{itemize}
 \item300 lumen projector
 \item Internet Connected 
 \item Wireless Wand control from front of room
@@ -246,7 +238,7 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 \item External ports: 1 Ethernet
 \item Custom power supply (12V in 5V, 12V, 19.5V out)
 \item Hacked Wii IR Camera and Wii wands
-\end{enumerate}
+\end{itemize}
 
 \begin{figure}[htp]
 \centering
@@ -258,11 +250,11 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 \newpage
 
 Wand control descriptions:
-\begin{enumerate}
+\begin{itemize}
 \item Wand shown in the figure is a 3D printed IR light source
 \item The wand design uses 555 timer to turn the IR light source on/off at a pre-determined frequency such that the blink can be interpreted as a click on the device
 \item Current design uses Nintendo Wii IR camera, which are scavenged from Wii motes
-\end{enumerate}
+\end{itemize}
 
 \begin{figure}[htp]
 \centering
@@ -272,7 +264,6 @@ Wand control descriptions:
 \end{figure}
 
 \subsection{System Operation Description}
-~\\
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.35]{wiiiii.png}
@@ -284,9 +275,9 @@ The existing system uses Wii Remote to interact in the audio-visual device. This
 %333333333333333333333333333333333333333333333333333333333333333333333333333333
 \newpage
 \section{BACKGROUND THEORY}
-~\\
+
 \subsection{Basic Overview}
-~\\
+
 \subsubsection{Human-Computer-Interaction (HCI)} 
 HCI is the study of how people interact with computers and to what extent computers are or are not developed for successful interaction with human beings. Developing human-computer interactions involves design on both sides of the interaction. On the technology side, the designer must have a thorough understanding of the available hardware and software components and tools. On the human side, the designer must have a good understanding of how humans learn and work with computers, including envisioning new modes of working. The designer's task is to create effective, efficient, and satisfying interactions by balancing factors such as cost, benefits, standards, and the environmental constraints in which the interaction will take place. 
 
@@ -376,25 +367,29 @@ AVR Studio 6 is a software development environment developed by Atmel. It is a f
 SinaProg is Hex downloader application with AVRDude and Fuse Bit Calculator. This is used to download code/program and to set fuse bits of all AVR based microcontrollers. 
 
 \subsection{Software implementation and simulation}
-~\\
 \subsubsection{Programming Language and Libraries}
-\textbf{Python 2.7.3:} IDLE is an integrated development environment for Python, which has been bundled with each release of the language. It is packaged as an optional part of the Python packaging
+\begin{enumerate}
+
+\item \textbf{Python 2.7.3:}
+
+IDLE is an integrated development environment for Python, which has been bundled with each release of the language. It is packaged as an optional part of the Python packaging
 with many Linux distributions. It is completely written in Python and the Tkinter GUI
 toolkit (wrapper functions for Tcl/Tk).According to the included README, its main
 features are:
 \begin{itemize}
-\item  Multi-window text editor with syntax highlighting, auto completion, smart indent
+\item Multi-window text editor with syntax highlighting, auto completion, smart indent
 and other.
 \item Python shell with syntax highlighting.
 \item Integrated debugger with stepping, persistent breakpoints, and call stack visibility.
 \end{itemize}
-\textbf{Open Source Computer Vision Library (
+\item \textbf{Open Source Computer Vision Library (OpenCV):}
+
 OpenCV is an open-source Berkeley Software Distribution (BSD)-licensed library
 that includes several hundreds of computer vision algorithms. It focuses mainly on real-
 time image processing. OpenCV library has been used in python platform.
 OpenCV has a modular structure, which means that the package includes several shared or
 static libraries.
-\begin{enumerate}
+\begin{itemize}
 \item core - a compact module defining basic data structures, including the dense
 multidimensional array Mat and basic functions used by all other modules.
 \item imgproc - an image processing module that includes linear and non-linear image
@@ -413,8 +408,10 @@ well as simple UI capabilities.
 \item gpu - GPU-accelerated algorithms from different OpenCV modules.
 It also includes some other helper modules, such as FLANN and Google test wrappers,
 Python bindings, and others.
-\end{enumerate}
-\textbf{Tkinter:} It is a standard builds of Python include an object-oriented interface to the Tcl/Tk widget set,
+\end{itemize}
+\item \textbf{Tkinter:}
+
+It is a standard builds of Python include an object-oriented interface to the Tcl/Tk widget set,
 called \textbf{Tkinter}. This is probably the easiest to install and use. The Tkinter module (“Tk interface”) is the standard Python interface to the Tk GUI toolkit.
 Both Tk and Tkinter are available on most Unix platforms, as well as on Windows
 systems. Tcl/Tk is fully portable to the MacOS, Windows, and Unix platforms.
@@ -423,22 +420,22 @@ wrappers that implement the Tk widgets as Python classes. In addition, the inter
 tkinter provides a threadsafe mechanism which allows Python and Tcl to interact.
 Tkinter‘s chief virtues are that it is fast.
 
-\textbf{Picamera:} Raspberry Pi camera module can use \emph{Picamera 1.2}. It is a pure Python interace to the camera module. The interface eradicates the need to use command line syntax for grabbing image frames and videos. It does not cause restart of the camera interfaces when changing the intrinsic camera properties
+\item \textbf{Picamera:}
 
-\textbf{Library: PyMouse}
+Raspberry Pi camera module can use \emph{Picamera 1.2}. It is a pure Python interace to the camera module. The interface eradicates the need to use command line syntax for grabbing image frames and videos. It does not cause restart of the camera interfaces when changing the intrinsic camera properties
+. 
+\item \textbf{Library: PyMouse}
 It is a pure Python cross-platform mouse control module. Mouse functions are provided by the PyMouse library. It runs on any Linux system running over X11 display server. PyMouse provides simple functions like move, click, press and release. PyMouse is a wrapper over Python X Library. It is used to move the mouse pointer as per the laser pointer movements. It is a fully functional X client library intended for Python programs, working as client to communicate with the X server via the X protocol. It runs on Linux using XFree86 as the server and most Unices.
+
 
 The X Window System is a network-transparent window system that was designed at MIT. X display servers run on computers with either monochrome or color bitmap display hardware. Once the connection is set up, the Xlib macros are used to get the information about the current display. Similarly, using the X objects, the mouse pointer is moved by sending coordinates to the appropriate functions. 
 
+\end{enumerate}
 \newpage
 %4444444444444444444444444444444444444444444444444444444444444444444444444444
 \section{SYSTEM DEVELOPMENT}
-~\\
 \subsection{Projected Screen of Looma}
-~\\
 The Looma software runs on any linux hardware. The display resolution of the screen is given by X = 1280 and Y = 768, and the display width is 60. Once the device is up, there are options of whether to use the wand or not use the wand. In the projected screen of Looma software, we are presented with teaching contents for students as shown in figure 4.1.
-
-
 
 \begin{figure}[htp]
 	\centering
@@ -448,7 +445,7 @@ The Looma software runs on any linux hardware. The display resolution of the scr
 \end{figure}
 
 \subsection{System Block Diagram and Description}
-~\\
+
 The images of Looma are grabbed in real time by Raspberry Pi camera board. The laser detection and click action detection algorithm is run on the Raspberry Pi.
 
 First, the projected screen is captured and the four corners of the projected screen is obtained which is our Region of Interest(ROI). The arrangement of the raspberry pi system and looma system is made such that, the imagery of the projected screen is undistorted and unwarped. The linear mapping is done to map the image coordinates from raspberry pi to the display resolution of the computer.
@@ -466,7 +463,6 @@ The communication between raspberry pi and the computer system is done via clien
 %5555555555555555555555555555555555555555555555555555555555555555
 \newpage
 \section{METHODOLOGY}
-~\\
 The main purpose of the reformed wand is to establish a way of interaction between the user and the projector system. Hence, this system needs to accomplish the following tasks to overcome the limitations provided by the current Looma wand system:
 \begin{itemize}
 \item Get sequence of frames from the real-time video of the projected screen
@@ -476,7 +472,6 @@ The main purpose of the reformed wand is to establish a way of interaction betwe
 \end{itemize}
 
 \subsection{Initial Calibration of Projected Screen}
-~\\
 	 The projected screen is our region of interest. The four corners of the projected screen are first extracted, which is where we want our laser point to be detected within. 
 %\begin{figure}[htp]
 %	\centering
@@ -499,7 +494,6 @@ The mapping is based on linear mapping technique which works on the straight und
     minimum height=2em]
 \tikzstyle{circle} = [draw, ellipse, node distance=3cm,
     minimum height=2em]
-    
 \begin{tikzpicture}[node distance = 2cm, auto]
     % Place nodes
     
@@ -564,7 +558,6 @@ This stage decides which are all edges are really edges and which are not. For t
 \end{enumerate}
 	
 \subsection{Detection of Laser Pointer}
-~\\
 	Since the projected screen can comprise of all sorts of colored imagery, color based segmentation method is not appropriate for the detection of laser. For flawless detection of laser, the exposure of the camera is programmatically reduced so that laser is the only brightest pixel seen in the image frame. 
 	\subsubsection{Dynamic Exposure Correction}
 	A photograph's exposure determines how light or dark an image appears when it is captured by the camera. 
@@ -632,7 +625,6 @@ The obtained contour is then approximated by a bounding rectangle which gives us
 \end{figure}
 
 \subsection{Hardware Implementation}
-~\\
 \subsubsection{Laser Wand}
 
 A laser wand is the main interacting tool with the vision-based interactive projector system. The laser wand is a custom designed and self fabricated AVR Atmega 8L (pin diagram shown in Appendix A ) microcontroller based system. The input to the wand is a manual button press and outputs from the wand are either continual or varying laser blinks. 
@@ -650,7 +642,6 @@ Laser is a device that emits light by optical amplification based on stimulated 
 The laser wand is made to blink on manual press of a button. The microcontroller has three timers 0, 1, 2 of which 16 bit timer 1 is used in non-inverting PWM mode. The prescaler is set to 64. The Timer and PWM of the avr microcontroller is used to achieve that (pin diagrams are shown in Appendix B).
 
 \subsection{Finalized algorithm for click and drag}
-~\\
 	We constructed a State Diagram with the following states of laser.
 	\begin{figure}
 \centering
@@ -699,14 +690,12 @@ The laser wand is made to blink on manual press of a button. The microcontroller
 %\label{}
 %\end{figure}	
 \subsection{Communication between computer and Raspberry Pi}
-~\\
 	A server and client program are constructed based on TCP protocol. The server and client maintain the communication between the computer and the raspberry pi. The server program is run on the computer which is being projected by the projector. The client program is run on the raspberry pi which detects laser spots. 
 	
 	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. So we have implemented a protocol for communication using TCP protocol to communicate the mouse actions and coordinates to the computer. The Looma board is made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action.  For the basic TCP protocol diagram, see Appendix A.1.
 
 
 \subsection{Movement of Mouse Pointer}
-~\\
 The laser coordinates, x and y, detected by the RPi camera is mapped to the system coordinates. 
 
 First of all, a point obtained in the image window with width of 640 and height of 480, is translated to the origin of the image coordinates system using the following equation:
@@ -754,9 +743,7 @@ The final coordinate is used to move the mouse pointer on the projected screen.
 \newpage
 %6666666666666666666666666666666666666666666666666666666666666666666666666666
 \section{PROBLEM FACED and SOLUTIONS}
-~\\
 \subsection{Laser Hardware}
-~\\
 Initially, in an attempt to reduce the costs of the overall laser hardware, we had attempted to pulse the laser led using 555 timer circuits. The 555 timer circuits comprised of resistors and capacitors which were picked up precisely enough to give us the required frequency. However, continual error checking and correction, for the detection of the pulsed laser led by camera, the resistors and capacitors had to be changed frequently, which proved to be inefficient and tedious.
 
 
@@ -766,16 +753,16 @@ In the end, we designed and fabricated the hardware, based on this microcontroll
 
 
 \subsection{Detection of laser point by HSV Segmentation}
-~\\
+
 HSV Segmentation deals with the natural color of the object to be detected. We tried to detect the laser utilizing its distinct intensity value in the red region. However, the detection failed in cases when other points with same color and intensity came on the projected screen.
 
 For resolving the problem, we considered only the brightest pixels in the projected screen. However, along with the laser pointer, other bright parts of the view port such as the white parts of the projection itself, and other bright reflections were also being captured. So we programmatically checked the intensity of lights reaching the camera's aperture, and if it exceeded a calibrated level, we reduced the shutter time thereby only allowing minimal exposure to the image. It was found that, laser was seen to be the brightest spot among all pixels. So, an exposure correction of the camera was carried out before the start of the detection. This ensured that only the bright laser pointer is detected.
 \newpage
 %777777777777777777777777777777777777777777777777777777777777777777777777777777
 \section{RESULTS AND ANALYSIS}
-~\\
+
 \subsection{Hardware Testing}
-~\\
+
 This phase of the hardware testing includes the following tests:
 \begin{enumerate}
 \item Connectivity testing
@@ -802,7 +789,6 @@ When the button is pressed, the button gives a high on the pin 2 because it is s
  
 
 \subsection{Software Testing}
-~\\
 \subsubsection{Algorithm Test}
 In normal clock mode, a raspberry had a clock frequency of 700MHz, therefore a general laptop with a clock frequency of over 1 GHz, has better computing power. Before all the hardwares were made available to us, we initially, tested our laser detection algorithms on our computer. The inbuilt webcam or even a cheap USB webcam used with the computer do not have the programmatic exposure correction features, which raspberry pi camera had. For the purpose of testing, we used a darkly lit room and less intense projected screen for the detection of the laser point. The videos were processed in real time and the mouse down and releases were achieved in almost real time. 
 
@@ -817,9 +803,7 @@ Raspberry Pi's processor is not capable of processing real time video at 24 fps.
 \newpage
 %888888888888888888888888888888888888888888888888888888888888888888888888
 \section{COST ANALYSIS}
-~\\
 \subsection{Cost Comparison between Looma System and Our System}
-~\\
 \begin{table*}[ht]
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -843,7 +827,6 @@ Raspberry Pi's processor is not capable of processing real time video at 24 fps.
 Since Looma system is intended for the rural areas, the system needs to be as economic as possible. From the table 8.1, it can be inferred that, the system that we have designed is cheaper as compared to the existing system of Looma. Also, the overall cost of our project can be viewed in the table 8.2.
 \clearpage
 \subsection{Total Cost of Our Project}
-~\\
 \begin{table*}[ht]
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -899,9 +882,7 @@ Since Looma system is intended for the rural areas, the system needs to be as ec
 \newpage
 %99999999999999999999999999999999999999999999999999999999999999999
 \section{LIMITATIONS AND FUTURE ENHANCEMENTS}
-~\\
 \subsection{Limitations}
-~\\
 The limitations of the system developed in this project are as follows:
 
 \begin{enumerate}
@@ -912,7 +893,6 @@ The limitations of the system developed in this project are as follows:
 \end{enumerate}
 
 \subsection{Enhancements}
-~\\
 \begin{enumerate}
 \item A proper hardware with the raspberry pi system fixed inside Looma can prevent the system to be re-calibrated each time it is moved during use.
 \item A better processor than the raspberry pi can be used to enhance the system’s speed and efficiency, allowing it to perform real time operations.
@@ -921,9 +901,7 @@ The limitations of the system developed in this project are as follows:
 \newpage
 %1000000000000000000000000000000000000000000000000000000000000000000000000000
 \section{CONCLUSION}
-~\\
 \subsection{Conclusion}
-~\\
 The project \emph{Laser Pointer based Human Computer Interaction using Computer Vision} aims to provide an alternative solution to the interactive wand system developed by Looma. The system that we have designed allows the user to control the projected system from a considerable distance using the laser pointer. This aids in the teaching process and makes the audio visual learning environment more interactive. Although initially, the system had been designed to work on Looma system but we have tried to make it as generic as possible and can be used for other projector systems as well. 
 
    The system emphasizes on the algorithms for the detection of laser pointer on the screen and implementation of click  and drag operations. By integrating the algorithm with the proper laser hardware, the required laser pointer based interaction system has been developed successfully. The system has been tested in the real working environment. Even though the system cannot process real-time data and lags in time due to the low processing power of the raspberry pi processor. However, the required main functions are efficiently performed by the system. With enhancements suggested above, the system's accuracy and speed can be increased considerably. 
@@ -933,8 +911,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
    
 \newpage
 \renewcommand{\refname}{REFERENCES}
-~\\
-~\\
 \begin{thebibliography}{}
 	\bibitem{kir} Kirstein and Muller, Interaction with a Projection Screen Using a Camera-Tracked Laser Pointer,University of Dortmund, Germany 
 	
@@ -949,9 +925,7 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 
 \newpage
 \begin{appendices}
-~\\
 \section{TCP protocol}
-~\\
 \begin{appendixfig}
 \centering
 \tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -1000,7 +974,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \end{appendixfig}
 \newpage
 \section{Projected Screen Before Exposure Correction}
-~\\
 \begin{appendixfig}
 \includegraphics[scale=0.30]{projector.png}
 \caption{Projected Screen Before Exposure Correction}
@@ -1009,7 +982,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \newpage
 
 \section{Projected Screen After Exposure Correction}
-~\\
 \begin{appendixfig}
 %\begin{figure}
 \includegraphics[scale=0.30]{projectorwithout.png}
@@ -1018,7 +990,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \end{appendixfig}
 \newpage
 \section{AVR Atmega 8L Features:}
-~\\
 \begin{itemize}
 \item \textbf{High-performance, Low-power Atmel AVR 8-bit Microcontroller}
 \begin{itemize}
@@ -1059,7 +1030,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \newpage
 
 \section{AVR Atmega8L Pin Diagram}
-~\\
 \begin{appendixfig}
 \centering
 \includegraphics[scale=1.00]{avr.jpeg}
@@ -1069,7 +1039,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 
 \newpage
 \section{OPENCV}
-~\\
 \textbf{\ac{OpenCV}} is an open source computer vision and machine learning software library. \ac{OpenCV} was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products. Being a BSD-licensed product, \ac{OpenCV} makes it easy for businesses to utilize and modify the code.
 
 The library has more than 2500 optimized algorithms, which includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms. These algorithms can be used to detect and recognize faces, identify objects, classify human actions in videos, track camera movements, track moving objects, extract \ac{3D} models of objects, produce \ac{3D} point clouds from stereo cameras, stitch images together to produce a high resolution image of an entire scene, find similar images from an image database, remove red eyes from images taken using flash, follow eye movements, recognize scenery and establish markers to overlay it with augmented reality, etc.
@@ -1100,7 +1069,6 @@ Raspberry Pi Camera Board Module supports a full HD (High Definition) video stre
 The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when using Raspi Camera Module. So for example encoding \emph {h.264}, video has low impact on the CPU (Central Processor Unit) usage. Also, it has an excellent resolution of 5 Megapixels, which is higher than most USB webcams. It also has an excellent daytime image quality. If we use USB Webcam, it will have a very slow frame rate video and the CPU usage will be quite high. RPi does not have enough CPU horsepower to do higher frame rates, resolution and advanced video compression. 
 \newpage
 \section{Raspberry Pi Board}
-~\\
 \begin{appendixfig}
 \centering
 \includegraphics[scale=1.00]{RPiModelB.png}
@@ -1136,7 +1104,6 @@ The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when us
 %\\label{}
 %\\end{figure}
 \section{Flowchart of the algorithm}
-~\\
 \begin{appendixfig}
 \centering
 \tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -1200,7 +1167,6 @@ The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when us
 \end{appendixfig}
 
 \begin{appendixfig}
-~\\
 \centering
 \tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, text width=7em, text centered, rounded corners, minimum height=2em]
