@@ -8,13 +8,17 @@ right=2cm,
 headsep=1.5cm,
 ]{geometry}
 \usepackage{fancyhdr}
-\usepackage{sectsty}
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
 \fancyhf{}
 \fancyhead[R]{\thepage}
 \usepackage{mathptmx}
-\sectionfont{\fontsize{14}{12}\selectfont}
+%%%%%%%%%ADDED
+\parskip=1\baselineskip
+\parindent = 0pt
+
+%%%%%%%%%
+%\sectionfont{\fontsize{14}{12}\selectfont}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{wrapfig}
@@ -136,24 +140,23 @@ In its long term goals, our project aims to lay a foundation to improved interac
 \subsection{Problem Statement}
 The existing wand system of Looma is basically an IR based handheld device that acts as a mouse. It emits IR light, and also called a light pen. The major components of it are that it has an IR LED, a button and and on/off switch and uses 555 timer to turn the IR light source on/off. The led is blinked at a pre-determined frequency so that the blink is be analysed as a click by its camera processor. The current design uses Nintendo Wii IR camera, which is scavenged from Wii motes in order to detect the IR light on the projected screen. Some of the system's issues which can not be ignored are:
 
-\begin{itemize}
+\begin{enumerate}
 \item \textbf {Drawing in the Whiteboard:} While drawing in the LOOMA software, the tracking of the IR led is very unreliable and the drawings are not made as expected.
 \item \textbf{Use of Pre-built Multi-Object-Tracking(MOT) processor:} There is the use of inbuilt MOT processor in the camera chip, which does part of the image processing and tracking and sending coordinates. In the case of errors, its response can not be modified to remove errors which makes it inefficient
 \item \textbf{Errors not detectable:} Since the Wiimote used IR to move the mouse, the location of the IR on the screen is not visible with the naked eye thus making errors not detectable 
 \item \textbf{Unavailability in the market:} Wiimote IR camera chip being used in the system can not be readily bought in the open market which makes it difficult to mass produce the system
 \item \textbf{Coverage and Difficult to Interact:} Wii wand is not interactive enough and works effectively only within the projected screen space which makes interacting with the screen difficult and not intuitive
-\end{itemize}
+\end{enumerate}
 
 In short, hacked Wii Remotes~\cite{joh} along with the Field Programmable Gate Array (FPGA) board is adding up to the cost significantly. In addition, the system is not very stable and is inefficient to use as points aforementioned, thereby leading to the research on alternative vision-based HCIs and our project is an effort to get
 a prototype of one such alternative.
 
 \subsection{Objectives}
 The basic objectives of our project is make prototype for an alternative type of vision-based HCIs and in the modification of Project Looma in aspects listed below:
-\begin{itemize}
+\begin{enumerate}
 	\item To use laser pointer instead of IR (Infra-red) based interaction
 	\item To remove the Wii technology, and its dependencies used in current prototype thereby, making the system efficient and cost effective
-\end{itemize}
-\newpage
+\end{enumerate}
 \subsection{Scope}
 \subsubsection{Interactive Projector}
 Projector systems do not have anything to project on the screen without
@@ -164,27 +167,6 @@ on a board used as projection area, and which locates the position of the pen
 or other visual tool when touching on the board, this would be an interactive
 whiteboard. Such whiteboards are used by schools and universities to get
 maximum involvement of students in their learning. 
-
-In addition to that, it also reduce the need of IT infrastructures since students can learn from a
-single board present in the classrooms, unlike the use of individual computers
-for audio-visual learning. Also, another way of interactivity can be one where
-the interactivity can be done right from the projector itself. If the technology
-for interaction, for example the camera and processor to locate the position
-of pen, nger or any visual tool are used right on the projector, this makes up
-an interactive projector system. 
-
-As seen in the figure 1.1, the laser point on the projected screen of the projector is captured by the camera and sent to the interaction system which in turns sends the device being projected some control actions to perform. Based on the detection of the laser, some actions are remotely performed on the computer, thereby controlling tasks on it. Such systems are more advantageous than
-the use of whiteboards from security perspective, maintenance perspective,
-etc. If any part of the system is damaged, a part of it can be changed
-or modified thus making maintenance and replacement a good choice in the
-case of interactive projectors. Also, the ways of interacting with the projector
-screen can be upgraded and modified with significantly less cost than in the
-case of interactive whiteboards. 
-
-Interactive Projectors makes sense for the
-users who want the combination of projector and interactive whiteboard in
-an individual system. 
-
 \begin{figure} 
 \centering
 \tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -216,19 +198,40 @@ an individual system.
 \end{tikzpicture}
 \caption{Interactive Projector System}\label{}
 \end{figure}
+
+In addition to that, it also reduce the need of IT infrastructures since students can learn from a
+single board present in the classrooms, unlike the use of individual computers
+for audio-visual learning. Also, another way of interactivity can be one where
+the interactivity can be done right from the projector itself. If the technology
+for interaction, for example the camera and processor to locate the position
+of pen, nger or any visual tool are used right on the projector, this makes up
+an interactive projector system. 
+
+As seen in the figure 1.1, the laser point on the projected screen of the projector is captured by the camera and sent to the interaction system which in turns sends the device being projected some control actions to perform. Based on the detection of the laser, some actions are remotely performed on the computer, thereby controlling tasks on it. Such systems are more advantageous than
+the use of whiteboards from security perspective, maintenance perspective,
+etc. If any part of the system is damaged, a part of it can be changed
+or modified thus making maintenance and replacement a good choice in the
+case of interactive projectors. Also, the ways of interacting with the projector
+screen can be upgraded and modified with significantly less cost than in the
+case of interactive whiteboards. 
+
+Interactive Projectors makes sense for the
+users who want the combination of projector and interactive whiteboard in
+an individual system. 
 %\begin{figure}[h]
 %\centering
 %%\includegraphics[scale=0.7]{abc}
 %\caption {Laser Pointer based Interactive Projector System}
 %\end{figure}
 %2222222222222222222222222222222222222222222222222222222222222222222222222222
+\clearpage
 \newpage
 \section{LITERATURE REVIEW}
 The current prototype can run off a rechargeable 12V battery, has the capability to access the World Wide Web(WWW), has readily available off line content, via established partnerships, and has an extremely easy to use interface. The device is contained in a single unit with replaceable external components (i.e. keyboard, remotes), consumes less than 100 W of power, and will cost only USD 300. The system is about the size of a shoe-box. 
 As seen in the figure, the existing Looma system functional parts can be listed as:
 
 \subsection{Looma and Wand Details}
-\begin{itemize}
+\begin{enumerate}
 \item300 lumen projector
 \item Internet Connected 
 \item Wireless Wand control from front of room
@@ -238,7 +241,7 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 \item External ports: 1 Ethernet
 \item Custom power supply (12V in 5V, 12V, 19.5V out)
 \item Hacked Wii IR Camera and Wii wands
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[htp]
 \centering
@@ -250,11 +253,11 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 \newpage
 
 Wand control descriptions:
-\begin{itemize}
+\begin{enumerate}
 \item Wand shown in the figure is a 3D printed IR light source
 \item The wand design uses 555 timer to turn the IR light source on/off at a pre-determined frequency such that the blink can be interpreted as a click on the device
 \item Current design uses Nintendo Wii IR camera, which are scavenged from Wii motes
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[htp]
 \centering
@@ -314,7 +317,7 @@ single value reflecting the brightness of that pixel. One such approach is to ta
 average of the contribution from each channel: (R+B+C)/3. 
 
 However, since the
-perceived brightness is often dominated by the green component, a different, more "human-oriented", method is to take a weighted average, e.g.0.3R + 0.59G + 0.11B. Some of the image enhancements, we have performed are such grayscale conversions, smoothing the image etc. 
+perceived brightness is often dominated by the green component, a different, more human-oriented, method is to take a weighted average, e.g.0.3R + 0.59G + 0.11B. Some of the image enhancements, we have performed are such grayscale conversions, smoothing the image etc. 
 Smoothing, also called blurring, is a simple and
 frequently used image processing operation. There are many reasons for
 smoothing. In this tutorial we will focus on smoothing in order to reduce noise
@@ -342,7 +345,7 @@ Once the  processing operations are completed, the required algorithms are appli
 \end{enumerate}
 
 \subsubsection{Embedded System}
-A microcontroller is a self-contained system with peripherals, memory and a processor that can be used as an embedded system. Most programmable microcontrollers that are used today are embedded in other consumer products or machinery including phones, peripherals, automobiles and household appliances for computer systems. Due to that, another name for a microcontroller is "embedded controller." 
+A microcontroller is a self-contained system with peripherals, memory and a processor that can be used as an embedded system. Most programmable microcontrollers that are used today are embedded in other consumer products or machinery including phones, peripherals, automobiles and household appliances for computer systems. Due to that, another name for a microcontroller is an embedded controller.
 
 Some embedded systems are more sophisticated, while others have minimal requirements for memory and programming length and a low software complexity. An embedded system is an engineering artifact involving computation that is subject to physical constraints(reaction constraints and execution constraints) arising through interactions of computational processes with the physical world. Reaction constraints originate from the behavioural requirements, throughput, and jitter whereas execution constraints originate from the implementation requirements and put bounds on available processor speeds, power, memory and hardware failure rates. The key to embedded systems design is to obtain desired functionality under both kinds of constraints. 
 
@@ -351,45 +354,40 @@ They generally have minimal or no user interface.
 
 
 \subsection{Tools Used For Hardware}
-\subsubsection{Simulation}
-\paragraph {Proteus VSM}
+\subsubsection {Proteus VSM}
 The Proteus VSM contains mixed mode SPICE circuit simulation, animated components and microcontroller models to facilitate co-simulation of complete microcontroller based design. It is possible to develop and test such designs before a physical prototype is constructed. This is possible because interaction with the design is possible using circuit indicators like LED, display panels, actuators etc. It also provides extensive debugging facility by employing breakpoints, single stepping and variable display of both assembly code and high level language source code.
 
-\subsubsection{Circuit Design}
-\paragraph{Eagle}
+\subsubsection{Eagle}
 Eagle is acronym for “Easily Applicable Graphical Layout” which is a flexible, expandable and scriptable schematic capture editor, PCB layout editor, auto-router and CAM and BOM tools developed by CadSoft Computer. 
 
-\subsubsection{Microcontroller Programming}
-\paragraph {AVR Studio 6}
+\subsubsection {AVR Studio 6}
 AVR Studio 6 is a software development environment developed by Atmel. It is a full software development with an editor, simulator, programmer, etc. It comes with its own integrated C compiler, the AVR GNU C Compiler (GCC). It also supports several programmers including the STK500, AVR Dragon, etc. 
 
-\paragraph{SinaProg}
+\subsubsection{SinaProg}
 SinaProg is Hex downloader application with AVRDude and Fuse Bit Calculator. This is used to download code/program and to set fuse bits of all AVR based microcontrollers. 
 
-\subsection{Software implementation and simulation}
-\subsubsection{Programming Language and Libraries}
-\begin{enumerate}
-
-\item \textbf{Python 2.7.3:}
+\newpage
+\section{Software implementation and simulation}
+\subsection{Python}
 
 IDLE is an integrated development environment for Python, which has been bundled with each release of the language. It is packaged as an optional part of the Python packaging
 with many Linux distributions. It is completely written in Python and the Tkinter GUI
 toolkit (wrapper functions for Tcl/Tk).According to the included README, its main
 features are:
-\begin{itemize}
+\begin{enumerate}
 \item Multi-window text editor with syntax highlighting, auto completion, smart indent
 and other.
 \item Python shell with syntax highlighting.
 \item Integrated debugger with stepping, persistent breakpoints, and call stack visibility.
-\end{itemize}
-\item \textbf{Open Source Computer Vision Library (OpenCV):}
+\end{enumerate}
+\subsection{Open Source Computer Vision Library (OpenCV):}
 
 OpenCV is an open-source Berkeley Software Distribution (BSD)-licensed library
 that includes several hundreds of computer vision algorithms. It focuses mainly on real-
 time image processing. OpenCV library has been used in python platform.
 OpenCV has a modular structure, which means that the package includes several shared or
 static libraries.
-\begin{itemize}
+\begin{enumerate}
 \item core - a compact module defining basic data structures, including the dense
 multidimensional array Mat and basic functions used by all other modules.
 \item imgproc - an image processing module that includes linear and non-linear image
@@ -408,8 +406,9 @@ well as simple UI capabilities.
 \item gpu - GPU-accelerated algorithms from different OpenCV modules.
 It also includes some other helper modules, such as FLANN and Google test wrappers,
 Python bindings, and others.
-\end{itemize}
-\item \textbf{Tkinter:}
+\end{enumerate}
+
+\subsection{Tkinter:}
 
 It is a standard builds of Python include an object-oriented interface to the Tcl/Tk widget set,
 called \textbf{Tkinter}. This is probably the easiest to install and use. The Tkinter module (“Tk interface”) is the standard Python interface to the Tk GUI toolkit.
@@ -420,17 +419,17 @@ wrappers that implement the Tk widgets as Python classes. In addition, the inter
 tkinter provides a threadsafe mechanism which allows Python and Tcl to interact.
 Tkinter‘s chief virtues are that it is fast.
 
-\item \textbf{Picamera:}
+\subsection{ Picamera:}
 
 Raspberry Pi camera module can use \emph{Picamera 1.2}. It is a pure Python interace to the camera module. The interface eradicates the need to use command line syntax for grabbing image frames and videos. It does not cause restart of the camera interfaces when changing the intrinsic camera properties
 . 
-\item \textbf{Library: PyMouse}
+\subsection{ PyMouse:}
 It is a pure Python cross-platform mouse control module. Mouse functions are provided by the PyMouse library. It runs on any Linux system running over X11 display server. PyMouse provides simple functions like move, click, press and release. PyMouse is a wrapper over Python X Library. It is used to move the mouse pointer as per the laser pointer movements. It is a fully functional X client library intended for Python programs, working as client to communicate with the X server via the X protocol. It runs on Linux using XFree86 as the server and most Unices.
 
 
 The X Window System is a network-transparent window system that was designed at MIT. X display servers run on computers with either monochrome or color bitmap display hardware. Once the connection is set up, the Xlib macros are used to get the information about the current display. Similarly, using the X objects, the mouse pointer is moved by sending coordinates to the appropriate functions. 
 
-\end{enumerate}
+
 \newpage
 %4444444444444444444444444444444444444444444444444444444444444444444444444444
 \section{SYSTEM DEVELOPMENT}
@@ -459,17 +458,17 @@ First, the projected screen is captured and the four corners of the projected sc
 \end{figure}
 The next task is updating mouse as per the laser point's actions. In all conditions, whenever laser point is seen inside the projected screen, the mouse pointer move command is given to the system using the projector. In the case of blinks of laser point, click or drag actions is given based on the number of clicks. 
 
-The communication between raspberry pi and the computer system is done via client server architecture as shown in the Appendix I.1.
+The communication between raspberry pi and the computer system is done via client server architecture as shown in the Appendix A.1.
 %5555555555555555555555555555555555555555555555555555555555555555
 \newpage
 \section{METHODOLOGY}
 The main purpose of the reformed wand is to establish a way of interaction between the user and the projector system. Hence, this system needs to accomplish the following tasks to overcome the limitations provided by the current Looma wand system:
-\begin{itemize}
+\begin{enumerate}
 \item Get sequence of frames from the real-time video of the projected screen
 \item Use of laser light instead of infra-red for greater flexibility in the use of mouse pointer
 \item Detect laser’s on or off states in each frame using image processing algorithms
 \item Based on the results of detection, generate appropriate mouse press and release actions to operate mouse
-\end{itemize}
+\end{enumerate}
 
 \subsection{Initial Calibration of Projected Screen}
 	 The projected screen is our region of interest. The four corners of the projected screen are first extracted, which is where we want our laser point to be detected within. 
@@ -569,12 +568,12 @@ This stage decides which are all edges are really edges and which are not. For t
 	
 \subsubsection{Brightest Pixel Detection}
 After exposure compensation is done based on the average value of the image captured, the steps involved in detecting the brighest pixel area and its location can be described in the following points:
-\begin{itemize}
+\begin{enumerate}
 \item {\textbf{Grayscale conversion}}
 Grayscale image carries the intensity information. It is composed of shades of gray, varying from black at weakest intensity to white at the strongest. 
 
 A RGB image is captured by Rpi at first, which contains all the three components: Red (R), Green (G), Blue (B). The processing of all these components is redundant and time inefficient. The grayscale conversion is done so that the RGB values are expressed by intensity values within a given range of 0 to 255 values. These grayscale levels are then thresholded by binary thresholding algorithm. 
-
+\newpage
 \item {\textbf{Binary Thresholding}}
 
 It is a segmentation method. Thresholding application involves separating out regions of an image corresponding to objects which is to be analyzed. This separation is based on the variation of intensity between the object pixels and the background pixels.
@@ -589,7 +588,7 @@ The outermost contour is taken as laser.
 \item{\textbf{Approximate by a bounding rectangle}}
 The obtained contour is then approximated by a bounding rectangle which gives us the x, y coordinates as well as the width and height of the laser. This is then used to move the mouse pointer. 
 
-\end{itemize}
+\end{enumerate}
 		
 \subsection{Microcontroller to generate laser pulses}
 
@@ -680,8 +679,6 @@ The laser wand is made to blink on manual press of a button. The microcontroller
 	\textbf {Laser-off} is a state of continual five or more laser-off  states, which occurs when the laser is not detected. \textbf{Laser-on} is a state of continual five or more laser-on states, when the laser is detected. \textbf{Toggle-0to1} occurs when laser state is toggled from off state to on state, whereas in \textbf{Toggle-1to0}, laser state is toggled from on state to off state. 
 	
 	At all times, when laser is in the on state, the mouse pointer is continually updated to move. When laser state is toggled, either from laser on to off or vice-versa, the mouse pointer is pressed. If the mouse pointer is moved while in pressed state, drag occurs. This continues until a laser-off state or laser-on state occur, which is interpreted as a mouse release. And, at every toggle state, mouse down occurs and if laser-on or laser-off state is immediately succeeded to this event, then mouse is released which is then interpreted as click and the states can be viewed in the figure 5.5 and the flowchart for the algorithm is given in the Appendices J.1 and J.2.
-\newpage
-
 
 %\begin{figure}[htp]
 %\centering
@@ -798,7 +795,7 @@ In normal clock mode, a raspberry had a clock frequency of 700MHz, therefore a g
 
 The laser detection algorithm was tested on Raspberry Pi. For the communication of the detection system and the computer, a client server architecture was implemented where Raspberry Pi, being the client and the Looma’s existing Pandaboard, running as the server. In this way, the testing was carried out.
 
-Raspberry Pi's processor is not capable of processing real time video at 24 fps. It was observed that at maximum, it processes the video at 4 fps. Hence, it hindered the laser detection algorithm significantly. The laser on-offs were not seen as the expected by the algorithm. Thereby, the processing  is slower than in computer where the video was being processed at 24 fps. Therefore, the overall detection and actions are not performed in real time by our system.
+Raspberry Pi's processor is not capable of processing real time video at 24 fps. It was observed that at maximum, it processes the video at four fps. Hence, it hindered the laser detection algorithm significantly. The laser on-offs were not seen as the expected by the algorithm. Thereby, the processing  is slower than in computer where the video was being processed at 24 fps. Therefore, the overall detection and actions are not performed in real time by our system.
 
 \newpage
 %888888888888888888888888888888888888888888888888888888888888888888888888
@@ -883,7 +880,6 @@ Since Looma system is intended for the rural areas, the system needs to be as ec
 %99999999999999999999999999999999999999999999999999999999999999999
 \section{LIMITATIONS AND FUTURE ENHANCEMENTS}
 \subsection{Limitations}
-The limitations of the system developed in this project are as follows:
 
 \begin{enumerate}
 \item Due to the slow processing speed of the raspberry pi used, there is lag in the overall system. 
@@ -990,43 +986,43 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \end{appendixfig}
 \newpage
 \section{AVR Atmega 8L Features:}
-\begin{itemize}
+\begin{enumerate}
 \item \textbf{High-performance, Low-power Atmel AVR 8-bit Microcontroller}
-\begin{itemize}
+\begin{enumerate}
 \item Advanced \ac{RISC} Architecture
 \item 130 Powerful Instructions – Most Single-clock Cycle Execution
 \item 32 × 8 General Purpose Working Registers
-\end{itemize}
+\end{enumerate}
 \item \textbf{High Endurance Non-volatile Memory segments}
-\begin{itemize}
+\begin{enumerate}
 \item 8Kbytes of In-System Self-programmable Flash program memory
 \item 512Bytes EEPROM
 \item WriteErase Cycles: 10,000 Flash. 100,000 \ac{EEPROM}
 \item Data retention: 20 years at 85$^oC$ 100 years at 25$^oC$
-\end{itemize}
+\end{enumerate}
 \item \textbf{Peripheral Features}
-\begin{itemize}
+\begin{enumerate}
 \item Two 8-bit Timer/Counters with Separate Prescaler, one Compare Mode
 \item One 16-bit Timer/Counter with Separate Prescaler, Compare Mode, and Capture Mode
 \item Real Time Counter with Separate Oscillator
 \item Three PWM Channels
-\end{itemize}
+\end{enumerate}
 \item \textbf{Operating Voltages}
-\begin{itemize}
+\begin{enumerate}
 \item 2.7V - 5.5V (ATmega8L)
 \item 4.5V - 5.5V (ATmega8)
-\end{itemize}
+\end{enumerate}
 \item \textbf{Speed Grades}
-\begin{itemize}
+\begin{enumerate}
 \item 0 - 8MHz (ATmega8L)
 \item 0 - 16MHz (ATmega8)
-\end{itemize}
+\end{enumerate}
 \item \textbf{Power Consumption at 4Mhz, 3V, 25$^oC$}
-\begin{itemize}
+\begin{enumerate}
 \item Active: 3.6mA
 \item Idle Mode: 1.0mA
-\end{itemize}
-\end{itemize}
+\end{enumerate}
+\end{enumerate}
 \newpage
 
 \section{AVR Atmega8L Pin Diagram}
@@ -1045,7 +1041,7 @@ The library has more than 2500 optimized algorithms, which includes a comprehens
 
 In general, \ac{OpenCV} application areas include:
 
-\begin{itemize}
+\begin{enumerate}
 \item 2D and 3D feature toolkits
 \item Egomotion estimation
 \item Facial recognition system
@@ -1059,7 +1055,7 @@ In general, \ac{OpenCV} application areas include:
 \item Structure from motion SFM
 \item Motion tracking
 \item Augmented reality
-\end{itemize}
+\end{enumerate}
 \newpage
 \section{Raspberry Pi and Camera Board}
 Raspberry Pi is a single-board computer with processor, memory, I/O ports and many more features, which together make it a functional computer for a wide range of applications in robotics. It is so simple than any logical person can program it, even it is for the first time when you work with a single-board computer.The ARM powered minicomputer is a platform with enormous possibilities and powerful enough to run many of the same programs as computer. Raspberry Pi serves as a wonderful platform for computer vision algorithms given its size, wonderful camera board and portability. Using the Picamera module, we took raw byte streams of the projected screen, and converted them to OpenCV (Open Computer Vision) object before doing further image processing algorithms.
