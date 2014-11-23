@@ -437,7 +437,7 @@ The X Window System is a network-transparent window system that was designed at 
 The Looma software can run on any linux hardware. When the power is supplied to the Looma hardware, the system boots up. The educational Looma software starts up and once the projector button is turned on, we can see the looma software, as show in the figure 5.1.
 \begin{figure}[htp]
 	\centering
-		\includegraphics[scale=0.3]{loomasoftware.png}
+		\includegraphics[scale=0.49]{loomasoftware.png}
 	\caption{Looma Software}
 \label{}
 \end{figure}
@@ -454,7 +454,7 @@ The arrangement of the detection system and the Looma system is done in such a w
 
 \begin{figure}[htp]
 \centering
-\includegraphics[scale=0.6]{proposed_system}
+\includegraphics[scale=0.61]{proposed_system}
 \caption{System Block Diagram}
 \label{Block Diagram}
 \end{figure}
@@ -567,14 +567,11 @@ This stage decides which are all edges are really edges and which are not. For t
 \subsubsection{Brightest Pixel Detection}
 After exposure compensation is done based on the average value of the image captured, the steps involved in detecting the brighest pixel area and its location can be described in the following points:
 \begin{enumerate}
-\item {\textbf{Grayscale conversion}}
-Grayscale image carries the intensity information. It is composed of shades of gray, varying from black at weakest intensity to white at the strongest. 
+\item {\textbf{Grayscale conversion}} Grayscale image carries the intensity information. It is composed of shades of gray, varying from black at weakest intensity to white at the strongest. 
 
 A RGB image is captured by Rpi at first, which contains all the three components: Red (R), Green (G), Blue (B). The processing of all these components is redundant and time inefficient. The grayscale conversion is done so that the RGB values are expressed by intensity values within a given range of 0 to 255 values. These grayscale levels are then thresholded by binary thresholding algorithm. For detail on Rpi Board and Camera see Appendix D.1, E.1 and F.1.
 \newpage
-\item {\textbf{Binary Thresholding}}
-
-It is a segmentation method. Thresholding application involves separating out regions of an image corresponding to objects which is to be analyzed. This separation is based on the variation of intensity between the object pixels and the background pixels.
+\item {\textbf{Binary Thresholding}} It is a segmentation method. Thresholding application involves separating out regions of an image corresponding to objects which is to be analyzed. This separation is based on the variation of intensity between the object pixels and the background pixels.
 
 To differentiate the pixels we are interested in from the rest (which will eventually be rejected), we perform a comparison of each pixel intensity value with respect to a threshold (determined according to the problem to solve). Here, we have set the threshold to be 200 such that regions above this value is thresholded as white and rest of the pixels are thresholded as black.
 
@@ -601,14 +598,12 @@ The obtained contour is then approximated by a bounding rectangle which gives us
 
 	An AVR microcontroller is used instead of 555 timer so that resistor and capacitors values need not be changed with the change in frequencies and duty cycles. Below, is the schematic of the system circuit. The laser is turned on when the supply is applied. When the push button is pressed, a pulse at a frequency set to 6Hz in the microcontroller. The proteus simulation of our circuit can be viewed in Appendix G.1 and the schematic diagram in Appendix H.1. 
 	
-	The laser circuit has been programmed such that it produces a 6Hz pulses when the push button is pressed, else it stays on. The laser hardware eagle design and final circuits can be viewed in the Appendix I.1, J.1 and K.1. The target frequency has been set to 6Hz. The prescaler used is 64. The top value for pulse width modulation(PWM) is obtained as in the following equation 5.3. 
+	The laser circuit has been programmed such that it produces a 6Hz pulses when the push button is pressed, else it stays on. The laser hardware eagle design and final circuits can be viewed in the Appendix I.1, J.1 and K.1. The target frequency has been set to 6Hz. The prescaler used is 64. The top value for pulse width modulation(PWM) is obtained as in the following equation 6.3. 
 	\begin{equation}
 	Top\ value = (Clock\  frequency/Target\  frequency)*Scaler - 1
 	\end{equation}
 	
-	The top value is 20833. For a 20 per cent duty cycle, the on time of the laser is set to 20 per cent of the top value and off time is set to the 80 per cent of the top value. We have kept the push button switch in the interrupt pin, so that when the button is pushed, interrupt is obtained and the subsequent Interrupt Service Routine(ISR) can be run. This ISR does the work of producing PWM pulses of 20 per cent duty cycle. The diagram below is our working circuit.
-
-
+	The top value is 20833. For a 20 per cent duty cycle, the on time of the laser is set to 20 per cent of the top value and off time is set to the 80 per cent of the top value. We have kept the push button switch in the interrupt pin, so that when the button is pushed, interrupt is obtained and the subsequent Interrupt Service Routine(ISR) can be run. This ISR does the work of producing PWM pulses of 20 per cent duty cycle. 
 
 \subsection{Hardware Implementation}
 \subsubsection{Laser Wand}
@@ -628,16 +623,16 @@ Laser is a device that emits light by optical amplification based on stimulated 
 The laser wand is made to blink on manual press of a button. The microcontroller has three timers 0, 1, 2 of which 16 bit timer 1 is used in non-inverting PWM mode. The prescaler is set to 64. The Timer and PWM of the avr microcontroller is used to achieve that 
 
 \subsection{Finalized algorithm for click and drag}
-	We constructed a State Diagram with the following states of laser. 
+	We constructed a State Diagram with the three states of laser. \textbf {Laser-off} is a state of continual five or more laser-off  states, which occurs when the laser is not detected. \textbf{Laser-on} is a state of continual five or more laser-on states, when the laser is detected. \textbf{Toggle-0to1} occurs when laser state is toggled from off state to on state, whereas in \textbf{Toggle-1to0}, laser state is toggled from on state to off state. 
 \begin{enumerate}
 \item Laser-off or 0
 \item Laser-on or 1
 \item Toggle 0to1 or 1to0 
-\end{enumerate}
+\end{enumerate}	
 
-	\textbf {Laser-off} is a state of continual five or more laser-off  states, which occurs when the laser is not detected. \textbf{Laser-on} is a state of continual five or more laser-on states, when the laser is detected. \textbf{Toggle-0to1} occurs when laser state is toggled from off state to on state, whereas in \textbf{Toggle-1to0}, laser state is toggled from on state to off state. 
-	
-	At all times, when laser is in the on state, the mouse pointer is continually updated to move. When laser state is toggled, either from laser on to off or vice-versa, the mouse pointer is pressed. If the mouse pointer is moved while in pressed state, drag occurs. This continues until a laser-off state or laser-on state occur, which is interpreted as a mouse release. And, at every toggle state, mouse down occurs and if laser-on or laser-off state is immediately succeeded to this event, then mouse is released which is then interpreted as click. The state diagram of the algorithm can be viewd in Appendix N.1 and the final algorithm can be viewed in Appendix O.1
+\indent
+
+At all times, when laser is in the on state, the mouse pointer is continually updated to move. When laser state is toggled, either from laser on to off or vice-versa, the mouse pointer is pressed. If the mouse pointer is moved while in pressed state, drag occurs. This continues until a laser-off state or laser-on state occur, which is interpreted as a mouse release. And, at every toggle state, mouse down occurs and if laser-on or laser-off state is immediately succeeded to this event, then mouse is released which is then interpreted as click. The state diagram of the algorithm can be viewd in Appendix N.1 and the final algorithm can be viewed in Appendix O.1
 	
 
 \subsection{Communication between computer and RPi}
@@ -695,10 +690,7 @@ where tx and ty are the translation factors. The final coordinates obtained is u
 \subsection{Laser Hardware}
 Initially, in an attempt to reduce the costs of the overall laser hardware, we had attempted to pulse the laser led using 555 timer circuits. The 555 timer circuits comprised of resistors and capacitors which were picked up precisely enough to give us the required frequency. However, continual error checking and correction, for the detection of the pulsed laser led by camera, the resistors and capacitors had to be changed frequently, which proved to be inefficient and tedious.
 
-
-Despite the cost constraints, we moved on to atmega 8L microcontrolle. We would have used an ATTiny45 microcontroller, which is about the same size as a 555 timer, but it was not readily available. Thereby, we programmatically pulsed our laser led, as required. Thus, it was easy to setup the laser hardware for the detection system.
-
-In the end, we designed and fabricated the hardware, based on this microcontroller.
+Despite the cost constraints, we moved on to Atmega 8L microcontrolle. We would have used an ATTiny45 microcontroller, which is about the same size as a 555 timer, but it was not readily available. Thereby, we programmatically pulsed our laser led, as required. Thus, it was easy to setup the laser hardware for the detection system. In the end, we designed and fabricated the hardware, based on Atmega 8L microcontroller. 
 
 
 \subsection{Detection of laser point by HSV Segmentation}
@@ -730,7 +722,7 @@ This phase of the hardware testing includes the following tests:
 
 \subsubsection{Testing the Laser Circuit}
 
-The laser wand was tested by connecting the circuit elements as shown in the figure. 5.2. In the microcontroller, Pin 1 (OC1A) and Pin 2 (OC1B) of Port B were configured in PWM setting. However, instead of laser led, a normal red-led was used. 
+In the microcontroller, Pin 1 (OC1A) and Pin 2 (OC1B) of Port B were configured in PWM setting. However, instead of laser led, a normal red-led was used. 
 
 Since a microcontroller is not a good source for external circuits, an NPN transistor was used to sink the red led to the microcontroller. And, the button to control the PWM output from the Port B pins was connected to interrupt pin at Port D, pin 2, so that on manual button presses, the led started pulsing at the desired frequency.
 
@@ -747,14 +739,15 @@ When the button is pressed, the button gives a high on the pin 2 because it is s
 \subsubsection{Algorithm Test}
 In normal clock mode, a raspberry had a clock frequency of 700MHz, therefore a general laptop with a clock frequency of over 1 GHz, has better computing power. Before all the hardwares were made available to us, we initially, tested our laser detection algorithms on our computer. The inbuilt webcam or even a cheap USB webcam used with the computer do not have the programmatic exposure correction features, which raspberry pi camera had. For the purpose of testing, we used a darkly lit room and less intense projected screen for the detection of the laser point. The videos were processed in real time and the mouse down and releases were achieved in almost real time. 
 
-	The algorithm was tested on raspberry pi by programmatically setting the exposure. The projected screen before programmatic exposure correction is given by in the top left window named \emph{Thresh} in the image shown in the Appendix P.1. This window named \emph{Thresh} is showing the projected screen as seen by the raspberry pi camera. After the exposure correction is done, only the laser pointer is the visible white dot in the window named \emph{Thresh}. The exposure corrected image in the window \emph{Thresh} can be viewed in the Appendix Q.1.
+	Later, the algorithm was tested on Rpi by programmatically setting the exposure. The projected screen before programmatic exposure correction is given by in the top left window named \emph{Thresh} in the image shown in the Appendix P.1. This window named \emph{Thresh} is showing the projected screen as seen by the Rpi camera. After the exposure correction is done, only the laser pointer is the visible white dot in the window named \emph{Thresh}. The exposure corrected image in the window \emph{Thresh} can be viewed in the Appendix Q.1. Since the algorithm worked on both the Rpi and on our computer, the algorithm test was a success. 
 
 \subsubsection{System Test}
 
 The laser detection algorithm was tested on RPi. For the communication of the detection system and the computer, a client server architecture was implemented where RPi, being the client and the Looma’s existing Pandaboard, running as the server. In this way, the testing was carried out.
 
+RPi's processor is not capable of processing real time video at 24 fps. It was observed that at maximum, it processes the video at about four fps. Thereby, it hindered the laser detection algorithm significantly. The laser on-offs were not seen as the expected by the algorithm and the processing  is found to be slower than in computer. 
 
-RPi's processor is not capable of processing real time video at 24 fps. It was observed that at maximum, it processes the video at four fps. Hence, it hindered the laser detection algorithm significantly. The laser on-offs were not seen as the expected by the algorithm. Thereby, the processing  is slower than in computer where the video was being processed at 24 fps. To improve the overall detection of the laser pointer, we reduced the image frames by half and did dilation on the image to enlarge the pixels. This improved the detection by a significant amount. However, the overall detection and actions are not performed in real time by our system due to slow processor and bright lit rooms.
+To improve the overall detection of the laser pointer, we reduced the image frames by half and did dilation on the image to enlarge the pixels. This improved the detection by a significant amount but with some errors since it dilated non-laser spots as well. Hence, as mentioned in the problems faced and solutions section, the overall detection and actions is not performed in real time by due to slow processor. and other bright spots in the projected screen. Since both the systems, Rpi and a general computer, could detect the laser spot and perform actions, the system test was a success as well. 
 
 \newpage
 %99999999999999999999999999999999999999988888888888
@@ -952,14 +945,13 @@ The software of RPi (RPi) utilizes Rpi GPU (Graphical Processor Unit) when using
 \section{RASPBERRY PI BOARD}
 \begin{appendixfig}
 \centering
-\includegraphics[scale=1.00]{RPiModelB.png}
+\includegraphics[scale=0.90]{RPiModelB.png}
 \caption{RPi Board}
 \label{}
 \end{appendixfig}
 \newpage
 \section{RASPBERRY PI CAMERA MODULE}
 \begin{appendixfig}
-\centering
 \includegraphics[scale=1.00]{index.jpeg}
 \caption{RPi Camera Module}
 \label{}
@@ -973,11 +965,11 @@ The software of RPi (RPi) utilizes Rpi GPU (Graphical Processor Unit) when using
 \label{}
 \end{appendixfig}
 \newpage
-\section{LASER CIRCUIT SCHEMATIC DIAGRAM}
+\section{LASER CIRCUIT SCHEMATIC}
 \begin{appendixfig}
 	\centering
 	\includegraphics[scale=0.60]{schematic.png}
-	\caption{Laser circuit schematic diagram}
+	\caption{Laser circuit schematic}
 	\label{}
 \end{appendixfig}
 \newpage
@@ -1001,7 +993,7 @@ The software of RPi (RPi) utilizes Rpi GPU (Graphical Processor Unit) when using
 \section{FABRICATED LASER CIRCUIT}
 \begin{appendixfig}
 	\centering
-	\includegraphics[scale=0.35]{front.png}
+	\includegraphics[scale=0.53]{front.png}
 	\caption{Laser circuit fabricated design}
 	\label{}
 \end{appendixfig}
@@ -1049,7 +1041,7 @@ The software of RPi (RPi) utilizes Rpi GPU (Graphical Processor Unit) when using
 \section{AVR ATMEGA8L PIN DIAGRAM}
 \begin{appendixfig}
 \centering
-\includegraphics[scale=1.00]{avr.jpeg}
+\includegraphics[scale=1.25]{avr.jpeg}
 \caption{AVR Atmega8L Pin Diagram}
 \label{}
 \end{appendixfig}
