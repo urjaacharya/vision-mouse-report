@@ -36,6 +36,7 @@ headsep=1.5cm,
 \usepackage[titletoc,title]{appendix}
 \usepackage{tikz}
 \setlength{\parindent}{1cm}
+
 \usetikzlibrary{shapes,arrows}
 \counterwithin{table}{section}
 \counterwithin{figure}{section}
@@ -71,7 +72,7 @@ headsep=1.5cm,
 	\input{titlepage}
 	\setcounter{page}{2}
 	\section*{PAGE OF APPROVAL}
-		\input{external}
+		\input{approval}
 	\addcontentsline{toc}{section}{PAGE OF APPROVAL}
 	\newpage
 	\section*{COPYRIGHT}
@@ -119,6 +120,8 @@ has considered the use of ICT as essential to achieve the goals of education. An
 ture
 \item System Enhancement procedures
 \end{enumerate}
+
+\indent
 Village Tech Solutions (VTS) which was established in the year 1996 by David and Hyadi Sowerwine, with the mission to provide safe, efficient and inexpensive energy systems for the people of rural Nepal. VTS had been endeavoring to bring audio-visual system to the classrooms of Nepal to enhance their current education since the year 2008. By introducing such multimedia systems into the classroom, their aim is to make standard learning materials available to all Nepalese students irrespective of their socio-economic statuses. The information that can be gained from the introduction of such multi-media to rural villages can help not only the
 standard of education, but also the standard of living. 
 
@@ -131,17 +134,15 @@ Looma, with the main aim to make Looma affordable, less power consuming
 and efficient, so that the people of rural communities can derive maximum
 advantage from it.
 
-Projector systems project on the screen the contents of the computer connected to it. By the use of various technologies, we can increase the interactivity of projector systems. 
+Projector systems project on the screen the contents of the computer connected to it. By the use of various technologies, we can increase the interactivity of projector systems. Our project tries to improve the interactivity and the cost of the existing Looma system such that it can be afforded by rural schools. The use of camera to capture the projected area, and detection of location of a visual pen or other visual tools, altogether form an interactive projector system. 
 
-Our project tries to improve the interactivity and the cost of the existing Looma system such that it can be afforded by rural schools. The use of camera to capture the projected area, and detection of location of a visual pen or other visual tools, altogether form an interactive projector system. With the use of a camera, and laser pen, our project gets scoped under \textbf{Human Computer Interaction(HCI)}. \textbf{Computer Vision(CV)} is an integral part of the interaction. The vision based HCI acts as an apt mediator between the user and the computer.
-
-In its long term goals, our project aims to lay a foundation to improved interaction with exisiting projection systems using our hardware and software. 
+With the use of a camera, and laser pen, our project gets scoped under \textbf{Human Computer Interaction(HCI)}. \textbf{Computer Vision(CV)} is an integral part of the interaction. The vision based HCI acts as an apt mediator between the user and the computer. In its long term goals, our project aims to lay a foundation to improved interaction with exisiting projection systems using our hardware and software. 
 
 \subsection{Problem Statement}
 The existing wand system of Looma is basically an IR based handheld device that acts as a mouse. It emits IR light, and also called a light pen. The major components of it are that it has an IR LED, a button and and on/off switch and uses 555 timer to turn the IR light source on/off. The led is blinked at a pre-determined frequency so that the blink is be analysed as a click by its camera processor. The current design uses Nintendo Wii IR camera, which is scavenged from Wii motes in order to detect the IR light on the projected screen. Some of the system's issues which can not be ignored are:
 
 \begin{enumerate}
-\item \textbf {Drawing in the Whiteboard:} While drawing in the LOOMA software, the tracking of the IR led is very unreliable and the drawings are not made as expected.
+\item \textbf {Drawing in the Whiteboard:} While drawing in the Looma software, the tracking of the IR led is very unreliable and the drawings are not made as expected.
 \item \textbf{Use of Pre-built Multi-Object-Tracking(MOT) processor:} There is the use of inbuilt MOT processor in the camera chip, which does part of the image processing and tracking and sending coordinates. In the case of errors, its response can not be modified to remove errors which makes it inefficient
 \item \textbf{Errors not detectable:} Since the Wiimote used IR to move the mouse, the location of the IR on the screen is not visible with the naked eye thus making errors not detectable 
 \item \textbf{Unavailability in the market:} Wiimote IR camera chip being used in the system can not be readily bought in the open market which makes it difficult to mass produce the system
@@ -218,18 +219,12 @@ case of interactive whiteboards.
 Interactive Projectors makes sense for the
 users who want the combination of projector and interactive whiteboard in
 an individual system. 
-%\begin{figure}[h]
-%\centering
-%%\includegraphics[scale=0.7]{abc}
-%\caption {Laser Pointer based Interactive Projector System}
-%\end{figure}
 %2222222222222222222222222222222222222222222222222222222222222222222222222222
 \clearpage
 \newpage
 \section{LITERATURE REVIEW}
 The current prototype can run off a rechargeable 12V battery, has the capability to access the World Wide Web(WWW), has readily available off line content, via established partnerships, and has an extremely easy to use interface. The device is contained in a single unit with replaceable external components (i.e. keyboard, remotes), consumes less than 100 W of power, and will cost only USD 300. The system is about the size of a shoe-box. 
-As seen in the figure, the existing Looma system functional parts can be listed as:
-
+As seen in the figure 2.1 and 2.2, the existing Looma system functional parts can be listed as below:
 \subsection{Looma and Wand Details}
 \begin{enumerate}
 \item300 lumen projector
@@ -270,35 +265,26 @@ Wand control descriptions:
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.35]{wiiiii.png}
-\caption{Illustration of how the movement of infrared is picked up by the Wiimote}
+\caption{Illustration of the movement of infrared picked up by the Wiimote}
 \label{}
 \end{figure}
 
-The existing system uses Wii Remote to interact in the audio-visual device. This system uses an Wii IR camera which picks up the infrared light source, and tracks it using its Multi-Object Tracking (MOT) processor present in the camera chip as shown in the figure. Wii IR Camera gives out a pre-set Inter-Integrated Circuit (I2C) address so the interface board needs an I2C multiplexer. To convert the I2C output to serial, and to demultiplex the signals, the system has been using an FPGA board. 
+The existing system uses Wii Remote to interact in the audio-visual device. This system uses an Wii IR camera which picks up the infrared light source, and tracks it using its Multi-Object Tracking (MOT) processor present in the camera chip as shown in the figure 2.3. Wii IR Camera gives out a pre-set Inter-Integrated Circuit (I2C) address so the interface board needs an I2C multiplexer. To convert the I2C output to serial, and to demultiplex the signals, the system has been using an FPGA board. 
 %333333333333333333333333333333333333333333333333333333333333333333333333333333
 \newpage
 \section{BACKGROUND THEORY}
-
-\subsection{Basic Overview}
-
-\subsubsection{Human-Computer-Interaction (HCI)} 
+\subsection{Human-Computer-Interaction (HCI)} 
 HCI is the study of how people interact with computers and to what extent computers are or are not developed for successful interaction with human beings. Developing human-computer interactions involves design on both sides of the interaction. On the technology side, the designer must have a thorough understanding of the available hardware and software components and tools. On the human side, the designer must have a good understanding of how humans learn and work with computers, including envisioning new modes of working. The designer's task is to create effective, efficient, and satisfying interactions by balancing factors such as cost, benefits, standards, and the environmental constraints in which the interaction will take place. 
 
 Classrooms today are filled with a diverse range of students. Many of them are computer literate while others are not. Some are primarily visual learners, some are auditory learners and some kinesthetic. Others may be gifted and talented.Still others may struggle with physical, mental, behavioral or emotional challenges. In such diverse environment, it may be difficult for the teacher to cope up with each and every individual. In such cases, an effective human-computer interaction tool plays a pivotal role.Various tools are now available for the efficient human-computer interaction, one of which is the Interactive Smart Board.
 
 The Smart Board is an interactive whiteboard that uses touch detection for user input (for example scrolling and right mouse-click) in the same way as normal PC input devices. The Smart Board interactive whiteboard operates as part of a system that includes the interactive whiteboard, a computer, a projector and whiteboarding software which can be used in various areas like offices, schools,etc.Among the various areas of application of human-computer interaction, education systems are more likely to benefit from its use.
 
-\subsubsection{Digital Image Processing}
-An image may be defined as a two-dimensional function, f(x, y), where x and y are spatial (plane) coordinates, and the amplitude of f at any pair of coordinates (x, y) is called the intensity or gray level of the image at that point. When x, y, and the amplitude values of f are all finite, discrete quantities, we call the image a digital image. The field of digital image processing refers to processing digital images by means of a digital computer.
-Image processing can be defined method to convert an image into digital form and perform some operations on it, in order to get an enhanced image or to extract some useful information from it. It is a type of signal dispensation in which input is image, like video frame or photograph and output may be image or characteristics associated with that image. Usually Image Processing system includes treating images as two dimensional signals while applying already set signal processing methods to them.~\cite{raf}
+\subsection{Digital Image Processing}
+An image may be defined as a two-dimensional function, f(x, y), where x and y are spatial (plane) coordinates, and the amplitude of f at any pair of coordinates (x, y) is called the intensity or gray level of the image at that point.~\cite{raf} When x, y, and the amplitude values of f are all finite, discrete quantities, we call the image a digital image. The field of digital image processing refers to processing digital images by means of a digital computer.
+Image processing can be defined method to convert an image into digital form and perform some operations on it, in order to get an enhanced image or to extract some useful information from it. It is a type of signal dispensation in which input is image, like video frame or photograph and output may be image or characteristics associated with that image. Usually Image Processing system includes treating images as two dimensional signals while applying already set signal processing methods to them. Image processing algorithm library such as Open Computer Vision is used which gives a wide range of features.
 
 The basic stages used in image processing are described as follows:
-%{\begin{enumerate}
-%\item Image Acquisition
-%\item Image Enhancement
-%\item Processing
-%\item Recognition
-%\end{enumerate}}
 
 \begin{enumerate}
 \item \textbf{Image Acquisition}
@@ -307,23 +293,21 @@ individual, digital still frames from an analog video signal or a digital video 
 It is usually employed as a component of a computer vision system, in which video
 frames are captured in digital form and then displayed, stored or transmitted in raw
 or compressed digital form. Frame grabbers were the predominant way to interface
-cameras to PC's i.e. direct camera connections via USB. The digital image is captured with the help of image sensor. An image sensor is a device that converts an optical image into an electronic signal such as, digital cameras, camera modules and other imaging devices. Here, Raspberry CSI camera is used for image acquisition.
+cameras to PC's i.e. direct camera connections via USB. The digital image is captured with the help of image sensor. An image sensor is a device that converts an optical image into an electronic signal such as, digital cameras, camera modules and other imaging devices. Here, RPi CSI camera is used for image acquisition.
 
 \item \textbf{Image Enhancement}
 After acquiring the image, the next stage is its enhancement. Image enhancement comprises the algorithms that make necessary changes to the original images so that they can be made more useful for further processing. For example: RGB to grayscale conversion is done to convert the 24 bit per pixel data to 8 bit per pixel data. 
 When converting an RGB image to
 grayscale, we have to take the RGB values for each pixel and make as output a
 single value reflecting the brightness of that pixel. One such approach is to take the
-average of the contribution from each channel: (R+B+C)/3. 
+average of the contribution from each channel. 
 
 However, since the
 perceived brightness is often dominated by the green component, a different, more human-oriented, method is to take a weighted average, e.g.0.3R + 0.59G + 0.11B. Some of the image enhancements, we have performed are such grayscale conversions, smoothing the image etc. 
 Smoothing, also called blurring, is a simple and
 frequently used image processing operation. There are many reasons for
-smoothing. In this tutorial we will focus on smoothing in order to reduce noise
-(other uses will be seen in the following tutorials).To perform a smoothing
+smoothing. To perform a smoothing
 operation we will apply a filter to our image.
-
 
 \item \textbf{Processing}
 After the enhancement of the image, it is processed to get the further result with the respective algorithms. Some algorithms such as canny edge detection and hough transforms are applied to the image and inferences are developed from the results obtained. Edges characterize boundaries and are
@@ -344,7 +328,7 @@ hough transform.
 Once the  processing operations are completed, the required algorithms are applied for the feature recognition such as laser detection in our case. Here, the recognised feature is the laser pointer on the projector screen.
 \end{enumerate}
 
-\subsubsection{Embedded System}
+\subsection{Embedded System}
 A microcontroller is a self-contained system with peripherals, memory and a processor that can be used as an embedded system. Most programmable microcontrollers that are used today are embedded in other consumer products or machinery including phones, peripherals, automobiles and household appliances for computer systems. Due to that, another name for a microcontroller is an embedded controller.
 
 Some embedded systems are more sophisticated, while others have minimal requirements for memory and programming length and a low software complexity. An embedded system is an engineering artifact involving computation that is subject to physical constraints(reaction constraints and execution constraints) arising through interactions of computational processes with the physical world. Reaction constraints originate from the behavioural requirements, throughput, and jitter whereas execution constraints originate from the implementation requirements and put bounds on available processor speeds, power, memory and hardware failure rates. The key to embedded systems design is to obtain desired functionality under both kinds of constraints. 
@@ -352,13 +336,16 @@ Some embedded systems are more sophisticated, while others have minimal requirem
 Embedded systems are application specific and single functioned and efficiency is of paramount importance for embedded systems. They are optimized for energy, code size, execution time, weight and dimensions, and cost.These sysems are typically designed to meet real time constraints; a real time system reacts to stimuli from the controlled object or operator within the time interval dictated by the environment. For real time systems, right answers arriving too late (or even too early) are wrong. Also they often interact (sense, manipulate and communicate) with external world through sensors and hence are typically reactive systems; a reactive system is in continual interaction with the environment and executes at a pace determined by that environment.
 They generally have minimal or no user interface. 
 
+%4444444444444444444
+\newpage
+\section{Tools Used}
 
-\subsection{Tools Used For Hardware}
-\subsubsection {Proteus VSM}
+\subsection{ Hardware}
+\subsubsection{Proteus VSM}
 The Proteus VSM contains mixed mode SPICE circuit simulation, animated components and microcontroller models to facilitate co-simulation of complete microcontroller based design. It is possible to develop and test such designs before a physical prototype is constructed. This is possible because interaction with the design is possible using circuit indicators like LED, display panels, actuators etc. It also provides extensive debugging facility by employing breakpoints, single stepping and variable display of both assembly code and high level language source code.
 
 \subsubsection{Eagle}
-Eagle is acronym for “Easily Applicable Graphical Layout” which is a flexible, expandable and scriptable schematic capture editor, PCB layout editor, auto-router and CAM and BOM tools developed by CadSoft Computer. 
+Eagle is acronym for “Easily Applicable Graphical Layout” which is a flexible, expandable and scriptable schematic capture editor, PCB layout editor and auto-router developed by CadSoft Computer. 
 
 \subsubsection {AVR Studio 6}
 AVR Studio 6 is a software development environment developed by Atmel. It is a full software development with an editor, simulator, programmer, etc. It comes with its own integrated C compiler, the AVR GNU C Compiler (GCC). It also supports several programmers including the STK500, AVR Dragon, etc. 
@@ -366,9 +353,8 @@ AVR Studio 6 is a software development environment developed by Atmel. It is a f
 \subsubsection{SinaProg}
 SinaProg is Hex downloader application with AVRDude and Fuse Bit Calculator. This is used to download code/program and to set fuse bits of all AVR based microcontrollers. 
 
-\newpage
-\section{Software implementation and simulation}
-\subsection{Python}
+\subsection{Software implementation and simulation}
+\subsubsection{Python}
 
 IDLE is an integrated development environment for Python, which has been bundled with each release of the language. It is packaged as an optional part of the Python packaging
 with many Linux distributions. It is completely written in Python and the Tkinter GUI
@@ -380,13 +366,27 @@ and other.
 \item Python shell with syntax highlighting.
 \item Integrated debugger with stepping, persistent breakpoints, and call stack visibility.
 \end{enumerate}
-\subsection{Open Source Computer Vision Library (OpenCV):}
-
+\subsubsection{Open Source Computer Vision Library (OpenCV)}
 OpenCV is an open-source Berkeley Software Distribution (BSD)-licensed library
 that includes several hundreds of computer vision algorithms. It focuses mainly on real-
 time image processing. OpenCV library has been used in python platform.
 OpenCV has a modular structure, which means that the package includes several shared or
 static libraries.
+
+OpenCV is an open source computer vision and machine learning software library.
+OpenCV was built to provide a common infrastructure for computer vision applications and
+to accelerate the use of machine perception in the commercial products. Being a BSD-
+licensed product, OpenCV makes it easy for businesses to utilize and modify the code.
+The library has more than 2500 optimized algorithms, which includes a comprehensive
+set of both classic and state-of-the-art computer vision and machine learning algorithms.
+
+These algorithms can be used to detect and recognize faces, identify objects, classify human
+actions in videos, track camera movements, track moving objects, extract 3D models of
+objects, produce 3D point clouds from stereo cameras, stitch images together to produce
+a high resolution image of an entire scene, find similar images from an image database,
+remove red eyes from images taken using flash, follow eye movements, recognize scenery
+and establish markers to overlay it with augmented reality, etc.
+
 \begin{enumerate}
 \item core - a compact module defining basic data structures, including the dense
 multidimensional array Mat and basic functions used by all other modules.
@@ -408,7 +408,7 @@ It also includes some other helper modules, such as FLANN and Google test wrappe
 Python bindings, and others.
 \end{enumerate}
 
-\subsection{Tkinter:}
+\subsubsection{Tkinter}
 
 It is a standard builds of Python include an object-oriented interface to the Tcl/Tk widget set,
 called \textbf{Tkinter}. This is probably the easiest to install and use. The Tkinter module (“Tk interface”) is the standard Python interface to the Tk GUI toolkit.
@@ -419,11 +419,11 @@ wrappers that implement the Tk widgets as Python classes. In addition, the inter
 tkinter provides a threadsafe mechanism which allows Python and Tcl to interact.
 Tkinter‘s chief virtues are that it is fast.
 
-\subsection{ Picamera:}
+\subsubsection{ Picamera}
 
-Raspberry Pi camera module can use \emph{Picamera 1.2}. It is a pure Python interace to the camera module. The interface eradicates the need to use command line syntax for grabbing image frames and videos. It does not cause restart of the camera interfaces when changing the intrinsic camera properties
+RPi camera module can use \emph{Picamera 1.2}. It is a pure Python interace to the camera module. The interface eradicates the need to use command line syntax for grabbing image frames and videos. It does not cause restart of the camera interfaces when changing the intrinsic camera properties
 . 
-\subsection{ PyMouse:}
+\subsubsection{ PyMouse}
 It is a pure Python cross-platform mouse control module. Mouse functions are provided by the PyMouse library. It runs on any Linux system running over X11 display server. PyMouse provides simple functions like move, click, press and release. PyMouse is a wrapper over Python X Library. It is used to move the mouse pointer as per the laser pointer movements. It is a fully functional X client library intended for Python programs, working as client to communicate with the X server via the X protocol. It runs on Linux using XFree86 as the server and most Unices.
 
 
@@ -431,23 +431,25 @@ The X Window System is a network-transparent window system that was designed at 
 
 
 \newpage
-%4444444444444444444444444444444444444444444444444444444444444444444444444444
+%5555555555555555555555555555555555555
 \section{SYSTEM DEVELOPMENT}
 \subsection{Projected Screen of Looma}
-The Looma software runs on any linux hardware. The display resolution of the screen is given by X = 1280 and Y = 768, and the display width is 60. Once the device is up, there are options of whether to use the wand or not use the wand. In the projected screen of Looma software, we are presented with teaching contents for students as shown in figure 4.1.
-
+The Looma software can run on any linux hardware. When the power is supplied to the Looma hardware, the system boots up. The educational Looma software starts up and once the projector button is turned on, we can see the looma software, as show in the figure 5.1.
 \begin{figure}[htp]
 	\centering
 		\includegraphics[scale=0.3]{loomasoftware.png}
 	\caption{Looma Software}
 \label{}
 \end{figure}
+Once the device is up, there are options of whether to use the wand or not use the wand. We ignore these options and use our own system to interact with the computer.
+
 
 \subsection{System Block Diagram and Description}
+System comprises of a detection system, which is made up of Rpi camera and Rpi board. They send control information to Looma system for the desired actions. 
 
-The images of Looma are grabbed in real time by Raspberry Pi camera board. The laser detection and click action detection algorithm is run on the Raspberry Pi.
+The detection system is set to grab frames of width = 640 and height = 480. The detection system is kept at a pre-calculated distance, such that the projected screen is obtained in the grabbed frame. The camera is set to capture a video with 24 frames per second. In the grabbed frame, only the projected screen is our required region of interest within which the monitoring and detection of laser spots is done. The region of interest is extracted and the four corners of it are used to map the laser point in the coordinate system of the computer. 
 
-First, the projected screen is captured and the four corners of the projected screen is obtained which is our Region of Interest(ROI). The arrangement of the raspberry pi system and looma system is made such that, the imagery of the projected screen is undistorted and unwarped. The linear mapping is done to map the image coordinates from raspberry pi to the display resolution of the computer.
+The arrangement of the detection system and the Looma system is done in such a way that, the images are undistorted and unwarped. This assumption allows us to then further our calculations based on linear mapping. The linear mapping is done to map the image coordinates from Rpi to the display resolution of the computer.
 \newpage
 
 \begin{figure}[htp]
@@ -456,10 +458,12 @@ First, the projected screen is captured and the four corners of the projected sc
 \caption{System Block Diagram}
 \label{Block Diagram}
 \end{figure}
-The next task is updating mouse as per the laser point's actions. In all conditions, whenever laser point is seen inside the projected screen, the mouse pointer move command is given to the system using the projector. In the case of blinks of laser point, click or drag actions is given based on the number of clicks. 
+The next task is updating mouse as per the laser point's actions. In all conditions, whenever laser point is seen inside the projected screen, the mouse pointer move command is given to the Looma system. Based on the number of blinks of the laser point, mouse down or release actions are performed by the Looma system. 
 
-The communication between raspberry pi and the computer system is done via client server architecture as shown in the Appendix A.1.
-%5555555555555555555555555555555555555555555555555555555555555555
+Here, the detection system is made a client to the server running in the Looma system. All the image processing tasks are handled by the detection system. 
+
+The communication between the detection system and the computer system is done via client server architecture as shown in the Appendix A.1. The architecture of communication is Transmission Control Protocol. TCP provides a reliable, ordered and error-checked delivery of a stream of octets between programs running on computers connected to a local area network, intranet or the public Internet. It resides at the transport layer. For our assembled system, see Appendix B.1 and C.1.
+%666666666666666666666
 \newpage
 \section{METHODOLOGY}
 The main purpose of the reformed wand is to establish a way of interaction between the user and the projector system. Hence, this system needs to accomplish the following tasks to overcome the limitations provided by the current Looma wand system:
@@ -472,12 +476,6 @@ The main purpose of the reformed wand is to establish a way of interaction betwe
 
 \subsection{Initial Calibration of Projected Screen}
 	 The projected screen is our region of interest. The four corners of the projected screen are first extracted, which is where we want our laser point to be detected within. 
-%\begin{figure}[htp]
-%	\centering
-%	\includegraphics[scale=0.50]{Calibration.png}
-%	\caption{Calibration Process}
-%	\label{}
-%\end{figure}
 	 
     The projected screen is distinguished from the wall surface by applying a threshold on the grayscale image. The applied threshold binarized the captured image such that, the grayscale image is turned into a binarized image. The projected screen is thresholded into a white surface and the rest of the image is seen as black. The contour finding algorithm is applied to this image. The contour with the largest area, which is the projected screen is obtained. The rectangular approximation of this contour gives the x and y coordinates of the projected screen. 
  
@@ -541,7 +539,7 @@ For the edge detection we used canny edge detection algorithm.It is a multi-stag
 Since edge detection is susceptible to noise in the image, first step is to remove the noise in the image with a 5x5 Gaussian filter.
 
 \item \textbf{Finding Intensity Gradient of the Image}
-Smoothened image is then filtered with a Sobel kernel in both horizontal and vertical direction to get first derivative in horizontal direction (Gx) and vertical direction (Gy). From these two images, we can find edge gradient and direction for each pixel as given by the equations 5.1 and 5.2.
+Smoothened image is then filtered with a Sobel kernel in both horizontal and vertical direction to get first derivative in horizontal direction (Gx) and vertical direction (Gy). From these two images, we can find edge gradient and direction for each pixel as given by the equations 6.1 and 6.2.
 \begin{equation}
 \text{Edge Gradient}(G) = \sqrt{Gx^2 + Gy^2}
 \end{equation}
@@ -561,7 +559,7 @@ This stage decides which are all edges are really edges and which are not. For t
 	\subsubsection{Dynamic Exposure Correction}
 	A photograph's exposure determines how light or dark an image appears when it is captured by the camera. 
 	
-	The Raspberry Pi's camera is programmable. The camera's capture property is controlled by the camera exposure compensation parameter. The exposure correction is done as per the captured image's property dynamically. 
+	The RPi's camera is programmable. The camera's capture property is controlled by the camera exposure compensation parameter. The exposure correction is done as per the captured image's property dynamically. 
 	
 	The proper exposure configuration improves the detection of the laser. After the projected screen is captured, and the camera exposure values are modified until the laser spot is the brightest in the input image. On every frame captured, the average of the value channel of the image is compared with the preset threshold and the camera exposure level is decreased accordingly if the average value of channel is greater than this threshold.
 	
@@ -572,13 +570,22 @@ After exposure compensation is done based on the average value of the image capt
 \item {\textbf{Grayscale conversion}}
 Grayscale image carries the intensity information. It is composed of shades of gray, varying from black at weakest intensity to white at the strongest. 
 
-A RGB image is captured by Rpi at first, which contains all the three components: Red (R), Green (G), Blue (B). The processing of all these components is redundant and time inefficient. The grayscale conversion is done so that the RGB values are expressed by intensity values within a given range of 0 to 255 values. These grayscale levels are then thresholded by binary thresholding algorithm. 
+A RGB image is captured by Rpi at first, which contains all the three components: Red (R), Green (G), Blue (B). The processing of all these components is redundant and time inefficient. The grayscale conversion is done so that the RGB values are expressed by intensity values within a given range of 0 to 255 values. These grayscale levels are then thresholded by binary thresholding algorithm. For detail on Rpi Board and Camera see Appendix D.1, E.1 and F.1.
 \newpage
 \item {\textbf{Binary Thresholding}}
 
 It is a segmentation method. Thresholding application involves separating out regions of an image corresponding to objects which is to be analyzed. This separation is based on the variation of intensity between the object pixels and the background pixels.
 
 To differentiate the pixels we are interested in from the rest (which will eventually be rejected), we perform a comparison of each pixel intensity value with respect to a threshold (determined according to the problem to solve). Here, we have set the threshold to be 200 such that regions above this value is thresholded as white and rest of the pixels are thresholded as black.
+
+\item {\textbf{Morphological Operations}}
+A set of operations that process images based on shapes is termed as morphological operation. Morphological operations apply a structuring element to an input image and generate an output image.
+
+They have a varied number of uses in the images, such as removing noises, isolation of individual elements and joining disparate elements in an image and finding of intensity bumps or holes in an image. 
+
+The most basic morphological operations is Dilation. This operations consists of convoluting an image A with some kernel B, which can have any shape or size, usually a square or circle. The kernel B  has a defined  anchor point, usually being the center of the kernel. As the kernel  is scanned over the image, we compute the maximal pixel value overlapped by  and replace the image pixel in the anchor point position with that maximal value. As you can deduce, this maximizing operation causes bright regions within an image to grow suppressing the dark ones.
+
+Another morphological operation erosion is the inverse of the dilation process. It computes a local minimum over the area of the kernel. As the kernel is scanned over the image, we compute the minimal pixel value overlapped by  and replace the image pixel under the anchor point with that minimal value. The bright areas of the get thinner whereas the dark zones get bigger.
 
 
 \item {\textbf{Find Contours}}
@@ -592,41 +599,21 @@ The obtained contour is then approximated by a bounding rectangle which gives us
 		
 \subsection{Microcontroller to generate laser pulses}
 
-	An AVR microcontroller is used instead of 555 timer so that resistor and capacitors values need not be changed with the change in frequencies and duty cycles. Below, is the schematic of the system circuit. The laser is turned on when the supply is applied. When the push button is pressed, a pulse at a frequency set to 6Hz in the microcontroller. The schematic diagram of our circuit can be followed below, and the schematic as well.
+	An AVR microcontroller is used instead of 555 timer so that resistor and capacitors values need not be changed with the change in frequencies and duty cycles. Below, is the schematic of the system circuit. The laser is turned on when the supply is applied. When the push button is pressed, a pulse at a frequency set to 6Hz in the microcontroller. The proteus simulation of our circuit can be viewed in Appendix G.1 and the schematic diagram in Appendix H.1. 
 	
-
-\begin{figure}[htp]
-	\centering
-	\includegraphics[scale=0.55]{schematic.png}
-	\caption{Laser circuit schematic diagram}
-	\label{}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
-	\includegraphics[scale=0.3]{eagle-non-mirror.png}
-	\caption{Laser circuit eagle design diagram}
-	\label{}
-\end{figure}
-
-	The laser circuit has been programmed such that it produces a 6Hz pulses when the push button is pressed, else it stays on. The target frequency has been set to 6Hz. The prescaler used is 64. The top value for pulse width modulation(PWM) is obtained as in the following equation 5.3. 
+	The laser circuit has been programmed such that it produces a 6Hz pulses when the push button is pressed, else it stays on. The laser hardware eagle design and final circuits can be viewed in the Appendix I.1, J.1 and K.1. The target frequency has been set to 6Hz. The prescaler used is 64. The top value for pulse width modulation(PWM) is obtained as in the following equation 5.3. 
 	\begin{equation}
 	Top\ value = (Clock\  frequency/Target\  frequency)*Scaler - 1
 	\end{equation}
 	
 	The top value is 20833. For a 20 per cent duty cycle, the on time of the laser is set to 20 per cent of the top value and off time is set to the 80 per cent of the top value. We have kept the push button switch in the interrupt pin, so that when the button is pushed, interrupt is obtained and the subsequent Interrupt Service Routine(ISR) can be run. This ISR does the work of producing PWM pulses of 20 per cent duty cycle. The diagram below is our working circuit.
 
-\begin{figure}[htp]
-	\centering
-	\includegraphics[scale=0.2]{front.png}
-	\caption{Laser circuit fabricated design}
-	\label{}
-\end{figure}
+
 
 \subsection{Hardware Implementation}
 \subsubsection{Laser Wand}
 
-A laser wand is the main interacting tool with the vision-based interactive projector system. The laser wand is a custom designed and self fabricated AVR Atmega 8L (pin diagram shown in Appendix A ) microcontroller based system. The input to the wand is a manual button press and outputs from the wand are either continual or varying laser blinks. 
+A laser wand is the main interacting tool with the vision-based interactive projector system. The laser wand is a custom designed and self fabricated AVR Atmega 8L (pin diagram shown in Appendix L.1 and M.1) microcontroller based system. The input to the wand is a manual button press and outputs from the wand are either continual or varying laser blinks. 
 
 On continual button press, the blinking of laser wand is made to occur at 6Hz with duty cycle of 20 per cent. Duty cycle is the ratio of on-time of a signal to the total time of a signal. The total time of a signal is the sum of on-time and the off-time of the signal. The on-time is the window frame of the signal, where the signal is high and off-time is the window frame of the signal, where the signal is low. So a duty cycle of 20 per cent implies that laser is on 20 per cent of the time and off 80 per cent of the time when the button is pressed. 
 
@@ -638,38 +625,10 @@ Laser is a device that emits light by optical amplification based on stimulated 
 
 \subparagraph{Microcontroller}
 
-The laser wand is made to blink on manual press of a button. The microcontroller has three timers 0, 1, 2 of which 16 bit timer 1 is used in non-inverting PWM mode. The prescaler is set to 64. The Timer and PWM of the avr microcontroller is used to achieve that (pin diagrams are shown in Appendix B).
+The laser wand is made to blink on manual press of a button. The microcontroller has three timers 0, 1, 2 of which 16 bit timer 1 is used in non-inverting PWM mode. The prescaler is set to 64. The Timer and PWM of the avr microcontroller is used to achieve that 
 
 \subsection{Finalized algorithm for click and drag}
-	We constructed a State Diagram with the following states of laser.
-	\begin{figure}
-\centering
-\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
-  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
-
-  \node[main node] (1) {1to0};
-  \node[main node] (2) [below left of=1] {0};
-  \node[main node] (3) [below right of=2] {0to1};
-  \node[main node] (4) [below right of=1] {1};
-
-  \path[every node/.style={font=\sffamily\small}]
-    (1)
-        edge [bend right] node[left] {00000} (2)
-        edge [loop above] node {0} (1)
-        edge node [left] {1} (3)
-    (2) 
-        edge [loop left] node {00000} (2)
-        edge [bend right] node[left] {1} (3)
-        
-    (3) edge node [right] {0} (1)
-        edge [bend right] node[right] {11111} (4)
-        edge [loop below] node {1} (3)
-    (4) 
-        edge [loop right] node {11111} (4)
-        edge [bend right] node[right] {0} (1);
-\end{tikzpicture}
-\caption{State Diagram}
-\end{figure}
+	We constructed a State Diagram with the following states of laser. 
 \begin{enumerate}
 \item Laser-off or 0
 \item Laser-on or 1
@@ -678,24 +637,19 @@ The laser wand is made to blink on manual press of a button. The microcontroller
 
 	\textbf {Laser-off} is a state of continual five or more laser-off  states, which occurs when the laser is not detected. \textbf{Laser-on} is a state of continual five or more laser-on states, when the laser is detected. \textbf{Toggle-0to1} occurs when laser state is toggled from off state to on state, whereas in \textbf{Toggle-1to0}, laser state is toggled from on state to off state. 
 	
-	At all times, when laser is in the on state, the mouse pointer is continually updated to move. When laser state is toggled, either from laser on to off or vice-versa, the mouse pointer is pressed. If the mouse pointer is moved while in pressed state, drag occurs. This continues until a laser-off state or laser-on state occur, which is interpreted as a mouse release. And, at every toggle state, mouse down occurs and if laser-on or laser-off state is immediately succeeded to this event, then mouse is released which is then interpreted as click and the states can be viewed in the figure 5.5 and the flowchart for the algorithm is given in the Appendices J.1 and J.2.
+	At all times, when laser is in the on state, the mouse pointer is continually updated to move. When laser state is toggled, either from laser on to off or vice-versa, the mouse pointer is pressed. If the mouse pointer is moved while in pressed state, drag occurs. This continues until a laser-off state or laser-on state occur, which is interpreted as a mouse release. And, at every toggle state, mouse down occurs and if laser-on or laser-off state is immediately succeeded to this event, then mouse is released which is then interpreted as click. The state diagram of the algorithm can be viewd in Appendix N.1 and the final algorithm can be viewed in Appendix O.1
+	
 
-%\begin{figure}[htp]
-%\centering
-%\includegraphics[scale=0.35]{state.png}
-%\caption{State Transition Diagram of Algorithm}
-%\label{}
-%\end{figure}	
-\subsection{Communication between computer and Raspberry Pi}
+\subsection{Communication between computer and RPi}
 	A server and client program are constructed based on TCP protocol. The server and client maintain the communication between the computer and the raspberry pi. The server program is run on the computer which is being projected by the projector. The client program is run on the raspberry pi which detects laser spots. 
 	
-	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. So we have implemented a protocol for communication using TCP protocol to communicate the mouse actions and coordinates to the computer. The Looma board is made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action.  For the basic TCP protocol diagram, see Appendix A.1.
+	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. So we have implemented a protocol for communication using TCP protocol to communicate the mouse actions and coordinates to the computer. The Looma board is made a server, and the RPi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action.
 
 
 \subsection{Movement of Mouse Pointer}
 The laser coordinates, x and y, detected by the RPi camera is mapped to the system coordinates. 
 
-First of all, a point obtained in the image window with width of 640 and height of 480, is translated to the origin of the image coordinates system using the following equation:
+First of all, a point obtained in the image window width of 640 and height of 480, is translated to the origin of the image coordinates system using the following equations 6.4 and 6.5.
 
 \begin{equation}
 x' = x - tx
@@ -722,7 +676,7 @@ sx = (xv_{max} – xv_{min}) / (xw_{max} – xw_{min})
 sy = (yv_{max} – yv_{min}) / (yw_{max} – yw_{min})
 \end{equation}
 
-where, sx and sy are the scaling factors~\cite{hen}
+where, \emph{sx} and \emph{sy} are the scaling factors~\cite{hen}
 The vmax and vmin are the maximum and minimum coordinates of the viewport system whereas wmax and wmin are the maximum and minimun coordinates of the image window. 
 The corresponding scaling factors are multiplied to the translated image window coordinate and then re-translated using the following equations. 
 
@@ -734,11 +688,9 @@ x' = x + tx
 y' = y + ty
 \end{equation}
 
-where tx and ty are the translation factors.
-
-The final coordinate is used to move the mouse pointer on the projected screen. 
+where tx and ty are the translation factors. The final coordinates obtained is used to move the mouse pointer on the Looma system. 
 \newpage
-%6666666666666666666666666666666666666666666666666666666666666666666666666666
+%77777777777777777777776666666666666666666666666666666666666
 \section{PROBLEM FACED and SOLUTIONS}
 \subsection{Laser Hardware}
 Initially, in an attempt to reduce the costs of the overall laser hardware, we had attempted to pulse the laser led using 555 timer circuits. The 555 timer circuits comprised of resistors and capacitors which were picked up precisely enough to give us the required frequency. However, continual error checking and correction, for the detection of the pulsed laser led by camera, the resistors and capacitors had to be changed frequently, which proved to be inefficient and tedious.
@@ -754,8 +706,16 @@ In the end, we designed and fabricated the hardware, based on this microcontroll
 HSV Segmentation deals with the natural color of the object to be detected. We tried to detect the laser utilizing its distinct intensity value in the red region. However, the detection failed in cases when other points with same color and intensity came on the projected screen.
 
 For resolving the problem, we considered only the brightest pixels in the projected screen. However, along with the laser pointer, other bright parts of the view port such as the white parts of the projection itself, and other bright reflections were also being captured. So we programmatically checked the intensity of lights reaching the camera's aperture, and if it exceeded a calibrated level, we reduced the shutter time thereby only allowing minimal exposure to the image. It was found that, laser was seen to be the brightest spot among all pixels. So, an exposure correction of the camera was carried out before the start of the detection. This ensured that only the bright laser pointer is detected.
+
+\subsection{Slow detection and action by RPi}
+Initially, the captured frame size was 640*480 in which we observed a time lag between the instance the laser moved on the screen and the movement of the laser pointer in the Looma system. This made it difficult to interact with the system. A larger image resolution had been chosen to detect the laser center from any distances. Since the brightest center of the laser point is reduced in size in the image captured as the detection system is kept further away from the Looma system. 
+
+To solve this, we reduced the frame size to 320*240 which is half of our previous frame size. As mentioned above, the size of the laser spot captured by the camera was small compared to the above case. Thereafter, the dilation algorithm was implemented which made the brighter regions become bigger. As our laser pointer is also the brighter region, it dilates suppressing the other darker regions around it. 
+
+The erosion algorithm was applied to the image obtained after the dilation which made the bright regions get thinner and makes the laser pointer more distinct irrespective of the presence of other noises. The processing speed was faster due to the fast processing of smaller sized frames.
+
 \newpage
-%777777777777777777777777777777777777777777777777777777777777777777777777777777
+%8888888888888888888777777777777777777777777777777777777777
 \section{RESULTS AND ANALYSIS}
 
 \subsection{Hardware Testing}
@@ -781,24 +741,23 @@ Since a microcontroller is not a good source for external circuits, an NPN trans
 \label{}
 \end{figure}
 
-When the button is pressed, the button gives a high on the pin 2 because it is switched from sinked state to source state at this time, which is given by the lower line in the figure 7.1. In this figure, the pwm signals from pin 1 are shown by the upper two lines.
-
- 
+When the button is pressed, the button gives a high on the pin 2 because it is switched from sinked state to source state at this time, which is given by the lower line in the figure 8.1. In this figure, the pwm signals from pin 1 are shown by the upper two lines.
 
 \subsection{Software Testing}
 \subsubsection{Algorithm Test}
 In normal clock mode, a raspberry had a clock frequency of 700MHz, therefore a general laptop with a clock frequency of over 1 GHz, has better computing power. Before all the hardwares were made available to us, we initially, tested our laser detection algorithms on our computer. The inbuilt webcam or even a cheap USB webcam used with the computer do not have the programmatic exposure correction features, which raspberry pi camera had. For the purpose of testing, we used a darkly lit room and less intense projected screen for the detection of the laser point. The videos were processed in real time and the mouse down and releases were achieved in almost real time. 
 
-	The algorithm was tested on raspberry pi by programmatically setting the exposure. The projected screen before programmatic exposure correction is given by in the top left window named \emph{Thresh} in the image shown in the Appendix B.1. This window named \emph{Thresh} is showing the projected screen as seen by the raspberry pi camera. After the exposure correction is done, only the laser pointer is the visible white dot in the window named \emph{Thresh}. The exposure corrected image in the window \emph{Thresh} can be viewed in the Appendix C.1.
+	The algorithm was tested on raspberry pi by programmatically setting the exposure. The projected screen before programmatic exposure correction is given by in the top left window named \emph{Thresh} in the image shown in the Appendix P.1. This window named \emph{Thresh} is showing the projected screen as seen by the raspberry pi camera. After the exposure correction is done, only the laser pointer is the visible white dot in the window named \emph{Thresh}. The exposure corrected image in the window \emph{Thresh} can be viewed in the Appendix Q.1.
 
 \subsubsection{System Test}
 
-The laser detection algorithm was tested on Raspberry Pi. For the communication of the detection system and the computer, a client server architecture was implemented where Raspberry Pi, being the client and the Looma’s existing Pandaboard, running as the server. In this way, the testing was carried out.
+The laser detection algorithm was tested on RPi. For the communication of the detection system and the computer, a client server architecture was implemented where RPi, being the client and the Looma’s existing Pandaboard, running as the server. In this way, the testing was carried out.
 
-Raspberry Pi's processor is not capable of processing real time video at 24 fps. It was observed that at maximum, it processes the video at four fps. Hence, it hindered the laser detection algorithm significantly. The laser on-offs were not seen as the expected by the algorithm. Thereby, the processing  is slower than in computer where the video was being processed at 24 fps. Therefore, the overall detection and actions are not performed in real time by our system.
+
+RPi's processor is not capable of processing real time video at 24 fps. It was observed that at maximum, it processes the video at four fps. Hence, it hindered the laser detection algorithm significantly. The laser on-offs were not seen as the expected by the algorithm. Thereby, the processing  is slower than in computer where the video was being processed at 24 fps. To improve the overall detection of the laser pointer, we reduced the image frames by half and did dilation on the image to enlarge the pixels. This improved the detection by a significant amount. However, the overall detection and actions are not performed in real time by our system due to slow processor and bright lit rooms.
 
 \newpage
-%888888888888888888888888888888888888888888888888888888888888888888888888
+%99999999999999999999999999999999999999988888888888
 \section{COST ANALYSIS}
 \subsection{Cost Comparison between Looma System and Our System}
 \begin{table*}[ht]
@@ -806,9 +765,9 @@ Raspberry Pi's processor is not capable of processing real time video at 24 fps.
 \hline
 	S.N  & Existing System & Cost & Designed System & Cost\\
 \hline
-	1 & FPGA Board and Wiring & \$117 & Raspberry Pi & \$64.90\\
+	1 & FPGA Board and Wiring & \$117 & RPi & \$64.90\\
 \hline
-	2 & Nintendo Wii Remote & \$68.89 & Raspberry Pi Camera Module & \$29.95 \\
+	2 & Nintendo Wii Remote & \$68.89 & RPi Camera Module & \$29.95 \\
 \hline
 	3 & 3D Printed IR Wands & \$20 & Laser Pointer & \$0.9\\
 \hline
@@ -821,7 +780,7 @@ Raspberry Pi's processor is not capable of processing real time video at 24 fps.
 \label{tb:sw}
 \end{table*}
 
-Since Looma system is intended for the rural areas, the system needs to be as economic as possible. From the table 8.1, it can be inferred that, the system that we have designed is cheaper as compared to the existing system of Looma. Also, the overall cost of our project can be viewed in the table 8.2.
+Since Looma system is intended for the rural areas, the system needs to be as economic as possible. From the table 9.1, it can be inferred that, the system that we have designed is cheaper as compared to the existing system of Looma. Also, the overall cost of our project can be viewed in the table 9.2.
 \clearpage
 \subsection{Total Cost of Our Project}
 \begin{table*}[ht]
@@ -855,9 +814,9 @@ Since Looma system is intended for the rural areas, the system needs to be as ec
 \hline
 	13 & Atmega8L & 180 & 1 & 180 \\
 \hline
-	14 & Raspberry Pi & 6380.319 & 1 & 6,380.319 \\
+	14 & RPi & 6380.319 & 1 & 6,380.319 \\
 \hline
-	15 & Raspberry Pi Camera Module & 2,944.3845 & 1 & 2944.3845 \\
+	15 & RPi Camera Module & 2,944.3845 & 1 & 2944.3845 \\
 \hline
 	16 & Laser Pointer &  0.9 & 1 & 88.479 \\
 \hline 
@@ -877,7 +836,7 @@ Since Looma system is intended for the rural areas, the system needs to be as ec
 \end{table*}
 %\clearpage
 \newpage
-%99999999999999999999999999999999999999999999999999999999999999999
+%000000000000000000000000000999999999999999
 \section{LIMITATIONS AND FUTURE ENHANCEMENTS}
 \subsection{Limitations}
 
@@ -895,7 +854,7 @@ Since Looma system is intended for the rural areas, the system needs to be as ec
 \item The system performs single clicks and drag as required by the Looma system, but with further enhancements, it can be made to perform double clicks.
 \end{enumerate}
 \newpage
-%1000000000000000000000000000000000000000000000000000000000000000000000000000
+%11111110000000
 \section{CONCLUSION}
 \subsection{Conclusion}
 The project \emph{Laser Pointer based Human Computer Interaction using Computer Vision} aims to provide an alternative solution to the interactive wand system developed by Looma. The system that we have designed allows the user to control the projected system from a considerable distance using the laser pointer. This aids in the teaching process and makes the audio visual learning environment more interactive. Although initially, the system had been designed to work on Looma system but we have tried to make it as generic as possible and can be used for other projector systems as well. 
@@ -921,7 +880,7 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 
 \newpage
 \begin{appendices}
-\section{TCP protocol}
+\section{TCP PROTOCOL}
 \begin{appendixfig}
 \centering
 \tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -932,7 +891,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \tikzstyle{circle} = [draw, ellipse, node distance=3cm,
     minimum height=2em]    
 \begin{tikzpicture}[node distance = 2cm, auto]
-    % Place nodes
     \node [block, node distance=4cm] (Socket) {Socket()};
     \node [block, node distance=2cm, below of=Socket] (Bind) {Bind()};
     \node [block, node distance=2cm, below of=Bind] (Listen) {Listen()};
@@ -947,9 +905,6 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
     \node [block, node distance=9cm, right of=Write](Read1) {Read()};
     \node [block, node distance=2cm, below of=Write] (Close) {Close()};
     \node [block, node distance=9cm, right of=Close](Close1) {Close()};
-
-    % Draw edge
-
   \path [line] (Connect1) -- node {Connection Established}(Block);
   \path [line] (Write1) -- node{Data(Request)}(Read);
   \path [line] (Write) -- node{Data(Reply)}(Read1);
@@ -969,23 +924,89 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \caption{Transmission Control Protocol between Server and Client}
 \end{appendixfig}
 \newpage
-\section{Projected Screen Before Exposure Correction}
+\section{CAMERA MOUNT}
 \begin{appendixfig}
-\includegraphics[scale=0.30]{projector.png}
-\caption{Projected Screen Before Exposure Correction}
+\centering
+\includegraphics[scale=0.55]{raspi}
+\caption{Custom Camera Mount}
 \label{}
 \end{appendixfig}
+
 \newpage
 
-\section{Projected Screen After Exposure Correction}
+\section{RPi AMOUNT LOOMA}
 \begin{appendixfig}
-%\begin{figure}
-\includegraphics[scale=0.30]{projectorwithout.png}
-\caption{Projected Screen After Exposure Correction}
+\centering
+\includegraphics[scale=0.55]{rasp}
+\caption{RPi amount looma hardware}
 \label{}
 \end{appendixfig}
 \newpage
-\section{AVR Atmega 8L Features:}
+\section{RASPBERRY PI AND CAMERA BOARD}
+RPi is a single-board computer with processor, memory, I/O ports and many more features, which together make it a functional computer for a wide range of applications in robotics. It is so simple than any logical person can program it, even it is for the first time when you work with a single-board computer.The ARM powered minicomputer is a platform with enormous possibilities and powerful enough to run many of the same programs as computer. 
+
+RPi serves as a wonderful platform for computer vision algorithms given its size, wonderful camera board and portability. Using the Picamera module, we took raw byte streams of the projected screen, and converted them to OpenCV object before doing further image processing algorithms. RPi Camera Board Module supports a full HD (High Definition) video streaming at fps of 30 with its 5 megapixel native resolution, and the sensor capable of 2592-1944 pixel static images. RPi Camera Board Module was opted instead of normal USB web camera.
+
+The software of RPi (RPi) utilizes Rpi GPU (Graphical Processor Unit) when using Raspi Camera Module. So for example encoding \emph {h.264}, video has low impact on the CPU (Central Processor Unit) usage. Also, it has an excellent resolution of 5 Megapixels, which is higher than most USB webcams. It also has an excellent daytime image quality. If we use USB Webcam, it will have a very slow frame rate video and the CPU usage will be quite high. RPi does not have enough CPU horsepower to do higher frame rates, resolution and advanced video compression. 
+\newpage
+\section{RASPBERRY PI BOARD}
+\begin{appendixfig}
+\centering
+\includegraphics[scale=1.00]{RPiModelB.png}
+\caption{RPi Board}
+\label{}
+\end{appendixfig}
+\newpage
+\section{RASPBERRY PI CAMERA MODULE}
+\begin{appendixfig}
+\centering
+\includegraphics[scale=1.00]{index.jpeg}
+\caption{RPi Camera Module}
+\label{}
+\end{appendixfig}
+\newpage
+\section{SIMULATION OF LASER HARDWARE}
+\begin{appendixfig}
+\centering
+\includegraphics[scale=0.55]{proteus}
+\caption{Laser Hardware Simulation}
+\label{}
+\end{appendixfig}
+\newpage
+\section{LASER CIRCUIT SCHEMATIC DIAGRAM}
+\begin{appendixfig}
+	\centering
+	\includegraphics[scale=0.60]{schematic.png}
+	\caption{Laser circuit schematic diagram}
+	\label{}
+\end{appendixfig}
+\newpage
+\section{LASER CIRCUIT EAGLE DESIGN}
+\begin{appendixfig}
+	\centering
+	\includegraphics[scale=0.65]{eagle-non-mirror.png}
+	\caption{Laser circuit eagle design diagram}
+	\label{}
+\end{appendixfig}
+\newpage
+\section{FINAL LASER HARDWARE}
+\begin{appendixfig}
+\centering
+\includegraphics[scale=0.15]{a.jpg}
+\caption{Final Laser Hardware}
+\label{}
+\end{appendixfig}
+
+\newpage
+\section{FABRICATED LASER CIRCUIT}
+\begin{appendixfig}
+	\centering
+	\includegraphics[scale=0.35]{front.png}
+	\caption{Laser circuit fabricated design}
+	\label{}
+\end{appendixfig}
+\newpage
+\section{AVR ATMEGA 8L FEATURES}
 \begin{enumerate}
 \item \textbf{High-performance, Low-power Atmel AVR 8-bit Microcontroller}
 \begin{enumerate}
@@ -1025,81 +1046,46 @@ The project \emph{Laser Pointer based Human Computer Interaction using Computer 
 \end{enumerate}
 \newpage
 
-\section{AVR Atmega8L Pin Diagram}
+\section{AVR ATMEGA8L PIN DIAGRAM}
 \begin{appendixfig}
 \centering
 \includegraphics[scale=1.00]{avr.jpeg}
 \caption{AVR Atmega8L Pin Diagram}
 \label{}
 \end{appendixfig}
-
 \newpage
-\section{OPENCV}
-\textbf{\ac{OpenCV}} is an open source computer vision and machine learning software library. \ac{OpenCV} was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products. Being a BSD-licensed product, \ac{OpenCV} makes it easy for businesses to utilize and modify the code.
-
-The library has more than 2500 optimized algorithms, which includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms. These algorithms can be used to detect and recognize faces, identify objects, classify human actions in videos, track camera movements, track moving objects, extract \ac{3D} models of objects, produce \ac{3D} point clouds from stereo cameras, stitch images together to produce a high resolution image of an entire scene, find similar images from an image database, remove red eyes from images taken using flash, follow eye movements, recognize scenery and establish markers to overlay it with augmented reality, etc.
-
-In general, \ac{OpenCV} application areas include:
-
-\begin{enumerate}
-\item 2D and 3D feature toolkits
-\item Egomotion estimation
-\item Facial recognition system
-\item Gesture recognition
-\item Human–computer interaction HCI
-\item Mobile robotics
-\item Motion understanding
-\item Object identification
-\item Segmentation and Recognition
-\item Stereopsis Stereo vision: depth perception from 2 cameras
-\item Structure from motion SFM
-\item Motion tracking
-\item Augmented reality
-\end{enumerate}
-\newpage
-\section{Raspberry Pi and Camera Board}
-Raspberry Pi is a single-board computer with processor, memory, I/O ports and many more features, which together make it a functional computer for a wide range of applications in robotics. It is so simple than any logical person can program it, even it is for the first time when you work with a single-board computer.The ARM powered minicomputer is a platform with enormous possibilities and powerful enough to run many of the same programs as computer. Raspberry Pi serves as a wonderful platform for computer vision algorithms given its size, wonderful camera board and portability. Using the Picamera module, we took raw byte streams of the projected screen, and converted them to OpenCV (Open Computer Vision) object before doing further image processing algorithms.
-
-Raspberry Pi Camera Board Module supports a full HD (High Definition) video streaming at fps of 30 with its 5 megapixel native resolution, and the sensor capable of 2592-1944 pixel static images. Raspberry Pi Camera Board Module was opted instead of normal USB web camera. 
-
-The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when using Raspi Camera Module. So for example encoding \emph {h.264}, video has low impact on the CPU (Central Processor Unit) usage. Also, it has an excellent resolution of 5 Megapixels, which is higher than most USB webcams. It also has an excellent daytime image quality. If we use USB Webcam, it will have a very slow frame rate video and the CPU usage will be quite high. RPi does not have enough CPU horsepower to do higher frame rates, resolution and advanced video compression. 
-\newpage
-\section{Raspberry Pi Board}
+\section{State Diagram}
 \begin{appendixfig}
 \centering
-\includegraphics[scale=1.00]{RPiModelB.png}
-\caption{Raspberry Pi Board}
-\label{}
-\end{appendixfig}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
 
-\newpage
-\section{Raspberry Pi Camera Module}
-\begin{appendixfig}
-\centering
-\includegraphics[scale=1.00]{index.jpeg}
-\caption{Raspberry Pi Camera Module}
-\label{}
-\end{appendixfig}
-%\newpage
-%\section{TCP Protocol}
-%\begin{figure}[htp]
-%\centering
-%\includegraphics[scale=1.00]%{tcp.png}
-%\caption{Transmission Control %Protocol}
-%\label{}
-%\end{figure}
+  \node[main node] (1) {1to0};
+  \node[main node] (2) [below left of=1] {0};
+  \node[main node] (3) [below right of=2] {0to1};
+  \node[main node] (4) [below right of=1] {1};
 
+  \path[every node/.style={font=\sffamily\small}]
+    (1)
+        edge [bend right] node[left] {00000} (2)
+        edge [loop above] node {0} (1)
+        edge node [left] {1} (3)
+    (2) 
+        edge [loop left] node {00000} (2)
+        edge [bend right] node[left] {1} (3)
+        
+    (3) edge node [right] {0} (1)
+        edge [bend right] node[right] {11111} (4)
+        edge [loop below] node {1} (3)
+    (4) 
+        edge [loop right] node {11111} (4)
+        edge [bend right] node[right] {0} (1);
+\end{tikzpicture}
+\caption{State Diagram}
+\end{appendixfig}
 \newpage
-%\end{figure}
-%\newpage
-%\\section{Flow Diagram of System}
-%\\begin{figure}
-%\\centering
-%\\includegraphics[scale=0.62]{flow.png}
-%\\caption{Flow Diagram of System}
-%\\label{}
-%\\end{figure}
-\section{Flowchart of the algorithm}
+
+\section{FLOWCHART OF THE ALGORITHM}
 \begin{appendixfig}
 \centering
 \tikzstyle{decision} = [diamond, draw, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -1111,7 +1097,6 @@ The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when us
     minimum height=2em]
     
 \begin{tikzpicture}[node distance = 2cm, auto]
-    % Place nodes
     \node [cloud] (A) {Start};
     
     \node [block, below of=A] (B) {Grab Image Frame};
@@ -1133,20 +1118,6 @@ The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when us
      \node [block, below of=G, node distance=4cm] (H) {Send "Mouse Release" to Server};
     
     \node [cloud, below of=D, node distance=4cm] (Z) {Stop};
-
-%\node [circle, below of=Z, node distance=4cm] (K) {A};
-
-%\node [decision, below of=K, node distance=3cm] (L) {Action Detect?};
-
-%\node [block, below of=L, node distance=4cm] (N) {Send "Mouse Down"  to Server};
-
-%\node [block, right of=L, node distance=4cm] (M) {Send "Mouse Down and Release" to Server};
-
-
-    % Draw edge
-%   \path [line] (K) -- (L);            
-%    \path [line] (L) -- node {No}(M);
-%    \path [line] (L) -- node {Blinks $<3$}(N);
     \path [line] (A) -- (B);
     \path [line] (E) -- (F);
     \path [line] (F) -- node {Blink}(J);
@@ -1187,6 +1158,20 @@ The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when us
 \end{tikzpicture}
 \caption{Flowchart of the algorithm}
 \end{appendixfig}
-\end{appendices}
 
-\end{document}\documentclass[12pt, a4paper]{article}
+\newpage
+\section{BEFORE EXPOSURE CORRECTION}
+\begin{appendixfig}
+\includegraphics[scale=0.30]{projector.png}
+\caption{Projected Screen Before Exposure Correction}
+\label{}
+\end{appendixfig}
+\newpage
+\section{AFTER EXPOSURE CORRECTION}
+\begin{appendixfig}
+\includegraphics[scale=0.30]{projectorwithout.png}
+\caption{Projected Screen After Exposure Correction}
+\label{}
+\end{appendixfig}
+\end{appendices}
+\end{document}

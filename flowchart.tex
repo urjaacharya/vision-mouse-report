@@ -3,6 +3,7 @@
 \usepackage[top=3.5cm, bottom=2cm, left=3.5cm, right=2cm]{geometry}
 \usepackage[latin1]{inputenc}
 \usepackage{tikz}
+\usepackage{mathtools}
 \usetikzlibrary{shapes,arrows}
 \begin{document}
 \pagestyle{empty}
@@ -53,7 +54,7 @@
     % Draw edge
     \path [line] (K) -- (L);            
     \path [line] (L) -- node {No}(M);
-    \path [line] (L) -- node {Blinks > 3}(N);
+    \path [line] (L) -- node {Blinks $<3$}(N);
     \path [line] (A) -- (B);
     \path [line] (E) -- (F);
     \path [line] (F) -- node {Blink}(J);

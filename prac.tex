@@ -5,7 +5,7 @@
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{listings}
-\usepackage[hidelinks=true]{hyperref}
+\usepackage{hyperref}
 \usepackage{mathtools}
 \usepackage{pgfgantt}
 \usepackage{tocloft}
@@ -14,55 +14,60 @@
 \usepackage{mathtools}
 \usepackage{acronym}
 \usepackage[acronym]{glossaries}
-
 \makeglossaries
+\hypersetup {
+	hidelinks=true,
+}
+
 \begin{document}
-\pagenumbering{roman}
-\subsection*{COPYRIGHT}
-	\input{copyright}
-\addcontentsline{toc}{subsection}{Copyright}
 
-\newpage
-\subsection*{ACKNOWLEDGEMENT}
-	\input{acknowledgement}
-\addcontentsline{toc}{subsection}{Acknowledgement}
-
-\newpage
-\subsection*{ABSTRACT}
-\input{abstract}
-\addcontentsline{toc}{subsection}{Abstract}
-\newpage
-\tableofcontents 
-\newpage
-\listoffigures
-\listoftables
-\newpage
-\pagenumbering{arabic}
-\include{acronym}
-\newpage
+	\input{titlepage}
+	\pagenumbering{roman}
+	\subsection*{COPYRIGHT}
+		\input{copyright}
+	\addcontentsline{toc}{subsection}{COPYRIGHT}
+	\newpage
+	\subsection*{ACKNOWLEDGEMENTS}
+		\input{acknowledgement}
+	\addcontentsline{toc}{subsection}{ACKNOWLEDGEMENTS}
+	\newpage
+	\subsection*{ABSTRACT}
+	\input{abstract}
+	\addcontentsline{toc}{subsection}{ABSTRACT}
+	\newpage
+	\tableofcontents 
+	\newpage
+	\listoffigures
+	\listoftables
+	\newpage
+	\subsection*{ACRONYM}
+	\include{acronym}
+	\addcontentsline{toc}{subsection}{List of Acronyms}
+	\newpage
+	\pagenumbering{arabic}
 \section{INTRODUCTION}
 \subsection{Background}
-According to the Information and Communication Technology (ICT) Master Plan 2013-2017, see[1], the long term
+According to the Information and Communication Technology \ac{ICT} Master Plan 2013-2017, see[1], the long term
 goal of education in Nepal is to provide citizens with appropriate knowledge,
 skills and attitude to work actively in the development of the country and to
 integrate Nepal into the global community through ensuring equitable access
 to and quality of education for all. In this context, the Ministry of Education
-has considered the use of ICT as essential to achieve the goals of education. And the prime components of it are:
+has considered the use of \ac{ICT} as essential to achieve the goals of education. And the prime components of it are:
 \begin{enumerate}
-\item ICT infrastructure including internet connectivity
-\item Human resources well trained in the use of the ICT infrastructure
-\item Availability of the Teaching / Learning Materials in the ICT infrastruc-
+\item \ac{ICT} infrastructure including internet connectivity
+\item Human resources well trained in the use of the \ac{ICT} infrastructure
+\item Availability of the Teaching / Learning Materials in the \ac{ICT} infrastruc-
 ture
 \item System Enhancement procedures
 \end{enumerate}
 
-Village Tech Solutions (VTS) which was established in the year 1996 by David and Hyadi Sowerwine, with the mission to provide safe, efficient and inexpensive energy systems for the people of rural Nepal. VTS had been endeavoring to bring audio-visual system to the classrooms of Nepal to enhance their current education since the year 2008. By introducing such multimedia systems into the classroom, their aim is to make standard learning materials available to all Nepalese students irrespective of their socio-economic statuses. The information that can be gained from the introduction of such multi-media to rural villages can help not only the
+Village Tech Solutions \ac{VTS} which was established in the year 1996 by David and Hyadi Sowerwine, with the mission to provide safe, efficient and inexpensive energy systems for the people of rural Nepal. \ac{VTS} had been endeavoring to bring audio-visual system to the classrooms of Nepal to enhance their current education since the year 2008. By introducing such multimedia systems into the classroom, their aim is to make standard learning materials available to all Nepalese students irrespective of their socio-economic statuses. The information that can be gained from the introduction of such multi-media to rural villages can help not only the
 standard of education, but also the standard of living. 
 
 The device has been named \emph {Looma}. Looma is a portable projection system that uses a wand to navigate the screen, like an interactive projector system. Looma is an affordable and low power consuming audio-visual technology device which will provide an interactive window to internet and access to educational contents to village schools that have never seen computers, or in some cases, even books.
 
-And now with the release of ICT master plan for education, the government
-of Nepal has been cooperating with VTS regarding the same. Also, VTS
+And now with the release of \ac{ICT} master plan for education, the government
+of Nepal has been cooperating with \ac{VTS} regarding the same. Also, \ac{VTS}
 has been collaborating with students and enthusiasts for the optimization of
 Looma, with the main aim to make Looma affordable, less power consuming
 and efficient, so that the people of rural communities can derive maximum
@@ -73,37 +78,37 @@ Projector systems project on the screen the contents of the computer connected t
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
 		\includegraphics[width=0.48\textwidth]{abc.jpg}
-	\caption{Figure 1. Laser Pointer based Interactive Projector System}
+	\caption{Laser Pointer based Interactive Projector System}
 \end{wrapfigure}
 
-Our project tries to improve the interactivity and the cost of the existing Looma system such that it can be afforded by rural schools. The use of camera to capture the projected area, and detection of location of a visual pen or other visual tools, altogether form an interactive projector system. With the use of a camera, and laser pen, our project gets scoped under \textbf{Human Computer Interaction(HCI)}. \textbf{Computer Vision(CV)} is an integral part of the interaction. The vision based HCI acts as an apt mediator between the user and the computer.
+Our project tries to improve the interactivity and the cost of the existing Looma system such that it can be afforded by rural schools. The use of camera to capture the projected area, and detection of location of a visual pen or other visual tools, altogether form an interactive projector system. With the use of a camera, and laser pen, our project gets scoped under \textbf{Human Computer Interaction \ac{HCI}}. \textbf{Computer Vision \ac{CV}} is an integral part of the interaction. The vision based \ac{HCI} acts as an apt mediator between the user and the computer.
 
 In its long term goals, our project aims to lay a foundation to improved interaction with exisiting projection systems using our hardware and software. 
 
 \subsection{Problem Statement}
-The existing wand system of Looma is basically an IR based handheld device that acts a mouse. It emits IR light, and also called a light pen. The major components of it are that it has an IR LED, a button and and on/off switch and uses 555 timer to turn the IR light source on/off. The led is blinked at a pre-determined frequency so that the blink is be analysed as a click by its camera processor. The current design uses Nintendo Wii IR camera, which is scavenged from Wii motes in order to detect the IR light on the projected screen. Some of the system's issues which can not be ignored are:
+The existing wand system of Looma is basically an IR based handheld device that acts a mouse. It emits \ac{IR} light, and also called a light pen. The major components of it are that it has an \ac{IR} \ac{LED}, a button and and on/off switch and uses 555 timer to turn the IR light source on/off. The led is blinked at a pre-determined frequency so that the blink is be analysed as a click by its camera processor. The current design uses Nintendo Wii \ac{IR} camera, which is scavenged from Wii motes in order to detect the \ac{IR} light on the projected screen. Some of the system's issues which can not be ignored are:
 
 \begin{itemize}
-\item \textbf {Drawing in the Whiteboard:} While drawing in the LOOMA software, the tracking of the IR led is very unreliable and the drawings are not made as expected.
-\item \textbf{Use of Pre-built Multi-Object-Tracking(MOT) processor:} There is the use of inbuilt MOT processor in the camera chip, which does part of the image processing and tracking and sending coordinates. In the case of errors, its response can not be modified to remove errors which makes it inefficient
-\item \textbf{Errors not detectable:} Since the Wiimote used IR to move the mouse, the location of the IR on the screen is not visible with the naked eye thus making errors not detectable 
-\item \textbf{Unavailability in the market:} Wiimote IR camera chip being used in the system can not be readily bought in the open market which makes it difficult to mass produce the system
+\item \textbf {Drawing in the Whiteboard:} While drawing in the LOOMA software, the tracking of the \ac{IR} led is very unreliable and the drawings are not made as expected.
+\item \textbf{Use of Pre-built Multi-Object-Tracking \ac{MOT} processor:} There is the use of inbuilt \ac{MOT} processor in the camera chip, which does part of the image processing and tracking and sending coordinates. In the case of errors, its response can not be modified to remove errors which makes it inefficient
+\item \textbf{Errors not detectable:} Since the Wiimote used \ac{IR} to move the mouse, the location of the \ac{IR} on the screen is not visible with the naked eye thus making errors not detectable 
+\item \textbf{Unavailability in the market:} Wiimote \ac{IR} camera chip being used in the system can not be readily bought in the open market which makes it difficult to mass produce the system
 \item \textbf{Coverage and Difficult to Interact:} Wii wand is not interactive enough and works effectively only within the projected screen space which makes interacting with the screen difficult and not intuitive
 \end{itemize}
 
-In short, hacked Wii Remotes along with the Field Programmable Gate Array (FPGA) board is adding up to the cost significantly. In addition, the system is not very stable and is inefficient to use as points aforementioned, thereby leading to the research on alternative vision-based HCIs and our project is an effort to get
+In short, hacked Wii Remotes along with the Field Programmable Gate Array \ac{FPGA} board is adding up to the cost significantly. In addition, the system is not very stable and is inefficient to use as points aforementioned, thereby leading to the research on alternative vision-based \ac{HCI}s and our project is an effort to get
 a prototype of one such alternative.
 
 \subsection{Objectives}
-The basic objectives of our project is make prototype for an alternative type of vision-based HCIs and in the modification of Project Looma in aspects listed below:
+The basic objectives of our project is make prototype for an alternative type of vision-based \ac{HCI}s and in the modification of Project Looma in aspects listed below:
 \begin{itemize}
-	\item To use laser pointer instead of IR (Infra-red) based interaction
+	\item To use laser pointer instead of \ac{IR} (Infra-red) based interaction
 	\item To remove the Wii technology, and its dependencies used in current prototype thereby, making the system efficient and cost effective
 \end{itemize}
 
 \newpage
 \section{LITERATURE REVIEW}
-The current prototype can run off a rechargeable 12V battery, has the capability to access the World Wide Web, has readily available off line content, via established partnerships, and has an extremely easy to use interface. The device is contained in a single unit with replaceable external components (i.e. keyboard, remotes), consumes less than 100 W of power, and will cost only USD 300. The system is about the size of a shoe-box. 
+The current prototype can run off a rechargeable 12V battery, has the capability to access the World Wide Web, has readily available off line content, via established partnerships, and has an extremely easy to use interface. The device is contained in a single unit with replaceable external components (i.e. keyboard, remotes), consumes less than 100 W of power, and will cost only \ac{USD} 300. The system is about the size of a shoe-box. 
 As seen in the figure, the existing Looma system functional parts can be listed as:
 
 \subsection{Looma and Wand Details}
@@ -116,13 +121,13 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 \item Computer: Panda board
 \item External ports: 1 Ethernet
 \item Custom power supply (12V in 5V, 12V, 19.5V out)
-\item Hacked Wii IR Camera and Wii wands
+\item Hacked Wii \ac{IR} Camera and Wii wands
 \end{itemize}
 
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.22]{looma.png}
-\caption{Figure 2. Hardware and Electrical parts of Looma system}
+\caption{Hardware and Electrical parts of Looma system}
 \label{}
 \end{figure}
 
@@ -130,15 +135,15 @@ As seen in the figure, the existing Looma system functional parts can be listed 
 
 Wand control descriptions:
 \begin{itemize}
-\item Wand shown in the figure is a 3D printed IR light source
-\item The wand design uses 555 timer to turn the IR light source on/off at a pre-determined frequency such that the blink can be interpreted as a click on the device
-\item Current design uses Nintendo Wii IR camera, which are scavenged from Wii motes
+\item Wand shown in the figure is a \ac{3D} printed \ac{IR} light source
+\item The wand design uses 555 timer to turn the \ac{IR} light source on/off at a pre-determined frequency such that the blink can be interpreted as a click on the device
+\item Current design uses Nintendo Wii \ac{IR} camera, which are scavenged from Wii motes
 \end{itemize}
 
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.4]{wand1.png}
-\caption{Figure 3. 3D printed hacked Wii Remote wand}
+\caption{3D printed hacked Wii Remote wand}
 \label{}
 \end{figure}
 
@@ -146,17 +151,17 @@ Wand control descriptions:
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.35]{wiiiii.png}
-\caption{Figure 4. Illustration of how the movement of infrared is picked up by the Wiimote}
+\caption{Illustration of how the movement of infrared is picked up by the Wiimote}
 \label{}
 \end{figure}
 
-The existing system uses Wii Remote to interact in the audio-visual device. This system uses an Wii IR camera which picks up the infrared light source, and tracks it using its MOT (Multi-Object Tracking) processor present in the camera chip as shown in the figure. Wii IR Camera gives out a pre-set I2C address so the interface board needs an I2C multiplexer. To convert the I2C output to serial, and to demultiplex the signals, the system has been using an FPGA board. 
+The existing system uses Wii Remote to interact in the audio-visual device. This system uses an Wii \ac{IR} camera which picks up the infrared light source, and tracks it using its \ac{MOT} (Multi-Object Tracking) processor present in the camera chip as shown in the figure. Wii \ac{IR} Camera gives out a pre-set \ac{I2C} address so the interface board needs an \ac{I2C} multiplexer. To convert the \ac{I2C} output to serial, and to demultiplex the signals, the system has been using an \ac{FPGA} board. 
 
 \newpage
 \section{THEORITICAL BACKGROUND}
 \subsection{Basic Overview}
-\subsubsection{Human-computer interaction (HCI)} 
-HCI is the study of how people interact with computers and to what extent computers are or are not developed for successful interaction with human beings. Developing human-computer interactions involves design on both sides of the interaction. On the technology side, the designer must have a thorough understanding of the available hardware and software components and tools. On the human side, the designer must have a good understanding of how humans learn and work with computers, including envisioning new modes of working. The designer's task is to create effective, efficient, and satisfying interactions by balancing factors such as cost, benefits, standards, and the environmental constraints in which the interaction will take place. 
+\subsubsection{Human-computer interaction (\ac{HCI})} 
+\ac{HCI} is the study of how people interact with computers and to what extent computers are or are not developed for successful interaction with human beings. Developing human-computer interactions involves design on both sides of the interaction. On the technology side, the designer must have a thorough understanding of the available hardware and software components and tools. On the human side, the designer must have a good understanding of how humans learn and work with computers, including envisioning new modes of working. The designer's task is to create effective, efficient, and satisfying interactions by balancing factors such as cost, benefits, standards, and the environmental constraints in which the interaction will take place. 
 
 Classrooms today are filled with a diverse range of students. Many of them are computer literate while others are not. Some are primarily visual learners, some are auditory learners and some kinesthetic. Others may be gifted and talented.Still others may struggle with physical, mental, behavioral or emotional challenges. In such diverse environment, it may be difficult for the teacher to cope up with each and every individual. In such cases, an effective human-computer interaction tool plays a pivotal role.Various tools are now available for the efficient human-computer interaction, one of which is the Interactive Smart Board.
 
@@ -176,7 +181,7 @@ The basic stages used in image processing are as follows:
 
 \begin{enumerate}
 \item \textbf{Image Acquisition}
-It is the first stage of any vision system as all the other stages of image processing begin only after the acquiring of the digital image. The digital image is captured with the help of image sensor. An image sensor is a device that converts an optical image into an electronic signal such as, digital cameras, camera modules and other imaging devices. Here, Raspberry CSI camera is used for image acquisition.
+It is the first stage of any vision system as all the other stages of image processing begin only after the acquiring of the digital image. The digital image is captured with the help of image sensor. An image sensor is a device that converts an optical image into an electronic signal such as, digital cameras, camera modules and other imaging devices. Here, Raspberry \ac{CSI} camera is used for image acquisition.
 
 \item \textbf{Image Enhancement}
 After acquiring the image, the next stage is its enhancement. Image enhancement comprises the algorithms that make necessary changes to the original images so that they can be made more useful for further processing. Here, image enhancement is performed with Gaussian filter.
@@ -201,8 +206,8 @@ A Microcontroller is a self-contained system with peripherals, memory and a proc
 
 \subsection{Tools Used For Hardware}
 \subsubsection{Simulation}
-\paragraph {Proteus VSM}
-The Proteus VSM contains mixed mode SPICE circuit simulation, animated components and microcontroller models to facilitate co-simulation of complete microcontroller based design. It is possible to develop and test such designs before a physical prototype is constructed. This is possible because interaction with the design is possible using circuit indicators like LED, display panels, actuators etc. It also provides extensive debugging facility by employing breakpoints, single stepping and variable display of both assembly code and high level language source code.
+\paragraph {Proteus \ac{VSM}}
+The Proteus \ac{VSM} contains mixed mode SPICE circuit simulation, animated components and microcontroller models to facilitate co-simulation of complete microcontroller based design. It is possible to develop and test such designs before a physical prototype is constructed. This is possible because interaction with the design is possible using circuit indicators like \ac{LED}, display panels, actuators etc. It also provides extensive debugging facility by employing breakpoints, single stepping and variable display of both assembly code and high level language source code.
 
 \subsubsection{Circuit Design}
 \paragraph{Eagle}
@@ -280,7 +285,7 @@ The Looma software runs on Looma hardware or Ubuntu. The display resolution of t
 \begin{figure}[htp]
 	\centering
 		\includegraphics[scale=0.3]{loomasoftware.png}
-	\caption{Figure 5. Looma Software}
+	\caption{Looma Software}
 \label{}
 \end{figure}
 
@@ -289,7 +294,7 @@ Raspberry Pi is a single-board computer with processor, memory, I/O ports and ma
 
 Raspberry Pi Camera Board Module supports a full HD (High Definition) video streaming at fps of 30 with its 5 megapixel native resolution, and the sensor capable of 2592-1944 pixel static images. Raspberry Pi Camera Board Module was opted instead of normal USB web camera. 
 
-The software of Raspberry Pi utilizes Rpi GPU (Graphical Processor Unit) when using Raspi Camera Module. So for example encoding \emph {h.264}, video has low impact on the CPU (Central Processor Unit) usage. Also, it has an excellent resolution of 5 Megapixels, which is higher than most USB webcams. It also has an excellent daytime image quality. If we use USB Webcam, it will have a very slow frame rate video and the CPU usage will be quite high. RPi does not have enough CPU horsepower to do higher frame rates, resolution and advanced video compression. 
+The software of Raspberry Pi utilizes \ac{Rpi} \ac{GPU} (Graphical Processor Unit) when using Raspi Camera Module. So for example encoding \emph {h.264}, video has low impact on the \ac{CPU} (Central Processor Unit) usage. Also, it has an excellent resolution of 5 Megapixels, which is higher than most USB webcams. It also has an excellent daytime image quality. If we use USB Webcam, it will have a very slow frame rate video and the \ac{CPU} usage will be quite high. RPi does not have enough \ac{CPU} horsepower to do higher frame rates, resolution and advanced video compression. 
 
 \subsection{System Design and Description}
 As seen in the figures, the images of Looma are grabbed in real time by Raspberry Pi camera board. The laser detection and click action detection algorithm is run on the Raspberry Pi.
@@ -298,7 +303,7 @@ First, the projected screen is checked for any distortion and warpness. Dependin
 
 \begin{figure}[htp]
 \includegraphics[scale=0.5]{proposed_system}
-\caption{Figure 6. Block Diagram}
+\caption{Block Diagram}
 \label{Block Diagram}
 \end{figure}
 
@@ -311,7 +316,7 @@ The communication between raspberry pi and the computer system is done via ether
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.45]{block_diagram.png}
-\caption{Figure 7. Block Diagram of the working of our system}
+\caption{Block Diagram of the working of our system}
 \label{ }
 \end{figure}
 
@@ -319,7 +324,7 @@ The communication between raspberry pi and the computer system is done via ether
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.15]{flow.png}
-\caption{Figure 8. Flow Diagram of our system}
+\caption{Flow Diagram of our system}
 \label{ }
 \end{figure}
 
@@ -344,7 +349,7 @@ The mapping is based on linear mapping technique which works on the straight und
 \begin{figure}[htp]
 	\centering
 	\includegraphics[scale=0.50]{Calibration.png}
-	\caption{Figure 9. Calibration Process}
+	\caption{Calibration Process}
 	\label{}
 \end{figure}
 
@@ -359,14 +364,14 @@ The mapping is based on linear mapping technique which works on the straight und
 \begin{figure}[htp]
 	\centering
 	\includegraphics[scale=0.20]{looma1.png}
-	\caption{Figure 10. Distorted Projected Screen}
+	\caption{Distorted Projected Screen}
 	\label{}
 \end{figure}
 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[scale=0.20]{result.png}
-	\caption{Figure 11. Perspective Transform Correction}
+	\caption{Perspective Transform Correction}
 	\label{}
 \end{figure}
 
@@ -393,7 +398,7 @@ Smoothened image is then filtered with a Sobel kernel in both horizontal and ver
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.7]{canny.png}
-\caption{Figure 12. Intensity Gradient and Direction}
+\caption{Intensity Gradient and Direction}
 \label{}
 \end{figure}
 Gradient direction is always perpendicular to edges. It is rounded to one of four angles   representing vertical, horizontal and two diagonal directions.
@@ -406,7 +411,7 @@ This stage decides which are all edges are really edges and which are not. For t
 \begin{figure}[htp]
 	\centering
 	\includegraphics[scale=0.20]{histogram.png}
-	\caption{Figure 13. Histogram Analysis of Brightest Pixel}
+	\caption{Histogram Analysis of Brightest Pixel}
 	\label{}
 \end{figure}
 		
@@ -418,14 +423,14 @@ This stage decides which are all edges are really edges and which are not. For t
 \begin{figure}[htp]
 	\centering
 	\includegraphics[scale=0.55]{schematic.png}
-	\caption{Figure 14. Laser circuit schematic diagram}
+	\caption{Laser circuit schematic diagram}
 	\label{}
 \end{figure}
 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[scale=0.3]{eagle-non-mirror.png}
-	\caption{Figure 15. Laser circuit eagle design diagram}
+	\caption{Laser circuit eagle design diagram}
 	\label{}
 \end{figure}
 
@@ -436,7 +441,7 @@ This stage decides which are all edges are really edges and which are not. For t
 \begin{figure}[htp]
 	\centering
 	\includegraphics[scale=0.2]{front.png}
-	\caption{Figure 16. Laser circuit fabricated design}
+	\caption{Laser circuit fabricated design}
 	\label{}
 \end{figure}
 
@@ -473,19 +478,19 @@ The laser wand is made to blink on manual press of a button. The TIMER and PWM o
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.35]{state.png}
-\caption{Figure 17. State Transition Diagram of Algorithm}
+\caption{State Transition Diagram of Algorithm}
 \label{}
 \end{figure}
 	
 \subsection{Communication between computer and Raspberry Pi}
-	A server and client program are constructed based on Transmission Control Protocol (TCP). The server and client maintain the communication between the computer and the raspberry pi. The server program is run on the computer which is being projected by the projector. The client program is run on the raspberry pi which detects laser spots. 
+	A server and client program are constructed based on Transmission Control Protocol \ac{TCP}. The server and client maintain the communication between the computer and the raspberry pi. The server program is run on the computer which is being projected by the projector. The client program is run on the raspberry pi which detects laser spots. 
 	
-	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the FPGA board. However, we implemented a protocol for communication using Transmission Control Protocol(TCP) via ethernet to communicate the mouse actions and coordinates to the computer. The Looma board was made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action. 
+	Currently, the Looma software is obtaining the mouse coordinates through its serial port from the \ac{FPGA} board. However, we implemented a protocol for communication using Transmission Control Protocol \ac{TCP} via ethernet to communicate the mouse actions and coordinates to the computer. The Looma board was made a server, and the Raspberry Pi board a client. The client sends the coordinates of the detected laser spot, and the actions associated with it. Accordingly, the server which is listening to the client, receives the coordinates and their respective actions. The server then sends the actions to the in-built mouse application to do the desired action. 
 	
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=1]{tcp.jpeg}
-\caption{Figure 18. Transmission Control Protocol}
+\caption{Transmission Control Protocol}
 \label{}
 \end{figure}
 
@@ -515,7 +520,7 @@ The laser wand was tested by connecting the circuit elements as shown in the fig
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.30]{afterpress.png}
-\caption{Figure 19. PWM generation on button click}
+\caption{PWM generation on button click}
 \label{}
 \end{figure}
 
@@ -555,11 +560,11 @@ The laser’s distinct intensity values in the red region was utilized. However,
 \hline
 	S.N  & Existing System & Cost & Designed System & Cost\\
 \hline
-	1 & FPGA Board and Wiring & \$117 & Raspberry Pi & \$64.90\\
+	1 & \ac{FPGA} Board and Wiring & \$117 & Raspberry Pi & \$64.90\\
 \hline
 	2 & Nintendo Wii Remote & \$68.89 & Raspberry Pi Camera Module & \$29.95 \\
 \hline
-	3 & 3D Printed IR Wands & \$20 & Laser Pointer & \$0.9\\
+	3 & 3D Printed \ac{IR} Wands & \$20 & Laser Pointer & \$0.9\\
 \hline
 	4 &  &  & Atmega8L & \$1.87\\
 \hline
@@ -587,7 +592,7 @@ The laser’s distinct intensity values in the red region was utilized. However,
 \hline
 	8 & Drill Bit & 20 & 1 & 20 \\
 \hline
-	9 & PCB & 300 & 1 & 300 \\
+	9 & \ac{PCB} & 300 & 1 & 300 \\
 \hline
 	10 & Laser & 90 & 1 & 90 \\
 \hline
@@ -656,4 +661,73 @@ The limitations of the system developed in this project are as follows:
 	\item \url{www.villagetechsolutions.org/}
 	\item \url{www.docs.opencv.org/}
 \end{itemize}
+\newpage
+\appendix
+\section{AVR Atmega 8L Features:}
+\begin{itemize}
+\item \textbf{High-performance, Low-power Atmel AVR 8-bit Microcontroller}
+\begin{itemize}
+\item Advanced \ac{RISC} Architecture
+\item 130 Powerful Instructions – Most Single-clock Cycle Execution
+\item 32 × 8 General Purpose Working Registers
+\end{itemize}
+\item \textbf{High Endurance Non-volatile Memory segments}
+\begin{itemize}
+\item 8Kbytes of In-System Self-programmable Flash program memory
+\item 512Bytes EEPROM
+\item WriteErase Cycles: 10,000 Flash. 100,000 \ac{EEPROM}
+\item Data retention: 20 years at 85$^oC$ 100 years at 25$^oC$
+\end{itemize}
+\item \textbf{Peripheral Features}
+\begin{itemize}
+\item Two 8-bit Timer/Counters with Separate Prescaler, one Compare Mode
+\item One 16-bit Timer/Counter with Separate Prescaler, Compare Mode, and Capture Mode
+\item Real Time Counter with Separate Oscillator
+\item Three PWM Channels
+\end{itemize}
+
+\item \textbf{Operating Voltages}
+\begin{itemize}
+\item 2.7V - 5.5V (ATmega8L)
+\item 4.5V - 5.5V (ATmega8)
+\end{itemize}
+\item \textbf{Speed Grades}
+\begin{itemize}
+\item 0 - 8MHz (ATmega8L)
+\item 0 - 16MHz (ATmega8)
+\end{itemize}
+\item \textbf{Power Consumption at 4Mhz, 3V, 25$^oC$}
+\begin{itemize}
+\item Active: 3.6mA
+\item Idle Mode: 1.0mA
+\item Power-down Mode: 0.5μA
+\end{itemize}
+\end{itemize}
+
+\section{OPENCV}
+\textbf{\ac{OpenCV}} (Open Source Computer Vision Library) is an open source computer vision and machine learning software library. \ac{OpenCV} was built to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception in the commercial products. Being a BSD-licensed product, \ac{OpenCV} makes it easy for businesses to utilize and modify the code.
+
+The library has more than 2500 optimized algorithms, which includes a comprehensive set of both classic and state-of-the-art computer vision and machine learning algorithms. These algorithms can be used to detect and recognize faces, identify objects, classify human actions in videos, track camera movements, track moving objects, extract \ac{3D} models of objects, produce \ac{3D} point clouds from stereo cameras, stitch images together to produce a high resolution image of an entire scene, find similar images from an image database, remove red eyes from images taken using flash, follow eye movements, recognize scenery and establish markers to overlay it with augmented reality, etc.
+
+In general, \ac{OpenCV} application areas include:
+
+\begin{itemize}
+\item 2D and 3D feature toolkits
+\item Egomotion estimation
+\item Facial recognition system
+\item Gesture recognition
+\item Human–computer interaction \ac{HCI}
+\item Mobile robotics
+\item Motion understanding
+\item Object identification
+\item Segmentation and Recognition
+\item Stereopsis Stereo vision: depth perception from 2 cameras
+\item Structure from motion \ac{SFM}
+\item Motion tracking
+\item Augmented reality
+\end{itemize}
+
+\ac{OpenCV} has more than 47 thousand people of user community and estimated number of downloads exceeding 7 million. The library is used extensively in companies, research groups and by governmental bodies.
+
+It has C++, C, Java and MATLAB interfaces and supports Windows, Linux, Android and Mac OS. \ac{OpenCV} leans mostly towards real-time vision applications and takes advantage of MMX and SSE instructions when available. A full-featured CUDA and OpenCL interfaces are being actively developed right now. There are over 500 algorithms and about 10 times as many functions that compose or support those algorithms. \ac{OpenCV} is written natively in C++ and has a templated interface that works seamlessly with \ac{STL} containers.
 \end{document}
